@@ -31,6 +31,12 @@ Partial Class frmItem
         Me.cmdSave = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtShelflife = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtMOQ = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TxtSafLvl = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.txtLeadtime = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtMDICode = New System.Windows.Forms.TextBox()
@@ -61,12 +67,8 @@ Partial Class frmItem
         Me.DataGridTextBoxColumn9 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn10 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn11 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.TxtSafLvl = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtMOQ = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtShelflife = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.DataGridTextBoxColumn7 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn8 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,6 +176,63 @@ Partial Class frmItem
         Me.GroupBox2.TabIndex = 142
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Item Detail"
+        '
+        'txtShelflife
+        '
+        Me.txtShelflife.Enabled = False
+        Me.txtShelflife.Location = New System.Drawing.Point(120, 200)
+        Me.txtShelflife.MaxLength = 10
+        Me.txtShelflife.Name = "txtShelflife"
+        Me.txtShelflife.Size = New System.Drawing.Size(256, 20)
+        Me.txtShelflife.TabIndex = 107
+        Me.txtShelflife.Tag = "Input"
+        '
+        'Label8
+        '
+        Me.Label8.Location = New System.Drawing.Point(16, 200)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(88, 20)
+        Me.Label8.TabIndex = 106
+        Me.Label8.Text = "Shelf Life :"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtMOQ
+        '
+        Me.txtMOQ.Enabled = False
+        Me.txtMOQ.Location = New System.Drawing.Point(120, 173)
+        Me.txtMOQ.MaxLength = 10
+        Me.txtMOQ.Name = "txtMOQ"
+        Me.txtMOQ.Size = New System.Drawing.Size(256, 20)
+        Me.txtMOQ.TabIndex = 105
+        Me.txtMOQ.Tag = "Input"
+        '
+        'Label7
+        '
+        Me.Label7.Location = New System.Drawing.Point(16, 172)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(88, 20)
+        Me.Label7.TabIndex = 104
+        Me.Label7.Text = "Min Ord Qty :"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtSafLvl
+        '
+        Me.TxtSafLvl.Enabled = False
+        Me.TxtSafLvl.Location = New System.Drawing.Point(120, 146)
+        Me.TxtSafLvl.MaxLength = 10
+        Me.TxtSafLvl.Name = "TxtSafLvl"
+        Me.TxtSafLvl.Size = New System.Drawing.Size(256, 20)
+        Me.TxtSafLvl.TabIndex = 103
+        Me.TxtSafLvl.Tag = "Input"
+        '
+        'Label6
+        '
+        Me.Label6.Location = New System.Drawing.Point(16, 144)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(88, 20)
+        Me.Label6.TabIndex = 102
+        Me.Label6.Text = "Safety Level :"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'txtLeadtime
         '
@@ -366,7 +425,7 @@ Partial Class frmItem
         '
         Me.DataGridTableStyle1.AlternatingBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DataGridTableStyle1.DataGrid = Me.DataGrid1
-        Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridTextBoxColumn11})
+        Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridTextBoxColumn11, Me.DataGridTextBoxColumn7, Me.DataGridTextBoxColumn8})
         Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGridTableStyle1.MappingName = "ProductFormCT_Show"
         Me.DataGridTableStyle1.ReadOnly = True
@@ -376,15 +435,15 @@ Partial Class frmItem
         '
         Me.DataGridTextBoxColumn1.Format = ""
         Me.DataGridTextBoxColumn1.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn1.MappingName = "Rowid"
+        Me.DataGridTextBoxColumn1.MappingName = "Itmid"
         Me.DataGridTextBoxColumn1.Width = 0
         '
         'DataGridTextBoxColumn2
         '
         Me.DataGridTextBoxColumn2.Format = ""
         Me.DataGridTextBoxColumn2.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn2.HeaderText = "User ID"
-        Me.DataGridTextBoxColumn2.MappingName = "userid"
+        Me.DataGridTextBoxColumn2.HeaderText = "Item Code"
+        Me.DataGridTextBoxColumn2.MappingName = "ItemCode"
         Me.DataGridTextBoxColumn2.NullText = ""
         Me.DataGridTextBoxColumn2.ReadOnly = True
         Me.DataGridTextBoxColumn2.Width = 150
@@ -393,8 +452,8 @@ Partial Class frmItem
         '
         Me.DataGridTextBoxColumn3.Format = ""
         Me.DataGridTextBoxColumn3.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn3.HeaderText = "User Name"
-        Me.DataGridTextBoxColumn3.MappingName = "username"
+        Me.DataGridTextBoxColumn3.HeaderText = "Item Description"
+        Me.DataGridTextBoxColumn3.MappingName = "ItemDesc"
         Me.DataGridTextBoxColumn3.NullText = ""
         Me.DataGridTextBoxColumn3.ReadOnly = True
         Me.DataGridTextBoxColumn3.Width = 350
@@ -403,106 +462,65 @@ Partial Class frmItem
         '
         Me.DataGridTextBoxColumn4.Format = ""
         Me.DataGridTextBoxColumn4.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn4.HeaderText = "Password"
-        Me.DataGridTextBoxColumn4.MappingName = "Password"
+        Me.DataGridTextBoxColumn4.HeaderText = "MDI Code"
+        Me.DataGridTextBoxColumn4.MappingName = "MDICode"
         Me.DataGridTextBoxColumn4.Width = 75
         '
         'DataGridTextBoxColumn5
         '
         Me.DataGridTextBoxColumn5.Format = ""
         Me.DataGridTextBoxColumn5.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn5.HeaderText = "IRole ID"
-        Me.DataGridTextBoxColumn5.MappingName = "IRoleID"
+        Me.DataGridTextBoxColumn5.HeaderText = "Lead Time"
+        Me.DataGridTextBoxColumn5.MappingName = "LeadTime"
         Me.DataGridTextBoxColumn5.Width = 75
         '
         'DataGridTextBoxColumn6
         '
         Me.DataGridTextBoxColumn6.Format = ""
         Me.DataGridTextBoxColumn6.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn6.HeaderText = "Role"
-        Me.DataGridTextBoxColumn6.MappingName = "Role"
+        Me.DataGridTextBoxColumn6.HeaderText = "Safety level"
+        Me.DataGridTextBoxColumn6.MappingName = "Saflvl"
         Me.DataGridTextBoxColumn6.Width = 75
         '
         'DataGridTextBoxColumn9
         '
         Me.DataGridTextBoxColumn9.Format = ""
         Me.DataGridTextBoxColumn9.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn9.HeaderText = "Create Date"
-        Me.DataGridTextBoxColumn9.MappingName = "CREATEDATE"
+        Me.DataGridTextBoxColumn9.HeaderText = "MOQ"
+        Me.DataGridTextBoxColumn9.MappingName = "MOQ"
         Me.DataGridTextBoxColumn9.Width = 75
         '
         'DataGridTextBoxColumn10
         '
         Me.DataGridTextBoxColumn10.Format = ""
         Me.DataGridTextBoxColumn10.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn10.HeaderText = "Update Date"
-        Me.DataGridTextBoxColumn10.MappingName = "UPDATEDATE"
+        Me.DataGridTextBoxColumn10.HeaderText = "Shelf Life"
+        Me.DataGridTextBoxColumn10.MappingName = "Shelflife"
         Me.DataGridTextBoxColumn10.Width = 75
         '
         'DataGridTextBoxColumn11
         '
         Me.DataGridTextBoxColumn11.Format = ""
         Me.DataGridTextBoxColumn11.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn11.HeaderText = "Update By"
-        Me.DataGridTextBoxColumn11.MappingName = "ENCODER"
+        Me.DataGridTextBoxColumn11.HeaderText = "Create Date"
+        Me.DataGridTextBoxColumn11.MappingName = "CreateDate"
         Me.DataGridTextBoxColumn11.Width = 75
         '
-        'TxtSafLvl
+        'DataGridTextBoxColumn7
         '
-        Me.TxtSafLvl.Enabled = False
-        Me.TxtSafLvl.Location = New System.Drawing.Point(120, 146)
-        Me.TxtSafLvl.MaxLength = 10
-        Me.TxtSafLvl.Name = "TxtSafLvl"
-        Me.TxtSafLvl.Size = New System.Drawing.Size(256, 20)
-        Me.TxtSafLvl.TabIndex = 103
-        Me.TxtSafLvl.Tag = "Input"
+        Me.DataGridTextBoxColumn7.Format = ""
+        Me.DataGridTextBoxColumn7.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn7.HeaderText = "Update Date"
+        Me.DataGridTextBoxColumn7.MappingName = "UpdateDate"
+        Me.DataGridTextBoxColumn7.Width = 75
         '
-        'Label6
+        'DataGridTextBoxColumn8
         '
-        Me.Label6.Location = New System.Drawing.Point(16, 144)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(88, 20)
-        Me.Label6.TabIndex = 102
-        Me.Label6.Text = "Safety Level :"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'txtMOQ
-        '
-        Me.txtMOQ.Enabled = False
-        Me.txtMOQ.Location = New System.Drawing.Point(120, 173)
-        Me.txtMOQ.MaxLength = 10
-        Me.txtMOQ.Name = "txtMOQ"
-        Me.txtMOQ.Size = New System.Drawing.Size(256, 20)
-        Me.txtMOQ.TabIndex = 105
-        Me.txtMOQ.Tag = "Input"
-        '
-        'Label7
-        '
-        Me.Label7.Location = New System.Drawing.Point(16, 172)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(88, 20)
-        Me.Label7.TabIndex = 104
-        Me.Label7.Text = "Min Ord Qty :"
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'txtShelflife
-        '
-        Me.txtShelflife.Enabled = False
-        Me.txtShelflife.Location = New System.Drawing.Point(120, 200)
-        Me.txtShelflife.MaxLength = 10
-        Me.txtShelflife.Name = "txtShelflife"
-        Me.txtShelflife.Size = New System.Drawing.Size(256, 20)
-        Me.txtShelflife.TabIndex = 107
-        Me.txtShelflife.Tag = "Input"
-        '
-        'Label8
-        '
-        Me.Label8.Location = New System.Drawing.Point(16, 200)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(88, 20)
-        Me.Label8.TabIndex = 106
-        Me.Label8.Text = "Shelf Life :"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.DataGridTextBoxColumn8.Format = ""
+        Me.DataGridTextBoxColumn8.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn8.HeaderText = "Update By"
+        Me.DataGridTextBoxColumn8.MappingName = "UpdateBy"
+        Me.DataGridTextBoxColumn8.Width = 75
         '
         'frmItem
         '
@@ -577,4 +595,6 @@ Partial Class frmItem
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TxtSafLvl As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents DataGridTextBoxColumn7 As System.Windows.Forms.DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn8 As System.Windows.Forms.DataGridTextBoxColumn
 End Class

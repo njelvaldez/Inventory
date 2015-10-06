@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports CrystalDecisions.CrystalReports.Engine
-Public Class frmISupplier
+Public Class frmForecast
     Private RemoteDataSet As New DataSet
     Private EditMode As Boolean = False
     Private ModuleName As String = "SUPPLIER MASTER FILE"

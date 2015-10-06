@@ -3,7 +3,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 Public Class frmItem
     Private RemoteDataSet As New DataSet
     Private EditMode As Boolean = False
-    Private ModuleName As String = "USER MASTER FILE"
+    Private ModuleName As String = "ITEM MASTER FILE"
     Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
         If UserCanAdd(gUserID, ModuleName) Then
             modControlBehavior.EnableControlsGroup(Me, True)
@@ -80,43 +80,45 @@ Public Class frmItem
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(6) As SqlParameter
+            Dim Params(7) As SqlParameter
             Dim ItemCode As New SqlParameter("@ItemCode", SqlDbType.VarChar, 10) : ItemCode.Direction = ParameterDirection.Input : ItemCode.Value = txtItemCode.Text : Params(0) = ItemCode
             Dim ItemDesc As New SqlParameter("@ItemDesc", SqlDbType.VarChar, 50) : ItemDesc.Direction = ParameterDirection.Input : ItemDesc.Value = txtItemDesc.Text : Params(1) = ItemDesc
-            Dim MdiCode As New SqlParameter("@MdiCode", SqlDbType.VarChar, 15) : MdiCode.Direction = ParameterDirection.Input : MdiCode.Value = txtMDICode.Text : Params(2) = MdiCode
-            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Int, 10) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToInt16(txtSaflvl.Text) : Params(3) = Leadtime
-            Dim Saflvl As New SqlParameter("@Saflvl", SqlDbType.VarChar, 25) : Saflvl.Direction = ParameterDirection.Input : Saflvl.Value = TxtSafLvl.Text : Params(4) = Saflvl
-            Dim MOQ As New SqlParameter("@MOQ", SqlDbType.VarChar, 25) : MOQ.Direction = ParameterDirection.Input : MOQ.Value = txtMOQ.Text : Params(5) = MOQ
-            Dim Shelflife As New SqlParameter("@Shelflife", SqlDbType.VarChar, 25) : Shelflife.Direction = ParameterDirection.Input : Shelflife.Value = txtShelflife.Text : Params(6) = Shelflife
+            Dim MdiCode As New SqlParameter("@MdiCode", SqlDbType.VarChar, 10) : MdiCode.Direction = ParameterDirection.Input : MdiCode.Value = txtMDICode.Text : Params(2) = MdiCode
+            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Money, 12) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToDecimal(txtLeadtime.Text) : Params(3) = Leadtime
+            Dim Saflvl As New SqlParameter("@Saflvl", SqlDbType.Money, 12) : Saflvl.Direction = ParameterDirection.Input : Saflvl.Value = Convert.ToDecimal(TxtSafLvl.Text) : Params(4) = Saflvl
+            Dim MOQ As New SqlParameter("@MOQ", SqlDbType.Money, 12) : MOQ.Direction = ParameterDirection.Input : MOQ.Value = Convert.ToDecimal(txtMOQ.Text) : Params(5) = MOQ
+            Dim Shelflife As New SqlParameter("@Shelflife", SqlDbType.Money, 12) : Shelflife.Direction = ParameterDirection.Input : Shelflife.Value = Convert.ToDecimal(txtShelflife.Text) : Params(6) = Shelflife
+            Dim UpdateBy As New SqlParameter("@UpdateBy", SqlDbType.VarChar, 10) : UpdateBy.Direction = ParameterDirection.Input : UpdateBy.Value = gUserName : Params(7) = UpdateBy
             If ItemExists() Then
                 MsgBox("User Id : " & txtItemCode.Text & ", User Name : " & txtItemDesc.Text & " already exists!")
             Else
-                BusinessObject.Sub_Insert(ServerPath2, "UserTab_Insert", CommandType.StoredProcedure, Params)
-                LogHelper.InsertLog("UserTab_Insert")
+                BusinessObject.Sub_Insert(ServerPath2, "Item_Insert", CommandType.StoredProcedure, Params)
+                LogHelper.InsertLog("Item_Insert")
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-            LogHelper.InsertLog("UserTab_Insert.Error: " & ex.Message)
+            LogHelper.InsertLog("Item_Insert.Error: " & ex.Message)
         End Try
 
     End Sub
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(7) As SqlParameter
+            Dim Params(8) As SqlParameter
             Dim ItemCode As New SqlParameter("@ItemCode", SqlDbType.VarChar, 10) : ItemCode.Direction = ParameterDirection.Input : ItemCode.Value = txtItemCode.Text : Params(0) = ItemCode
             Dim ItemDesc As New SqlParameter("@ItemDesc", SqlDbType.VarChar, 50) : ItemDesc.Direction = ParameterDirection.Input : ItemDesc.Value = txtItemDesc.Text : Params(1) = ItemDesc
-            Dim MdiCode As New SqlParameter("@MdiCode", SqlDbType.VarChar, 15) : MdiCode.Direction = ParameterDirection.Input : MdiCode.Value = txtMDICode.Text : Params(2) = MdiCode
-            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Int, 10) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToInt16(TxtSafLvl.Text) : Params(3) = Leadtime
-            Dim Saflvl As New SqlParameter("@Saflvl", SqlDbType.VarChar, 25) : Saflvl.Direction = ParameterDirection.Input : Saflvl.Value = TxtSafLvl.Text : Params(4) = Saflvl
-            Dim MOQ As New SqlParameter("@MOQ", SqlDbType.VarChar, 25) : MOQ.Direction = ParameterDirection.Input : MOQ.Value = txtMOQ.Text : Params(5) = MOQ
-            Dim Shelflife As New SqlParameter("@Shelflife", SqlDbType.VarChar, 25) : Shelflife.Direction = ParameterDirection.Input : Shelflife.Value = txtShelflife.Text : Params(6) = Shelflife
-            Dim ROWID As New SqlParameter("@ROWID", SqlDbType.Int, 10) : ROWID.Direction = ParameterDirection.Input : ROWID.Value = Convert.ToInt16(txtRowid.Text) : Params(7) = ROWID
-            BusinessObject.Sub_Insert(ServerPath2, "UserTab_Update", CommandType.StoredProcedure, Params)
-            LogHelper.InsertLog("UserTab_Update")
+            Dim MdiCode As New SqlParameter("@MdiCode", SqlDbType.VarChar, 10) : MdiCode.Direction = ParameterDirection.Input : MdiCode.Value = txtMDICode.Text : Params(2) = MdiCode
+            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Money, 12) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToDecimal(txtLeadtime.Text) : Params(3) = Leadtime
+            Dim Saflvl As New SqlParameter("@Saflvl", SqlDbType.Money, 12) : Saflvl.Direction = ParameterDirection.Input : Saflvl.Value = Convert.ToDecimal(TxtSafLvl.Text) : Params(4) = Saflvl
+            Dim MOQ As New SqlParameter("@MOQ", SqlDbType.Money, 12) : MOQ.Direction = ParameterDirection.Input : MOQ.Value = Convert.ToDecimal(txtMOQ.Text) : Params(5) = MOQ
+            Dim Shelflife As New SqlParameter("@Shelflife", SqlDbType.Money, 12) : Shelflife.Direction = ParameterDirection.Input : Shelflife.Value = Convert.ToDecimal(txtShelflife.Text) : Params(6) = Shelflife
+            Dim UpdateBy As New SqlParameter("@UpdateBy", SqlDbType.VarChar, 10) : UpdateBy.Direction = ParameterDirection.Input : UpdateBy.Value = gUserName : Params(7) = UpdateBy
+            Dim ROWID As New SqlParameter("@Itmid", SqlDbType.Int, 10) : ROWID.Direction = ParameterDirection.Input : ROWID.Value = Convert.ToInt16(txtRowid.Text) : Params(8) = ROWID
+            BusinessObject.Sub_Insert(ServerPath2, "Item_Update", CommandType.StoredProcedure, Params)
+            LogHelper.InsertLog("Item_Update")
         Catch ex As Exception
             MsgBox(ex.Message)
-            LogHelper.InsertLog("UserTab_Update.Error: " & ex.Message)
+            LogHelper.InsertLog("Item_Update.Error: " & ex.Message)
         End Try
 
     End Sub
@@ -125,21 +127,21 @@ Public Class frmItem
             If RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count > 0 Then RemoteDataSet.Tables("ProductFormCT_Show").Clear()
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
             If Trim(txtSearch.Text = "") Then
-                BusinessObject.Sub_Show(ServerPath2, "UserTab_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show")
+                BusinessObject.Sub_Show(ServerPath2, "Item_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show")
             Else
                 Dim Params(0) As SqlParameter
                 Dim ItemDesc As New SqlParameter("@ItemDesc ", SqlDbType.VarChar, 50)
                 ItemDesc.Direction = ParameterDirection.Input
                 ItemDesc.Value = txtSearch.Text.ToString.Trim
                 Params(0) = ItemDesc
-                BusinessObject.Sub_Show(ServerPath2, "UserTab_Search_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
+                BusinessObject.Sub_Show(ServerPath2, "Item_Search_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
             End If
             DataGrid1.DataSource = RemoteDataSet.Tables("ProductFormCT_Show")
-            GroupBox1.Text = "Number of Users : " & RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count.ToString()
-            LogHelper.InsertLog("UserTab_Search_Show.Success")
+            GroupBox1.Text = "Number of Items : " & RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count.ToString()
+            LogHelper.InsertLog("Item_Search_Show.Success")
         Catch ex As Exception
             MsgBox(ex.Message)
-            LogHelper.InsertLog("UserTab_Search_Show.Error: " & ex.Message)
+            LogHelper.InsertLog("Item_Search_Show.Error: " & ex.Message)
         End Try
 
     End Sub
@@ -150,7 +152,7 @@ Public Class frmItem
         Select Case UpdateMode
             Case "Insert"
                 Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-                myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "IItem_GetInsertedRowid", CommandType.StoredProcedure))
+                myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "Item_GetInsertedRowid", CommandType.StoredProcedure))
             Case "Update"
                 myRowid = CInt(dbParams(0))
         End Select
@@ -188,15 +190,18 @@ Public Class frmItem
     Private Sub DataGrid1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid1.Click, DataGrid1.CurrentCellChanged
         Try
             With DataGrid1
+                'select itmid,itemcode,ItemDesc,MdiCode,Leadtime,SafLvl,MOQ,Shelflife,CreateDate,UpdateDate,UpdateBy from item 
                 txtRowid.Text = CStr(.Item(.CurrentCell.RowNumber, 0))
                 txtItemCode.Text = CStr(.Item(.CurrentCell.RowNumber, 1))
                 txtItemDesc.Text = CStr(.Item(.CurrentCell.RowNumber, 2))
                 txtMDICode.Text = CStr(.Item(.CurrentCell.RowNumber, 3))
-                txtSaflvl.Text = CStr(.Item(.CurrentCell.RowNumber, 4))
-                txtLeadtime.Text = CStr(.Item(.CurrentCell.RowNumber, 5))
-                lblCreateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 6))
-                lblUpdateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 7))
-                lblUpdateBy.Text = CStr(.Item(.CurrentCell.RowNumber, 8))
+                txtLeadtime.Text = CStr(.Item(.CurrentCell.RowNumber, 4))
+                TxtSafLvl.Text = CStr(.Item(.CurrentCell.RowNumber, 5))
+                txtMOQ.Text = CStr(.Item(.CurrentCell.RowNumber, 6))
+                txtShelflife.Text = CStr(.Item(.CurrentCell.RowNumber, 7))
+                lblCreateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 8))
+                lblUpdateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 9))
+                lblUpdateBy.Text = CStr(.Item(.CurrentCell.RowNumber, 10))
                 .Select(.CurrentCell.RowNumber)
             End With
         Catch ex As Exception
@@ -227,7 +232,7 @@ Public Class frmItem
 
     End Sub
     Private Sub EnableCodeAndDesc(enableflag As Boolean)
-        txtLeadtime.Enabled = False
+        'txtLeadtime.Enabled = False
         If EditMode Then
             txtItemCode.Enabled = False
             txtItemDesc.Enabled = False
@@ -241,17 +246,17 @@ Public Class frmItem
         Dim BusinessObject As New BusinessLayer.clsFileMaintenance
         Dim Params(1) As SqlParameter
 
-        Dim CODE As New SqlParameter("@CODE", SqlDbType.VarChar, 10)
+        Dim CODE As New SqlParameter("@ItemCode", SqlDbType.VarChar, 10)
         CODE.Direction = ParameterDirection.Input
         CODE.Value = txtItemCode.Text.ToString.Trim
         Params(0) = CODE
 
-        Dim NAME As New SqlParameter("@NAME", SqlDbType.VarChar, 50)
+        Dim NAME As New SqlParameter("@ItemDesc", SqlDbType.VarChar, 50)
         NAME.Direction = ParameterDirection.Input
         NAME.Value = txtItemDesc.Text.ToString.Trim
         Params(1) = NAME
 
-        BusinessObject.Sub_Show(ServerPath2, "IUsertab_SearchCodeOrDesc", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
+        BusinessObject.Sub_Show(ServerPath2, "Item_SearchCodeOrDesc", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
         If RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count > 0 Then
             retval = True
         End If

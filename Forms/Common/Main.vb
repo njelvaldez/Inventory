@@ -89,6 +89,7 @@ Public Class Main
         Me.components = New System.ComponentModel.Container()
         Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
         Me.MenuItem8 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem46 = New System.Windows.Forms.MenuItem()
         Me.MenuItem27 = New System.Windows.Forms.MenuItem()
         Me.MenuItem33 = New System.Windows.Forms.MenuItem()
         Me.MenuItem30 = New System.Windows.Forms.MenuItem()
@@ -97,15 +98,19 @@ Public Class Main
         Me.mnuExit = New System.Windows.Forms.MenuItem()
         Me.MenuItem1 = New System.Windows.Forms.MenuItem()
         Me.MenuItem129 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem37 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem38 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem44 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem43 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem45 = New System.Windows.Forms.MenuItem()
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem38 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem37 = New System.Windows.Forms.MenuItem()
         Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.MenuItem29 = New System.Windows.Forms.MenuItem()
         Me.MenuItem11 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem40 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem41 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem47 = New System.Windows.Forms.MenuItem()
         Me.MenuItem42 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem41 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem40 = New System.Windows.Forms.MenuItem()
         Me.MenuItem5 = New System.Windows.Forms.MenuItem()
         Me.MenuItem2 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
@@ -134,11 +139,6 @@ Public Class Main
         Me.MenuItem10 = New System.Windows.Forms.MenuItem()
         Me.MenuItem9 = New System.Windows.Forms.MenuItem()
         Me.MenuItem20 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem43 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem44 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem45 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem46 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem47 = New System.Windows.Forms.MenuItem()
         Me.SuspendLayout()
         '
         'MainMenu1
@@ -150,6 +150,11 @@ Public Class Main
         Me.MenuItem8.Index = 0
         Me.MenuItem8.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem46, Me.MenuItem27, Me.MenuItem33, Me.mnuExit})
         Me.MenuItem8.Text = "File"
+        '
+        'MenuItem46
+        '
+        Me.MenuItem46.Index = 0
+        Me.MenuItem46.Text = "Item"
         '
         'MenuItem27
         '
@@ -194,20 +199,36 @@ Public Class Main
         Me.MenuItem129.Index = 0
         Me.MenuItem129.Text = "-"
         '
-        'MenuItem37
+        'MenuItem44
         '
-        Me.MenuItem37.Index = 2
-        Me.MenuItem37.Text = "Receiving"
+        Me.MenuItem44.Index = 1
+        Me.MenuItem44.Text = "Forecast"
+        '
+        'MenuItem43
+        '
+        Me.MenuItem43.Index = 2
+        Me.MenuItem43.Text = "Process MDI Inventory"
+        '
+        'MenuItem45
+        '
+        Me.MenuItem45.Index = 3
+        Me.MenuItem45.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem39, Me.MenuItem38, Me.MenuItem37})
+        Me.MenuItem45.Text = "IMS Inventory"
+        '
+        'MenuItem39
+        '
+        Me.MenuItem39.Index = 0
+        Me.MenuItem39.Text = "Adjustment"
         '
         'MenuItem38
         '
         Me.MenuItem38.Index = 1
         Me.MenuItem38.Text = "Issuance"
         '
-        'MenuItem39
+        'MenuItem37
         '
-        Me.MenuItem39.Index = 0
-        Me.MenuItem39.Text = "Adjustment"
+        Me.MenuItem37.Index = 2
+        Me.MenuItem37.Text = "Receiving"
         '
         'MenuItem28
         '
@@ -226,20 +247,26 @@ Public Class Main
         Me.MenuItem11.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem47})
         Me.MenuItem11.Text = "Reports"
         '
-        'MenuItem40
+        'MenuItem47
         '
-        Me.MenuItem40.Index = 2
-        Me.MenuItem40.Text = "Receiving"
+        Me.MenuItem47.Index = 0
+        Me.MenuItem47.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem42, Me.MenuItem41, Me.MenuItem40})
+        Me.MenuItem47.Text = "IMS Inventory"
+        '
+        'MenuItem42
+        '
+        Me.MenuItem42.Index = 0
+        Me.MenuItem42.Text = "Adjustment"
         '
         'MenuItem41
         '
         Me.MenuItem41.Index = 1
         Me.MenuItem41.Text = "Issuance"
         '
-        'MenuItem42
+        'MenuItem40
         '
-        Me.MenuItem42.Index = 0
-        Me.MenuItem42.Text = "Adjustment"
+        Me.MenuItem40.Index = 2
+        Me.MenuItem40.Text = "Receiving"
         '
         'MenuItem5
         '
@@ -392,33 +419,6 @@ Public Class Main
         Me.MenuItem20.Index = 11
         Me.MenuItem20.Text = "Specialis&ts"
         '
-        'MenuItem43
-        '
-        Me.MenuItem43.Index = 2
-        Me.MenuItem43.Text = "Process MDI Inventory"
-        '
-        'MenuItem44
-        '
-        Me.MenuItem44.Index = 1
-        Me.MenuItem44.Text = "Forecast"
-        '
-        'MenuItem45
-        '
-        Me.MenuItem45.Index = 3
-        Me.MenuItem45.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem39, Me.MenuItem38, Me.MenuItem37})
-        Me.MenuItem45.Text = "IMS Inventory"
-        '
-        'MenuItem46
-        '
-        Me.MenuItem46.Index = 0
-        Me.MenuItem46.Text = "Item"
-        '
-        'MenuItem47
-        '
-        Me.MenuItem47.Index = 0
-        Me.MenuItem47.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem42, Me.MenuItem41, Me.MenuItem40})
-        Me.MenuItem47.Text = "IMS Inventory"
-        '
         'Main
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -551,7 +551,7 @@ Public Class Main
 
     Private Sub MenuItem27_Click(sender As Object, e As EventArgs) Handles MenuItem27.Click
         If AccessIsAlowed(gUserID, "SUPPLIER MASTER FILE") Then
-            Dim myLoadedForm As New frmISupplier
+            Dim myLoadedForm As New frmForecast
             FrmShw(myLoadedForm)
         Else
             MsgBox("User acces is not allowed!")
@@ -592,5 +592,14 @@ Public Class Main
 
     Private Sub MenuItem26_Click(sender As Object, e As EventArgs) Handles MenuItem26.Click
 
+    End Sub
+
+    Private Sub MenuItem46_Click(sender As Object, e As EventArgs) Handles MenuItem46.Click
+        If AccessIsAlowed(gUserID, "USER MASTER FILE") Then
+            Dim myLoadedForm As New frmItem
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
     End Sub
 End Class
