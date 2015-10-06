@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C64E74A6-F665-4A1C-A93E-1B65BBB92C43}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>inventory_maintenance.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>InventoryDashboard2014</AssemblyName>
+    <AssemblyOriginatorKeyFile>inventory2014key.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>InventoryDashboard2014</RootNamespace>
+    <StartupObject>InventoryDashboard2014.loginform</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SignAssembly>true</SignAssembly>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>C:\Deploy\ScoresSetup\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\172.22.4.27\Inventory2014ClickOnceServer\</InstallUrl>
+    <ApplicationRevision>31</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>InventoryDashboard2014.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>InventoryDashboard2014.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>93AFD754F2E1624C989A58D417D0A4B9647815AC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Inventory2014_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BusinessLayer, Version=1.0.3554.17317, Culture=neutral, PublicKeyToken=a11ac73437793ab8, processorArchitecture=MSIL">
+      <HintPath>Class Library\BusinessLayer\bin\BusinessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DataAccessLayer, Version=1.0.5135.27267, Culture=neutral, PublicKeyToken=e0ca746f0c496d86, processorArchitecture=MSIL">
+      <HintPath>Class Library\DataAccessLayer\bin\DataAccessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Outlook">
+      <Name>Interop.Outlook</Name>
+      <HintPath>bin\Interop.Outlook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <Name>Microsoft.Office.Interop.Excel</Name>
+      <HintPath>bin\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Vbe.Interop">
+      <Name>Microsoft.Vbe.Interop</Name>
+      <HintPath>C:\Program Files\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Office12\Microsoft.Vbe.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install">
+      <Name>System.Configuration.Install</Name>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Name>System.EnterpriseServices</Name>
+    </Reference>
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="Scripting">
+      <Guid>{420B2830-E718-11CF-893D-00A0C9054228}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Private>False</Private>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Common\frmLookUp.Designer.vb">
+      <DependentUpon>frmLookUp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Common\frmLookUp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\File\frmChangePassword.Designer.vb">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\File\frmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\File\frmISupplier.Designer.vb">
+      <DependentUpon>frmISupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\File\frmISupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\File\frmItem.Designer.vb">
+      <DependentUpon>frmItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\File\frmItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\File\frmRoleModules.Designer.vb">
+      <DependentUpon>frmRoleModules.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\File\frmRoleModules.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\File\frmUsers.Designer.vb">
+      <DependentUpon>frmUsers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\File\frmUsers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportViewer.Designer.vb">
+      <DependentUpon>frmReportViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmPODetail.Designer.vb">
+      <DependentUpon>frmPODetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmPODetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmPOHeader.Designer.vb">
+      <DependentUpon>frmPOHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmPOHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\ISpecialistHelper.vb" />
+    <Compile Include="Modules\ISupplier.vb" />
+    <Compile Include="Modules\RoleHelper.vb" />
+    <Compile Include="Modules\RoleModules.vb" />
+    <Compile Include="Modules\SupervisorHelper.vb" />
+    <Compile Include="Modules\TASHelper.vb" />
+    <Compile Include="Modules\UserAccess.vb" />
+    <Compile Include="MyFunctions\Public_Functions.vb" />
+    <Compile Include="Reports\crISSMReport.vb">
+      <DependentUpon>crISSMReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\crISSMReportBackup.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crISSMReportBackup.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\crPromatsExportXls.vb">
+      <DependentUpon>crPromatsExportXls.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crSamplesXLS.vb">
+      <DependentUpon>crSamplesXLS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crPurchaseOrder.vb">
+      <DependentUpon>crPurchaseOrder.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crRoleModules.vb">
+      <DependentUpon>crRoleModules.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crDispatchReportNotInInv.vb">
+      <DependentUpon>crDispatchReportNotInInv.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crSupplier.vb">
+      <DependentUpon>crSupplier.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crSpecialist.vb">
+      <DependentUpon>crSpecialist.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crSamplesAllocations.vb">
+      <DependentUpon>crSamplesAllocations.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crPromatsAllocations.vb">
+      <DependentUpon>crPromatsAllocations.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crSamples.vb">
+      <DependentUpon>crSamples.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\crPromats.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPromats.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Forms\Common\frmLookUp.resx">
+      <DependentUpon>frmLookUp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\File\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\File\frmISupplier.resx">
+      <DependentUpon>frmISupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\File\frmItem.resx">
+      <DependentUpon>frmItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\File\frmRoleModules.resx">
+      <DependentUpon>frmRoleModules.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\File\frmUsers.resx">
+      <DependentUpon>frmUsers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmReportViewer.resx">
+      <DependentUpon>frmReportViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmPODetail.resx">
+      <DependentUpon>frmPODetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmPOHeader.resx">
+      <DependentUpon>frmPOHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crISSMReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crISSMReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crISSMReportBackup.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crISSMReportBackup.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPromatsExportXls.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPromatsExportXls.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSamplesXLS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSamplesXLS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPurchaseOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPurchaseOrder.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crRoleModules.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crRoleModules.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crDispatchReportNotInInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDispatchReportNotInInv.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSupplier.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSupplier.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSpecialist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSpecialist.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSamplesAllocations.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSamplesAllocations.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPromatsAllocations.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPromatsAllocations.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSamples.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSamples1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPromats.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPromats.vb</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Images\symbol_error.ico" />
+    <None Include="Images\symbol_error2.ico" />
+    <None Include="Images\alert.png" />
+    <None Include="Images\exclamation5.png" />
+    <None Include="Images\warning.ico" />
+    <None Include="Images\excel.ico" />
+    <None Include="Images\excel%281%29.ico" />
+    <None Include="Images\excel%282%29.ico" />
+    <None Include="Images\excel.png" />
+    <None Include="Images\NMPCProducts.jpg" />
+    <None Include="Images\Product-sale-report-icon.png" />
+    <None Include="Images\search-icon new.png" />
+    <None Include="Images\Cart-icon.png" />
+    <None Include="Images\password.ico" />
+    <None Include="Images\1Password-icon.png" />
+    <Content Include="inventory_maintenance.ico" />
+    <None Include="bin\Alarm-Tick-icon.png" />
+    <Content Include="Barcode.ico" />
+    <Content Include="bin\BusinessLayer.dll" />
+    <None Include="bin\Check-2-icon.png" />
+    <Content Include="bin\CrystalDecisions.Windows.Forms.dll" />
+    <Content Include="bin\DataAccessLayer.dll" />
+    <Content Include="bin\Microsoft.Office.Interop.Excel.dll" />
+    <Content Include="bin\Microsoft.Vbe.Interop.dll" />
+    <Content Include="Class Library\BusinessLayer.dll" />
+    <Content Include="Class Library\BusinessLayer\BusinessLayer.sln" />
+    <Content Include="Class Library\BusinessLayer\BusinessLayer.vbproj" />
+    <Content Include="Class Library\BusinessLayer\BusinessLayer.vbproj.user" />
+    <Content Include="Class Library\BusinessLayer\UpgradeLog.XML" />
+    <Content Include="Class Library\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\bin\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\bin\DataAccessLayer.pdb" />
+    <Content Include="Class Library\DataAccessLayer\bin\DataAccessLayer.xml" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessLayer.sln" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessLayer.vbproj" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessLayer.vbproj.user" />
+    <Content Include="Class Library\DataAccessLayer\obj\Debug\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\obj\Debug\DataAccessLayer.pdb" />
+    <Content Include="Class Library\DataAccessLayer\obj\Release\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\obj\Release\DataAccessLayer.vbproj.FileListAbsolute.txt" />
+    <Content Include="Class Library\DataAccessLayer\obj\Release\DataAccessLayer.xml" />
+    <Content Include="Class Library\DataAccessLayer\UpgradeLog.XML" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport.css" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport.xslt" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport_Minus.gif" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport_Plus.gif" />
+    <None Include="Class Library\BusinessLayer\ScoresBusinessKey.pfx" />
+    <None Include="Class Library\DataAccessLayer\ScoresDataKey.pfx" />
+    <None Include="Images\Actions-contact-new-icon.png" />
+    <None Include="Images\Alarm-Arrow-Left-icon.png" />
+    <None Include="Images\calendar-icon.png" />
+    <None Include="Images\checkred.ico" />
+    <None Include="Images\door-out-icon.png" />
+    <None Include="Images\edit.png" />
+    <None Include="Images\Math-minus-icon.png" />
+    <None Include="Images\Gear-icon.png" />
+    <None Include="Images\file_copy.png" />
+    <None Include="Images\file_copy %281%29.png" />
+    <None Include="Images\InventoryDashboard.png" />
+    <None Include="Images\summary-icon.png" />
+    <None Include="Images\table-sum-icon.png" />
+    <None Include="Images\save.png" />
+    <None Include="Images\Search-icon.png" />
+    <EmbeddedResource Include="Forms\Common\DateRangeBox.resx">
+      <DependentUpon>DateRangeBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\frmDialogBox.resx">
+      <DependentUpon>frmDialogBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\Main.resx">
+      <DependentUpon>Main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="inventory2014key.pfx" />
+    <None Include="Inventory2014_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <Compile Include="Class Library\BusinessLayer\AssemblyInfo.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsBudgetPmr.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsCommissionComputations.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsCustomer.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsDistrictSalesManager.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsDsm.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsExtraction.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsFileMaintenance.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsIntegratedSales.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsItem.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsMedrep.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsMercuryDirectBudget.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsNationalSalesManager.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsNsm.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsPerformance.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsSalesAndTargetsTransfer.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsSalesCategory.vb" />
+    <Compile Include="Class Library\BusinessLayer\clsTerritory.vb" />
+    <Compile Include="Class Library\DataAccessLayer\DataAccessHelper.vb" />
+    <Compile Include="Forms\Common\DateRangeBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\frmDialogBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\LoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\AdoDotNet.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ControlMaintenance.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\CustomerHelper.vb" />
+    <Compile Include="Modules\DataMaintenance.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DataMapHelper.vb" />
+    <Compile Include="Modules\ExcelHelper.vb" />
+    <Compile Include="Modules\ItemHelper.vb" />
+    <Compile Include="Modules\ListHelper.vb" />
+    <Compile Include="Modules\LogHelper.vb" />
+    <Compile Include="Modules\modControlBehavior.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\modDeclarations.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\NewObjects.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\StringHelper.vb" />
+    <Compile Include="Modules\Utilities.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Class Library\DataAccessLayer\My Project\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Debug\TempPE\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Debug\temp\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Release\TempPE\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Release\temp\" />
+    <Folder Include="Classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Interop.Scripting">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

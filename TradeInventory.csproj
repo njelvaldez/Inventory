@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{D68CA15E-DFE5-4F53-B8CD-B4A7ACA0757F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>TradeInventory</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Class Library\BusinessLayer\BusinessLayer.suo" />
+    <None Include="Class Library\BusinessLayer\obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="Class Library\BusinessLayer\obj\Release\ResolveAssemblyReference.cache" />
+    <None Include="Class Library\BusinessLayer\ScoresBusinessKey.pfx" />
+    <None Include="Class Library\DataAccessLayer\DataAccessLayer.suo" />
+    <None Include="Class Library\DataAccessLayer\ScoresDataKey.pfx" />
+    <None Include="inventory2014key.pfx" />
+    <None Include="Inventory2014_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Barcode.ico" />
+    <Content Include="Class Library\BusinessLayer.dll" />
+    <Content Include="Class Library\BusinessLayer\AssemblyInfo.vb" />
+    <Content Include="Class Library\BusinessLayer\bin\BusinessLayer.dll" />
+    <Content Include="Class Library\BusinessLayer\bin\BusinessLayer.pdb" />
+    <Content Include="Class Library\BusinessLayer\bin\BusinessLayer.xml" />
+    <Content Include="Class Library\BusinessLayer\bin\DataAccessLayer.dll" />
+    <Content Include="Class Library\BusinessLayer\bin\DataAccessLayer.pdb" />
+    <Content Include="Class Library\BusinessLayer\bin\DataAccessLayer.xml" />
+    <Content Include="Class Library\BusinessLayer\BusinessLayer.sln" />
+    <Content Include="Class Library\BusinessLayer\BusinessLayer.vbproj" />
+    <Content Include="Class Library\BusinessLayer\BusinessLayer.vbproj.user" />
+    <Content Include="Class Library\BusinessLayer\clsBudgetPmr.vb" />
+    <Content Include="Class Library\BusinessLayer\clsCommissionComputations.vb" />
+    <Content Include="Class Library\BusinessLayer\clsCustomer.vb" />
+    <Content Include="Class Library\BusinessLayer\clsDistrictSalesManager.vb" />
+    <Content Include="Class Library\BusinessLayer\clsDsm.vb" />
+    <Content Include="Class Library\BusinessLayer\clsExtraction.vb" />
+    <Content Include="Class Library\BusinessLayer\clsFileMaintenance.vb" />
+    <Content Include="Class Library\BusinessLayer\clsIntegratedSales.vb" />
+    <Content Include="Class Library\BusinessLayer\clsItem.vb" />
+    <Content Include="Class Library\BusinessLayer\clsMedrep.vb" />
+    <Content Include="Class Library\BusinessLayer\clsMercuryDirectBudget.vb" />
+    <Content Include="Class Library\BusinessLayer\clsNationalSalesManager.vb" />
+    <Content Include="Class Library\BusinessLayer\clsNsm.vb" />
+    <Content Include="Class Library\BusinessLayer\clsPerformance.vb" />
+    <Content Include="Class Library\BusinessLayer\clsSalesAndTargetsTransfer.vb" />
+    <Content Include="Class Library\BusinessLayer\clsSalesCategory.vb" />
+    <Content Include="Class Library\BusinessLayer\clsTerritory.vb" />
+    <Content Include="Class Library\BusinessLayer\obj\Debug\BusinessLayer.pdb" />
+    <Content Include="Class Library\BusinessLayer\obj\Release\BusinessLayer.dll" />
+    <Content Include="Class Library\BusinessLayer\obj\Release\BusinessLayer.vbproj.FileListAbsolute.txt" />
+    <Content Include="Class Library\BusinessLayer\obj\Release\BusinessLayer.xml" />
+    <Content Include="Class Library\BusinessLayer\UpgradeLog.XML" />
+    <Content Include="Class Library\BusinessLayer\_UpgradeReport_Files\UpgradeReport.css" />
+    <Content Include="Class Library\BusinessLayer\_UpgradeReport_Files\UpgradeReport.xslt" />
+    <Content Include="Class Library\BusinessLayer\_UpgradeReport_Files\UpgradeReport_Minus.gif" />
+    <Content Include="Class Library\BusinessLayer\_UpgradeReport_Files\UpgradeReport_Plus.gif" />
+    <Content Include="Class Library\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\AssemblyInfo.vb" />
+    <Content Include="Class Library\DataAccessLayer\bin\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\bin\DataAccessLayer.pdb" />
+    <Content Include="Class Library\DataAccessLayer\bin\DataAccessLayer.xml" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessHelper.vb" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessLayer.sln" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessLayer.vbproj" />
+    <Content Include="Class Library\DataAccessLayer\DataAccessLayer.vbproj.user" />
+    <Content Include="Class Library\DataAccessLayer\obj\Debug\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\obj\Debug\DataAccessLayer.pdb" />
+    <Content Include="Class Library\DataAccessLayer\obj\Release\DataAccessLayer.dll" />
+    <Content Include="Class Library\DataAccessLayer\obj\Release\DataAccessLayer.vbproj.FileListAbsolute.txt" />
+    <Content Include="Class Library\DataAccessLayer\obj\Release\DataAccessLayer.xml" />
+    <Content Include="Class Library\DataAccessLayer\UpgradeLog.XML" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport.css" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport.xslt" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport_Minus.gif" />
+    <Content Include="Class Library\DataAccessLayer\_UpgradeReport_Files\UpgradeReport_Plus.gif" />
+    <Content Include="Forms\Common\DateRangeBox.vb" />
+    <Content Include="Forms\Common\frmDialogBox.vb" />
+    <Content Include="Forms\Common\frmLookUp.Designer.vb" />
+    <Content Include="Forms\Common\frmLookUp.vb" />
+    <Content Include="Forms\Common\LoginForm.vb" />
+    <Content Include="Forms\Common\Main.vb" />
+    <Content Include="Forms\File\frmChangePassword.Designer.vb" />
+    <Content Include="Forms\File\frmChangePassword.vb" />
+    <Content Include="Forms\File\frmISupplier.Designer.vb" />
+    <Content Include="Forms\File\frmISupplier.vb" />
+    <Content Include="Forms\File\frmItem.Designer.vb" />
+    <Content Include="Forms\File\frmItem.vb" />
+    <Content Include="Forms\File\frmRoleModules.Designer.vb" />
+    <Content Include="Forms\File\frmRoleModules.vb" />
+    <Content Include="Forms\File\frmUsers.Designer.vb" />
+    <Content Include="Forms\File\frmUsers.vb" />
+    <Content Include="Forms\Reports\frmReportViewer.Designer.vb" />
+    <Content Include="Forms\Reports\frmReportViewer.vb" />
+    <Content Include="Forms\Transactions\frmPODetail.Designer.vb" />
+    <Content Include="Forms\Transactions\frmPODetail.vb" />
+    <Content Include="Forms\Transactions\frmPOHeader.Designer.vb" />
+    <Content Include="Forms\Transactions\frmPOHeader.vb" />
+    <Content Include="Images\1Password-icon.png" />
+    <Content Include="Images\Actions-contact-new-icon.png" />
+    <Content Include="Images\add.png" />
+    <Content Include="Images\Alarm-Arrow-Left-icon.png" />
+    <Content Include="Images\alert.png" />
+    <Content Include="Images\bcg.jpg" />
+    <Content Include="Images\calendar-icon.png" />
+    <Content Include="Images\Cart-icon.png" />
+    <Content Include="Images\cathejell.jpg" />
+    <Content Include="Images\checkgreen.ico" />
+    <Content Include="Images\checkred.ico" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\door-out-icon.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\equirab.jpg" />
+    <Content Include="Images\excel%281%29.ico" />
+    <Content Include="Images\excel%282%29.ico" />
+    <Content Include="Images\excel.ico" />
+    <Content Include="Images\excel.png" />
+    <Content Include="Images\exclamation5.png" />
+    <Content Include="Images\file_copy %281%29.png" />
+    <Content Include="Images\file_copy.png" />
+    <Content Include="Images\flutamide.jpg" />
+    <Content Include="Images\Gear-icon.png" />
+    <Content Include="Images\InventoryDashboard.png" />
+    <Content Include="Images\inventory_maintenance.ico" />
+    <Content Include="Images\inventory_maintenance_24.png" />
+    <Content Include="Images\iopamiro.jpg" />
+    <Content Include="Images\lagundex.jpg" />
+    <Content Include="Images\login.ico" />
+    <Content Include="Images\login.jpg" />
+    <Content Include="Images\Math-minus-icon.png" />
+    <Content Include="Images\methisophrinoil.jpg" />
+    <Content Include="Images\mictonorm.jpg" />
+    <Content Include="Images\NMPC Office.jpg" />
+    <Content Include="Images\NMPC Office.png" />
+    <Content Include="Images\NMPCProducts.jpg" />
+    <Content Include="Images\password.ico" />
+    <Content Include="Images\Product-sale-report-icon.png" />
+    <Content Include="Images\rabipur.jpg" />
+    <Content Include="Images\rowachol.jpg" />
+    <Content Include="Images\rowagel.jpg" />
+    <Content Include="Images\rowatanal.jpg" />
+    <Content Include="Images\rowatinex.jpg" />
+    <Content Include="Images\save.png" />
+    <Content Include="Images\search-icon new.png" />
+    <Content Include="Images\Search-icon.png" />
+    <Content Include="Images\summary-icon.png" />
+    <Content Include="Images\symbol_error.ico" />
+    <Content Include="Images\symbol_error.png" />
+    <Content Include="Images\symbol_error2.ico" />
+    <Content Include="Images\table-sum-icon.png" />
+    <Content Include="Images\Total-Commander-icon.png" />
+    <Content Include="Images\Upload.ico" />
+    <Content Include="Images\uploadsmall.ico" />
+    <Content Include="Images\warning.ico" />
+    <Content Include="Images\yesno.png" />
+    <Content Include="inventory_maintenance.ico" />
+    <Content Include="Modules\AdoDotNet.vb" />
+    <Content Include="Modules\ControlMaintenance.vb" />
+    <Content Include="Modules\CustomerHelper.vb" />
+    <Content Include="Modules\DataMaintenance.vb" />
+    <Content Include="Modules\DataMapHelper.vb" />
+    <Content Include="Modules\ExcelHelper.vb" />
+    <Content Include="Modules\ISpecialistHelper.vb" />
+    <Content Include="Modules\ISupplier.vb" />
+    <Content Include="Modules\ItemHelper.vb" />
+    <Content Include="Modules\ListHelper.vb" />
+    <Content Include="Modules\LogHelper.vb" />
+    <Content Include="Modules\modControlBehavior.vb" />
+    <Content Include="Modules\modDeclarations.vb" />
+    <Content Include="Modules\NewObjects.vb" />
+    <Content Include="Modules\RoleHelper.vb" />
+    <Content Include="Modules\RoleModules.vb" />
+    <Content Include="Modules\StringHelper.vb" />
+    <Content Include="Modules\SupervisorHelper.vb" />
+    <Content Include="Modules\TASHelper.vb" />
+    <Content Include="Modules\UserAccess.vb" />
+    <Content Include="Modules\Utilities.vb" />
+    <Content Include="My Project\Resources.Designer.vb" />
+    <Content Include="MyFunctions\Public_Functions.vb" />
+    <Content Include="Reports\crDispatchReportNotInInv.vb" />
+    <Content Include="Reports\crISSMReport.vb" />
+    <Content Include="Reports\crISSMReportBackup.vb" />
+    <Content Include="Reports\crPromats.vb" />
+    <Content Include="Reports\crPromatsAllocations.vb" />
+    <Content Include="Reports\crPromatsExportXls.vb" />
+    <Content Include="Reports\crPurchaseOrder.vb" />
+    <Content Include="Reports\crRoleModules.vb" />
+    <Content Include="Reports\crSamples.vb" />
+    <Content Include="Reports\crSamplesAllocations.vb" />
+    <Content Include="Reports\crSamplesXLS.vb" />
+    <Content Include="Reports\crSpecialist.vb" />
+    <Content Include="Reports\crSupplier.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Common\DateRangeBox.resx" />
+    <EmbeddedResource Include="Forms\Common\frmDialogBox.resx" />
+    <EmbeddedResource Include="Forms\Common\frmLookUp.resx" />
+    <EmbeddedResource Include="Forms\Common\LoginForm.resx" />
+    <EmbeddedResource Include="Forms\Common\Main.resx" />
+    <EmbeddedResource Include="Forms\File\frmChangePassword.resx" />
+    <EmbeddedResource Include="Forms\File\frmISupplier.resx" />
+    <EmbeddedResource Include="Forms\File\frmItem.resx" />
+    <EmbeddedResource Include="Forms\File\frmRoleModules.resx" />
+    <EmbeddedResource Include="Forms\File\frmUsers.resx" />
+    <EmbeddedResource Include="Forms\Reports\frmReportViewer.resx" />
+    <EmbeddedResource Include="Forms\Transactions\frmPODetail.resx" />
+    <EmbeddedResource Include="Forms\Transactions\frmPOHeader.resx" />
+    <EmbeddedResource Include="My Project\Resources.resx" />
+    <EmbeddedResource Include="Reports\crDispatchReportNotInInv.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDispatchReportNotInInv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crISSMReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crISSMReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crISSMReportBackup.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crISSMReportBackup.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPromats.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPromats.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPromatsAllocations.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPromatsAllocations.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPromatsExportXls.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPromatsExportXls.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crPurchaseOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPurchaseOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crRoleModules.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crRoleModules.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSamples.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSamples.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSamplesAllocations.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSamplesAllocations.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSamplesXLS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSamplesXLS.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSpecialist.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSpecialist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSupplier.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSupplier.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Reports\crDispatchReportNotInInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crDispatchReportNotInInv.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crISSMReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crISSMReport.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crISSMReportBackup.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crISSMReportBackup.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crPromats.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPromats.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crPromatsAllocations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPromatsAllocations.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crPromatsExportXls.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPromatsExportXls.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crPurchaseOrder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPurchaseOrder.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crRoleModules.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crRoleModules.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crSamples.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSamples.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crSamplesAllocations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSamplesAllocations.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crSamplesXLS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSamplesXLS.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crSpecialist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSpecialist.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crSupplier.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crSupplier.rpt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Class Library\BusinessLayer\My Project\" />
+    <Folder Include="Class Library\BusinessLayer\obj\Debug\TempPE\" />
+    <Folder Include="Class Library\BusinessLayer\obj\Debug\temp\" />
+    <Folder Include="Class Library\BusinessLayer\obj\Release\TempPE\" />
+    <Folder Include="Class Library\BusinessLayer\obj\Release\temp\" />
+    <Folder Include="Class Library\DataAccessLayer\My Project\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Debug\TempPE\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Debug\temp\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Release\TempPE\" />
+    <Folder Include="Class Library\DataAccessLayer\obj\Release\temp\" />
+    <Folder Include="Classes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
