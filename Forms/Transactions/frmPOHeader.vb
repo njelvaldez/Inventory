@@ -161,26 +161,30 @@ Public Class frmPOHeader
 
     End Sub
     Private Sub Sub_Select(ByVal dbParams() As String, ByVal UpdateMode As String)
-        'select case if add,edit or delete
-        Dim i As Integer
-        Dim myRowid As Integer
-        Select Case UpdateMode
-            Case "Insert"
-                Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-                myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "IPOHeader_GetInsertedRowid", CommandType.StoredProcedure))
-            Case "Update"
-                myRowid = CInt(dbParams(0))
-        End Select
-        For i = 0 To (RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count - 1)
-            With DataGrid1
-                If myRowid = CInt(.Item(i, 0)) Then
-                    .CurrentCell = New DataGridCell(i, 0)
-                    Dim e As System.EventArgs
-                    DataGrid1_Click(Me, e)
-                    Exit For
-                End If
-            End With
-        Next
+        Try
+            'select case if add,edit or delete
+            Dim i As Integer
+            Dim myRowid As Integer
+            Select Case UpdateMode
+                Case "Insert"
+                    Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+                    myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "IPOHeader_GetInsertedRowid", CommandType.StoredProcedure))
+                Case "Update"
+                    myRowid = CInt(dbParams(0))
+            End Select
+            For i = 0 To (RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count - 1)
+                With DataGrid1
+                    If myRowid = CInt(.Item(i, 0)) Then
+                        .CurrentCell = New DataGridCell(i, 0)
+                        Dim e As System.EventArgs
+                        DataGrid1_Click(Me, e)
+                        Exit For
+                    End If
+                End With
+            Next
+        Catch ex As Exception
+            MsgBox("Error in PO Header : " & ex.Message)
+        End Try
     End Sub
     'Private Sub Sub_Delete()
     '    Try
@@ -312,6 +316,7 @@ Public Class frmPOHeader
         Else
             Dim myLoadedForm As New frmPODetail
             myLoadedForm.txtPONo.Text = txtPONo.Text
+            myLoadedForm.txtDeliveryDate.Text = Convert.ToDateTime(txtDeliveryDate.Text).ToShortDateString
             myLoadedForm.ShowDialog()
         End If
 
@@ -340,5 +345,29 @@ Public Class frmPOHeader
         If txtSuplCode.Text <> "" Then
             txtPaymentTerm.Text = GetSupplierPaymentTerm(txtSuplCode.Text)
         End If
+    End Sub
+
+    Private Sub txtSupplier_TextChanged(sender As Object, e As EventArgs) Handles txtSupplier.TextChanged
+        Dim LeadTime As Decimal = 0.0
+        Dim Processing As Decimal = 0.0
+        Dim TotalTime As Decimal = 0.0
+        Dim LeadtimeDate As DateTime
+        Dim CreateDate As DateTime
+        If txtSupplier.Text <> "" Then
+            LeadTime = Supplier_Leadtime(txtSuplCode.Text)
+            Processing = Supplier_Processing(txtSuplCode.Text)
+            TotalTime = LeadTime + Processing
+            If lblCreateDate.Text <> "" Then
+                CreateDate = Convert.ToDateTime(lblCreateDate.Text)
+            Else
+                CreateDate = DateTime.Now
+            End If
+            LeadtimeDate = DateAdd(DateInterval.Month, TotalTime, CreateDate)
+            txtDeliveryDate.Text = LeadtimeDate.ToShortDateString
+        End If
+    End Sub
+
+    Private Sub txtSupplier_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtSupplier.Validating
+  
     End Sub
 End Class

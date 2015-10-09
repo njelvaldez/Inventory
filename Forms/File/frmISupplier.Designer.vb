@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmForecast
+Partial Class frmISupplier
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class frmForecast
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmForecast))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmISupplier))
         Me.DataGridTextBoxColumn7 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn5 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn4 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -69,6 +69,12 @@ Partial Class frmForecast
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtAddress1 = New System.Windows.Forms.TextBox()
         Me.cmdAdd = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtLeadTime = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtProcessing = New System.Windows.Forms.TextBox()
+        Me.DataGridTextBoxColumn12 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn13 = New System.Windows.Forms.DataGridTextBoxColumn()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -136,7 +142,7 @@ Partial Class frmForecast
         '
         Me.DataGridTableStyle1.AlternatingBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DataGridTableStyle1.DataGrid = Me.DataGrid1
-        Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn7, Me.DataGridTextBoxColumn8, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridTextBoxColumn11})
+        Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn7, Me.DataGridTextBoxColumn8, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridTextBoxColumn11, Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13})
         Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGridTableStyle1.MappingName = "ProductFormCT_Show"
         Me.DataGridTableStyle1.ReadOnly = True
@@ -442,6 +448,10 @@ Partial Class frmForecast
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.txtProcessing)
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Controls.Add(Me.txtLeadTime)
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Controls.Add(Me.txtContactNo)
         Me.GroupBox2.Controls.Add(Me.Label5)
@@ -518,6 +528,58 @@ Partial Class frmForecast
         Me.cmdAdd.Tag = "Add"
         Me.cmdAdd.Text = "   &Add"
         '
+        'Label9
+        '
+        Me.Label9.Location = New System.Drawing.Point(494, 59)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(95, 20)
+        Me.Label9.TabIndex = 91
+        Me.Label9.Text = "Lead Time :"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtLeadTime
+        '
+        Me.txtLeadTime.Location = New System.Drawing.Point(595, 61)
+        Me.txtLeadTime.MaxLength = 25
+        Me.txtLeadTime.Name = "txtLeadTime"
+        Me.txtLeadTime.Size = New System.Drawing.Size(256, 20)
+        Me.txtLeadTime.TabIndex = 5
+        Me.txtLeadTime.Tag = "Input"
+        '
+        'Label10
+        '
+        Me.Label10.Location = New System.Drawing.Point(494, 85)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(95, 20)
+        Me.Label10.TabIndex = 93
+        Me.Label10.Text = "Processing Time :"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtProcessing
+        '
+        Me.txtProcessing.Location = New System.Drawing.Point(595, 87)
+        Me.txtProcessing.MaxLength = 25
+        Me.txtProcessing.Name = "txtProcessing"
+        Me.txtProcessing.Size = New System.Drawing.Size(256, 20)
+        Me.txtProcessing.TabIndex = 6
+        Me.txtProcessing.Tag = "Input"
+        '
+        'DataGridTextBoxColumn12
+        '
+        Me.DataGridTextBoxColumn12.Format = ""
+        Me.DataGridTextBoxColumn12.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn12.HeaderText = "Lead Time"
+        Me.DataGridTextBoxColumn12.MappingName = "Leadtime"
+        Me.DataGridTextBoxColumn12.Width = 75
+        '
+        'DataGridTextBoxColumn13
+        '
+        Me.DataGridTextBoxColumn13.Format = ""
+        Me.DataGridTextBoxColumn13.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn13.HeaderText = "Processing"
+        Me.DataGridTextBoxColumn13.MappingName = "Processing"
+        Me.DataGridTextBoxColumn13.Width = 75
+        '
         'frmISupplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -593,4 +655,10 @@ Partial Class frmForecast
     Friend WithEvents txtAddress1 As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtContactNo As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents txtProcessing As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtLeadTime As System.Windows.Forms.TextBox
+    Friend WithEvents DataGridTextBoxColumn12 As System.Windows.Forms.DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn13 As System.Windows.Forms.DataGridTextBoxColumn
 End Class

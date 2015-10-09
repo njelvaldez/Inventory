@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class crSpecialist
+Public Class crItems
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class crSpecialist
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "crSpecialist.rpt"
+            Return "crItems.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class crSpecialist
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crSpecialist.rpt"
+            Return "InventoryDashboard2014.crItems.rpt"
         End Get
         Set
             'Do nothing
@@ -70,7 +70,7 @@ Public Class crSpecialist
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property GroupHeaderSection1() As CrystalDecisions.CrystalReports.Engine.Section
+    Public ReadOnly Property Section3() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(2)
         End Get
@@ -78,7 +78,7 @@ Public Class crSpecialist
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Section3() As CrystalDecisions.CrystalReports.Engine.Section
+    Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(3)
         End Get
@@ -86,31 +86,15 @@ Public Class crSpecialist
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property GroupFooterSection1() As CrystalDecisions.CrystalReports.Engine.Section
-        Get
-            Return Me.ReportDefinition.Sections(4)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
-        Get
-            Return Me.ReportDefinition.Sections(5)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
         Get
-            Return Me.ReportDefinition.Sections(6)
+            Return Me.ReportDefinition.Sections(4)
         End Get
     End Property
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedcrSpecialist
+Public Class CachedcrItems
     Inherits Component
     Implements ICachedReport
     
@@ -152,7 +136,7 @@ Public Class CachedcrSpecialist
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As crSpecialist = New crSpecialist()
+        Dim rpt As crItems = New crItems()
         rpt.Site = Me.Site
         Return rpt
     End Function

@@ -8,13 +8,13 @@ Public Class frmPODetail
         ControlMaintenance.ClearInputControlsGroup(Me)
         EditMode = False
         EnableCodeAndDesc(False)
-        txtInvtyCode.Enabled = True
+        txtITEMCODE.Enabled = True
         modControlBehavior.SetBackgroundControlsGroup(Me)
         btnItem_Click(sender, e)
     End Sub
     Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEdit.Click
         modControlBehavior.EnableControlsGroup(Me, True)
-        If txtPONo.Text = "" And txtInvtyCode.Text = "" Then
+        If txtPONo.Text = "" And txtITEMCODE.Text = "" Then
             MessageBox.Show("Please select a record to modify!", "Record Selection", MessageBoxButtons.OK, _
             MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
         Else
@@ -49,15 +49,25 @@ Public Class frmPODetail
 
         Dim Params(0) As String
         Params(0) = txtRowid.Text
+        If ErrorProvider1.GetError(txtQty).ToString <> "" Then
+            MsgBox(ErrorProvider1.GetError(txtQty).ToString)
+            Return
+        End If
+        If ErrorProvider1.GetError(txtDeliveryDate).ToString <> "" Then
+            MsgBox(ErrorProvider1.GetError(txtDeliveryDate).ToString)
+            Return
+        End If
         If EditMode = False Then
             If AllValidFields() Then
                 Sub_Insert()
             Else
                 MsgBox("Invalid entries! Please check all fields!")
+                Return
             End If
         Else
             Sub_Update()
         End If
+
         Sub_Show()
         Sub_Select(Params, CStr(IIf(EditMode = False, "Insert", "Update")))
         EditMode = False
@@ -65,8 +75,8 @@ Public Class frmPODetail
     End Sub
     Private Function AllValidFields() As Boolean
         Dim retval As Boolean = False
-        If txtPONo.Text.ToString <> "" And txtInvtyCode.Text.ToString <> "" And _
-           txtQty.Text.ToString <> "" And txtUnitPrice.Text.ToString <> "" And _
+        If txtPONo.Text.ToString <> "" And txtITEMCODE.Text.ToString <> "" And _
+           txtQty.Text.ToString <> "" And txtUnitCost.Text.ToString <> "" And _
            txtCostCenter.Text.ToString <> "" Then
             retval = True
         End If
@@ -77,15 +87,15 @@ Public Class frmPODetail
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
             Dim Params(7) As SqlParameter
             Dim PONO As New SqlParameter("@PONO", SqlDbType.VarChar, 10) : PONO.Direction = ParameterDirection.Input : PONO.Value = txtPONo.Text : Params(0) = PONO
-            Dim INVTYCODE As New SqlParameter("@INVTYCODE", SqlDbType.VarChar, 10) : INVTYCODE.Direction = ParameterDirection.Input : INVTYCODE.Value = txtInvtyCode.Text : Params(1) = INVTYCODE
+            Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10) : ITEMCODE.Direction = ParameterDirection.Input : ITEMCODE.Value = txtITEMCODE.Text : Params(1) = ITEMCODE
             Dim QTY As New SqlParameter("@QTY", SqlDbType.Decimal, 10) : QTY.Direction = ParameterDirection.Input : QTY.Value = txtQty.Text : Params(2) = QTY
-            Dim UNITPRICE As New SqlParameter("@UNITPRICE", SqlDbType.Decimal, 10) : UNITPRICE.Direction = ParameterDirection.Input : UNITPRICE.Value = txtUnitPrice.Text : Params(3) = UNITPRICE
+            Dim UNITPRICE As New SqlParameter("@UNITPRICE", SqlDbType.Decimal, 10) : UNITPRICE.Direction = ParameterDirection.Input : UNITPRICE.Value = txtUnitCost.Text : Params(3) = UNITPRICE
             Dim AMOUNT As New SqlParameter("@AMOUNT", SqlDbType.Decimal, 10) : AMOUNT.Direction = ParameterDirection.Input : AMOUNT.Value = txtAmount.Text : Params(4) = AMOUNT
             Dim COSTCENTER As New SqlParameter("@COSTCENTER", SqlDbType.VarChar, 250) : COSTCENTER.Direction = ParameterDirection.Input : COSTCENTER.Value = txtCostCenter.Text : Params(5) = COSTCENTER
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(6) = UPDATEBY
             Dim SPECIFICATIONS As New SqlParameter("@SPECIFICATIONS", SqlDbType.VarChar, 250) : SPECIFICATIONS.Direction = ParameterDirection.Input : SPECIFICATIONS.Value = txtSpecs.Text : Params(7) = SPECIFICATIONS
             If ItemExists() Then
-                MsgBox("PO Number : " & txtPONo.Text & " and Inventory Description : " & txtInvtyDesc.Text & " already exists!")
+                MsgBox("PO Number : " & txtPONo.Text & " and Inventory Description : " & txtITEMDESC.Text & " already exists!")
             Else
                 BusinessObject.Sub_Insert(ServerPath2, "IPODetail_Insert", CommandType.StoredProcedure, Params)
                 LogHelper.InsertLog("IPODetail_Insert")
@@ -101,9 +111,9 @@ Public Class frmPODetail
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
             Dim Params(8) As SqlParameter
             Dim PONO As New SqlParameter("@PONO", SqlDbType.VarChar, 10) : PONO.Direction = ParameterDirection.Input : PONO.Value = txtPONo.Text : Params(0) = PONO
-            Dim INVTYCODE As New SqlParameter("@INVTYCODE", SqlDbType.VarChar, 10) : INVTYCODE.Direction = ParameterDirection.Input : INVTYCODE.Value = txtInvtyCode.Text : Params(1) = INVTYCODE
+            Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10) : ITEMCODE.Direction = ParameterDirection.Input : ITEMCODE.Value = txtITEMCODE.Text : Params(1) = ITEMCODE
             Dim QTY As New SqlParameter("@QTY", SqlDbType.Decimal, 10) : QTY.Direction = ParameterDirection.Input : QTY.Value = txtQty.Text : Params(2) = QTY
-            Dim UNITPRICE As New SqlParameter("@UNITPRICE", SqlDbType.Decimal, 10) : UNITPRICE.Direction = ParameterDirection.Input : UNITPRICE.Value = txtUnitPrice.Text : Params(3) = UNITPRICE
+            Dim UNITPRICE As New SqlParameter("@UNITPRICE", SqlDbType.Decimal, 10) : UNITPRICE.Direction = ParameterDirection.Input : UNITPRICE.Value = txtUnitCost.Text : Params(3) = UNITPRICE
             Dim AMOUNT As New SqlParameter("@AMOUNT", SqlDbType.Decimal, 10) : AMOUNT.Direction = ParameterDirection.Input : AMOUNT.Value = txtAmount.Text : Params(4) = AMOUNT
             Dim COSTCENTER As New SqlParameter("@COSTCENTER", SqlDbType.VarChar, 250) : COSTCENTER.Direction = ParameterDirection.Input : COSTCENTER.Value = txtCostCenter.Text : Params(5) = COSTCENTER
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(6) = UPDATEBY
@@ -129,7 +139,7 @@ Public Class frmPODetail
 
             BusinessObject.Sub_Show(ServerPath2, "IPODetail_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
             dgPODetail.DataSource = RemoteDataSet.Tables("ProductFormCT_Show")
-            GroupBox1.Text = "Number of Samples/Promats : " & RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count.ToString()
+            GroupBox1.Text = "Number of Items : " & RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count.ToString()
             LogHelper.InsertLog("IPOHeader_Show.Success")
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -195,10 +205,10 @@ Public Class frmPODetail
             With dgPODetail
                 txtRowid.Text = CStr(.Item(.CurrentCell.RowNumber, 0))
                 'no need to fill txtPONo.Text = CStr(.Item(.CurrentCell.RowNumber, 1))
-                txtInvtyCode.Text = CStr(.Item(.CurrentCell.RowNumber, 2))
-                txtInvtyDesc.Text = CStr(.Item(.CurrentCell.RowNumber, 3))
+                txtITEMCODE.Text = CStr(.Item(.CurrentCell.RowNumber, 2))
+                txtITEMDESC.Text = CStr(.Item(.CurrentCell.RowNumber, 3))
                 txtqty.Text = CStr(.Item(.CurrentCell.RowNumber, 4))
-                txtUNITPRICE.Text = CStr(.Item(.CurrentCell.RowNumber, 5))
+                txtUnitCost.Text = CStr(.Item(.CurrentCell.RowNumber, 5))
                 Try
                     txtAmount.Text = CStr(.Item(.CurrentCell.RowNumber, 6))
                 Catch ex As Exception
@@ -238,8 +248,8 @@ Public Class frmPODetail
         Sub_Show()
     End Sub
     Private Sub EnableCodeAndDesc(enableflag As Boolean)
-        txtInvtyCode.Enabled = False
-        txtInvtyDesc.Enabled = False
+        txtITEMCODE.Enabled = False
+        txtITEMDESC.Enabled = False
         txtPONo.Enabled = False
         txtQty.Enabled = True
         txtAmount.Enabled = False
@@ -260,10 +270,10 @@ Public Class frmPODetail
         PONO.Value = txtPONo.Text.ToString.Trim
         Params(0) = PONO
 
-        Dim INVTYCODE As New SqlParameter("@INVTYCODE", SqlDbType.VarChar, 10)
-        INVTYCODE.Direction = ParameterDirection.Input
-        INVTYCODE.Value = txtInvtyCode.Text.ToString.Trim
-        Params(1) = INVTYCODE
+        Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10)
+        ITEMCODE.Direction = ParameterDirection.Input
+        ITEMCODE.Value = txtITEMCODE.Text.ToString.Trim
+        Params(1) = ITEMCODE
 
         BusinessObject.Sub_Show(ServerPath2, "IPODetail_SearchCodeOrDesc", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
         If RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count > 0 Then
@@ -294,20 +304,20 @@ Public Class frmPODetail
         Dim BusinessObject As New BusinessLayer.clsFileMaintenance
         Dim dstemp As New DataSet
         dstemp.Tables.Add("Table1")
-        BusinessObject.Sub_Show(ServerPath2, "ISSPMTemplate_LookUpAll", CommandType.StoredProcedure, dstemp, "Table1")
-        gCode = txtInvtyCode.Text : gDesc = txtInvtyDesc.Text
+        BusinessObject.Sub_Show(ServerPath2, "Item_LookUp", CommandType.StoredProcedure, dstemp, "Table1")
+        gCode = txtITEMCODE.Text : gDesc = txtITEMDESC.Text
         Dim myLoadedForm As New frmLookUp
         myLoadedForm.lookupcaption = "Samples and Promats Look-Up"
         myLoadedForm.RemoteDataTable = dstemp.Tables("Table1")
         myLoadedForm.ShowDialog(Me)
-        txtInvtyCode.Text = gCode
-        txtInvtyDesc.Text = gDesc
+        txtITEMCODE.Text = gCode
+        txtITEMDESC.Text = gDesc
         txtQty.Focus()
     End Sub
 
     Private Sub ComputeAmount()
-        If txtUnitPrice.Text <> "" And txtQty.Text <> "" Then
-            txtAmount.Text = Convert.ToString(StringToDecimal(txtUnitPrice.Text) * StringToDecimal(txtQty.Text))
+        If txtUnitCost.Text <> "" And txtQty.Text <> "" Then
+            txtAmount.Text = Convert.ToString(StringToDecimal(txtUnitCost.Text) * StringToDecimal(txtQty.Text))
         Else
             txtAmount.Text = "0.00"
         End If
@@ -317,7 +327,55 @@ Public Class frmPODetail
         ComputeAmount()
     End Sub
 
-    Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitPrice.TextChanged
+    Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitCost.TextChanged
         ComputeAmount()
+    End Sub
+
+    Private Sub txtQty_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtQty.Validating
+        Dim MOQ As Decimal = 0
+        MOQ = PODetail_Qty(txtItemCode.Text)
+        If MOQ > 0 And Convert.ToDecimal(txtQty.Text) < MOQ Then
+            ErrorProvider1.SetError(txtQty, "Invalid Quantity!")
+        Else
+            ErrorProvider1.SetError(txtQty, "")
+            SetCost()
+        End If
+    End Sub
+
+    Private Sub txtItemDesc_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles txtItemDesc.Validating
+     
+
+    End Sub
+
+    Private Sub txtItemDesc_TextChanged(sender As Object, e As EventArgs) Handles txtItemDesc.TextChanged
+        Dim LeadTime As Decimal = 0.0
+        Dim Processing As Decimal = 0.0
+        Dim TotalTime As Decimal = 0.0
+        Dim DeliveryDate As DateTime
+        Dim LeadtimeDate As DateTime
+        Dim CreateDate As DateTime
+        DeliveryDate = Convert.ToDateTime(txtDeliveryDate.Text)
+        LeadTime = Item_Leadtime(txtItemCode.Text)
+        Processing = Item_Processing(txtItemCode.Text)
+        TotalTime = LeadTime + Processing
+        If lblCreateDate.Text <> "" Then
+            CreateDate = Convert.ToDateTime(lblCreateDate.Text)
+        Else
+            CreateDate = DateTime.Now
+        End If
+        LeadtimeDate = DateAdd(DateInterval.Month, TotalTime, CreateDate)
+        If txtItemDesc.Text <> "" Then
+            If TotalTime > 0 And DateDiff(DateInterval.Day, DeliveryDate, LeadtimeDate) > 1 Then
+                ErrorProvider1.SetError(txtDeliveryDate, "Invalid delivery date!")
+            Else
+                ErrorProvider1.SetError(txtDeliveryDate, "")
+            End If
+        Else
+            'MsgBox("Please select valid Item!")
+        End If
+    End Sub
+    Private Sub SetCost()
+        txtUnitCost.Text = Item_UnitCost(txtItemCode.Text).ToString
+        txtAmount.Text = Convert.ToDecimal(txtUnitCost.Text) * Convert.ToDecimal(txtQty.Text)
     End Sub
 End Class

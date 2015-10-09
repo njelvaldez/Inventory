@@ -1,24 +1,26 @@
 ﻿Imports System.Data.SqlClient
 Imports CrystalDecisions.CrystalReports.Engine
-Public Class frmItem
+Public Class frmForecasts
     Private RemoteDataSet As New DataSet
     Private EditMode As Boolean = False
-    Private ModuleName As String = "ITEM MASTER FILE"
+    Private ModuleName As String = "SEGMENT FORECASTS"
     Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAdd.Click
         If UserCanAdd(gUserID, ModuleName) Then
             modControlBehavior.EnableControlsGroup(Me, True)
             ControlMaintenance.ClearInputControlsGroup(Me)
             EditMode = False
             EnableCodeAndDesc(False)
-            txtItemCode.Enabled = True
+            txtQuantity.Enabled = True
             modControlBehavior.SetBackgroundControlsGroup(Me)
-            txtItemCode.Focus()
+            btnItemLookUp.Focus()
+            btnItemLookUp_Click(sender, e)
+            txtQuantity.Focus()
         End If
     End Sub
     Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEdit.Click
         If UserCanEdit(gUserID, ModuleName) Then
             modControlBehavior.EnableControlsGroup(Me, True)
-            If txtItemCode.Text = "" And txtItemDesc.Text = "" Then
+            If txtItemDesc.Text = "" And txtQuantity.Text = "" And txtDivCode.Text = "" Then
                 MessageBox.Show("Please select a record to modify!", "Record Selection", MessageBoxButtons.OK, _
                 MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
             Else
@@ -26,7 +28,7 @@ Public Class frmItem
                 EditMode = True
                 EnableCodeAndDesc(False)
                 SetBackgroundControlsGroup(Me)
-                txtItemCode.Focus()
+                txtQuantity.Focus()
             End If
         End If
     End Sub
@@ -39,11 +41,10 @@ Public Class frmItem
         '        Sub_Show()
         '    End If
         'End If
-        MsgBox("Deletion of Item is not allowed!")
+        MsgBox("Deletion of Segment Forecast is not allowed!")
     End Sub
     Private Sub cmdExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExit.Click
         Me.Close()
-
     End Sub
     Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
         modControlBehavior.EnableControlsGroup(Me, False)
@@ -70,10 +71,8 @@ Public Class frmItem
     End Sub
     Private Function AllValidFields() As Boolean
         Dim retval As Boolean = False
-        If txtItemCode.Text.ToString <> "" And txtItemDesc.Text.ToString <> "" And _
-           txtMOQ.Text.ToString <> "" And txtShelflife.Text.ToString <> "" And _
-           txtLeadtime.Text.ToString <> "" And txtProcessing.Text.ToString <> "" And _
-           TxtSafLvl.Text.ToString <> "" And txtUnitCost.Text.ToString <> "" Then
+        If txtQuantity.Text.ToString <> "" And txtItemCode.Text.ToString <> "" And _
+           txtDivCode.Text.ToString <> "" And txtFcstDate.Text.ToString <> "" Then
             retval = True
         End If
         Return retval
@@ -81,49 +80,39 @@ Public Class frmItem
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(9) As SqlParameter
-            Dim ItemCode As New SqlParameter("@ItemCode", SqlDbType.VarChar, 10) : ItemCode.Direction = ParameterDirection.Input : ItemCode.Value = txtItemCode.Text : Params(0) = ItemCode
-            Dim ItemDesc As New SqlParameter("@ItemDesc", SqlDbType.VarChar, 50) : ItemDesc.Direction = ParameterDirection.Input : ItemDesc.Value = txtItemDesc.Text : Params(1) = ItemDesc
-            Dim MdiCode As New SqlParameter("@MdiCode", SqlDbType.VarChar, 10) : MdiCode.Direction = ParameterDirection.Input : MdiCode.Value = txtMDICode.Text : Params(2) = MdiCode
-            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Money, 12) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToDecimal(txtLeadtime.Text) : Params(3) = Leadtime
-            Dim Saflvl As New SqlParameter("@Saflvl", SqlDbType.Money, 12) : Saflvl.Direction = ParameterDirection.Input : Saflvl.Value = Convert.ToDecimal(TxtSafLvl.Text) : Params(4) = Saflvl
-            Dim MOQ As New SqlParameter("@MOQ", SqlDbType.Money, 12) : MOQ.Direction = ParameterDirection.Input : MOQ.Value = Convert.ToDecimal(txtMOQ.Text) : Params(5) = MOQ
-            Dim Shelflife As New SqlParameter("@Shelflife", SqlDbType.Money, 12) : Shelflife.Direction = ParameterDirection.Input : Shelflife.Value = Convert.ToDecimal(txtShelflife.Text) : Params(6) = Shelflife
-            Dim UpdateBy As New SqlParameter("@UpdateBy", SqlDbType.VarChar, 10) : UpdateBy.Direction = ParameterDirection.Input : UpdateBy.Value = gUserName : Params(7) = UpdateBy
-            Dim Processing As New SqlParameter("@Processing", SqlDbType.Money, 12) : Processing.Direction = ParameterDirection.Input : Processing.Value = Convert.ToDecimal(txtProcessing.Text) : Params(8) = Processing
-            Dim UnitCost As New SqlParameter("@UnitCost", SqlDbType.Money, 12) : UnitCost.Direction = ParameterDirection.Input : UnitCost.Value = Convert.ToDecimal(txtUnitCost.Text) : Params(9) = UnitCost
-            If ItemExists() Then
-                MsgBox("Item Code : " & txtItemCode.Text & ", Item Description : " & txtItemDesc.Text & " already exists!")
+            Dim Params(4) As SqlParameter
+            Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10) : ITEMCODE.Direction = ParameterDirection.Input : ITEMCODE.Value = txtItemCode.Text : Params(0) = ITEMCODE
+            Dim QTY As New SqlParameter("@QTY", SqlDbType.Money, 12) : QTY.Direction = ParameterDirection.Input : QTY.Value = txtQuantity.Text : Params(1) = QTY
+            Dim DIVCODE As New SqlParameter("@DIVCODE", SqlDbType.VarChar, 3) : DIVCODE.Direction = ParameterDirection.Input : DIVCODE.Value = txtDivCode.Text : Params(2) = DIVCODE
+            Dim FCSTDATE As New SqlParameter("@FCSTDATE", SqlDbType.DateTime, 10) : FCSTDATE.Direction = ParameterDirection.Input : FCSTDATE.Value = txtFcstDate.Text : Params(3) = FCSTDATE
+            Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 10) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(4) = UPDATEBY
+            If ForecastExists() Then
+                MsgBox("Item Desciption : " & txtItemDesc.Text & ", Segment : " & txtDivDesc.Text & " already exists!")
             Else
-                BusinessObject.Sub_Insert(ServerPath2, "Item_Insert", CommandType.StoredProcedure, Params)
-                LogHelper.InsertLog("Item_Insert")
+                BusinessObject.Sub_Insert(ServerPath2, "Forecast_Insert", CommandType.StoredProcedure, Params)
+                LogHelper.InsertLog("Forecast_Insert")
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
-            LogHelper.InsertLog("Item_Insert.Error: " & ex.Message)
+            LogHelper.InsertLog("Forecast_Insert.Error: " & ex.Message)
         End Try
 
     End Sub
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(10) As SqlParameter
-            Dim ItemCode As New SqlParameter("@ItemCode", SqlDbType.VarChar, 10) : ItemCode.Direction = ParameterDirection.Input : ItemCode.Value = txtItemCode.Text : Params(0) = ItemCode
-            Dim ItemDesc As New SqlParameter("@ItemDesc", SqlDbType.VarChar, 50) : ItemDesc.Direction = ParameterDirection.Input : ItemDesc.Value = txtItemDesc.Text : Params(1) = ItemDesc
-            Dim MdiCode As New SqlParameter("@MdiCode", SqlDbType.VarChar, 10) : MdiCode.Direction = ParameterDirection.Input : MdiCode.Value = txtMDICode.Text : Params(2) = MdiCode
-            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Money, 12) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToDecimal(txtLeadtime.Text) : Params(3) = Leadtime
-            Dim Saflvl As New SqlParameter("@Saflvl", SqlDbType.Money, 12) : Saflvl.Direction = ParameterDirection.Input : Saflvl.Value = Convert.ToDecimal(TxtSafLvl.Text) : Params(4) = Saflvl
-            Dim MOQ As New SqlParameter("@MOQ", SqlDbType.Money, 12) : MOQ.Direction = ParameterDirection.Input : MOQ.Value = Convert.ToDecimal(txtMOQ.Text) : Params(5) = MOQ
-            Dim Shelflife As New SqlParameter("@Shelflife", SqlDbType.Money, 12) : Shelflife.Direction = ParameterDirection.Input : Shelflife.Value = Convert.ToDecimal(txtShelflife.Text) : Params(6) = Shelflife
-            Dim UpdateBy As New SqlParameter("@UpdateBy", SqlDbType.VarChar, 10) : UpdateBy.Direction = ParameterDirection.Input : UpdateBy.Value = gUserName : Params(7) = UpdateBy
-            Dim ROWID As New SqlParameter("@Itmid", SqlDbType.Int, 10) : ROWID.Direction = ParameterDirection.Input : ROWID.Value = Convert.ToInt16(txtRowid.Text) : Params(8) = ROWID
-            Dim Processing As New SqlParameter("@Processing", SqlDbType.Money, 12) : Processing.Direction = ParameterDirection.Input : Processing.Value = Convert.ToDecimal(txtProcessing.Text) : Params(9) = Processing
-            Dim UnitCost As New SqlParameter("@UnitCost", SqlDbType.Money, 12) : UnitCost.Direction = ParameterDirection.Input : UnitCost.Value = Convert.ToDecimal(txtUnitCost.Text) : Params(10) = UnitCost
-            BusinessObject.Sub_Insert(ServerPath2, "Item_Update", CommandType.StoredProcedure, Params)
-            LogHelper.InsertLog("Item_Update")
+            Dim Params(5) As SqlParameter
+            Dim FCID As New SqlParameter("@FCID", SqlDbType.Int, 10) : FCID.Direction = ParameterDirection.Input : FCID.Value = Convert.ToInt16(txtRowid.Text) : Params(0) = FCID
+            Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10) : ITEMCODE.Direction = ParameterDirection.Input : ITEMCODE.Value = txtItemCode.Text : Params(1) = ITEMCODE
+            Dim QTY As New SqlParameter("@QTY", SqlDbType.Money, 12) : QTY.Direction = ParameterDirection.Input : QTY.Value = txtQuantity.Text : Params(2) = QTY
+            Dim DIVCODE As New SqlParameter("@DIVCODE", SqlDbType.VarChar, 3) : DIVCODE.Direction = ParameterDirection.Input : DIVCODE.Value = txtDivCode.Text : Params(3) = DIVCODE
+            Dim FCSTDATE As New SqlParameter("@FCSTDATE", SqlDbType.DateTime, 10) : FCSTDATE.Direction = ParameterDirection.Input : FCSTDATE.Value = txtFcstDate.Text : Params(4) = FCSTDATE
+            Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 10) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(5) = UPDATEBY
+            BusinessObject.Sub_Insert(ServerPath2, "Forecast_Update", CommandType.StoredProcedure, Params)
+            LogHelper.InsertLog("Forecast_Update")
         Catch ex As Exception
             MsgBox(ex.Message)
-            LogHelper.InsertLog("Item_Update.Error: " & ex.Message)
+            LogHelper.InsertLog("Forecast_Update.Error: " & ex.Message)
         End Try
 
     End Sub
@@ -132,21 +121,21 @@ Public Class frmItem
             If RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count > 0 Then RemoteDataSet.Tables("ProductFormCT_Show").Clear()
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
             If Trim(txtSearch.Text = "") Then
-                BusinessObject.Sub_Show(ServerPath2, "Item_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show")
+                BusinessObject.Sub_Show(ServerPath2, "Forecast_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show")
             Else
                 Dim Params(0) As SqlParameter
-                Dim ItemDesc As New SqlParameter("@ItemDesc ", SqlDbType.VarChar, 50)
-                ItemDesc.Direction = ParameterDirection.Input
-                ItemDesc.Value = txtSearch.Text.ToString.Trim
-                Params(0) = ItemDesc
-                BusinessObject.Sub_Show(ServerPath2, "Item_Search_Show", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
+                Dim ITEMDESC As New SqlParameter("@ITEMDESC ", SqlDbType.VarChar, 50)
+                ITEMDESC.Direction = ParameterDirection.Input
+                ITEMDESC.Value = txtSearch.Text.ToString.Trim
+                Params(0) = ITEMDESC
+                BusinessObject.Sub_Show(ServerPath2, "Forecast_Show_Search", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
             End If
             DataGrid1.DataSource = RemoteDataSet.Tables("ProductFormCT_Show")
-            GroupBox1.Text = "Number of Items : " & RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count.ToString()
-            LogHelper.InsertLog("Item_Search_Show.Success")
+            GroupBox1.Text = "Number of Segment Forecast : " & RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count.ToString()
+            LogHelper.InsertLog("Forecast_Show_Search.Success")
         Catch ex As Exception
             MsgBox(ex.Message)
-            LogHelper.InsertLog("Item_Search_Show.Error: " & ex.Message)
+            LogHelper.InsertLog("Forecast_Show_Search.Error: " & ex.Message)
         End Try
 
     End Sub
@@ -157,7 +146,7 @@ Public Class frmItem
         Select Case UpdateMode
             Case "Insert"
                 Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-                myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "Item_GetInsertedRowid", CommandType.StoredProcedure))
+                myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "Forecast_GetInsertedRowid", CommandType.StoredProcedure))
             Case "Update"
                 myRowid = CInt(dbParams(0))
         End Select
@@ -184,10 +173,11 @@ Public Class frmItem
     '        LogHelper.InsertLog("ProductFormCT_Delete.Error")
     '    End Try
     'End Sub
-    Private Sub frmItem_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmForecast_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         modControlBehavior.EnableControls(Me, False)
         modControlBehavior.EnableControlsGroup(Me, False)
         RemoteDataSet.Tables.Add("ProductFormCT_Show")
+        'LoadLookUp()
         Sub_Show()
         DataGrid1.AlternatingBackColor = Color.LightGreen
     End Sub
@@ -195,20 +185,16 @@ Public Class frmItem
     Private Sub DataGrid1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid1.Click, DataGrid1.CurrentCellChanged
         Try
             With DataGrid1
-                'select itmid,itemcode,ItemDesc,MdiCode,Leadtime,SafLvl,MOQ,Shelflife,CreateDate,UpdateDate,UpdateBy from item 
                 txtRowid.Text = CStr(.Item(.CurrentCell.RowNumber, 0))
                 txtItemCode.Text = CStr(.Item(.CurrentCell.RowNumber, 1))
                 txtItemDesc.Text = CStr(.Item(.CurrentCell.RowNumber, 2))
-                txtMDICode.Text = CStr(.Item(.CurrentCell.RowNumber, 3))
-                txtLeadtime.Text = CStr(.Item(.CurrentCell.RowNumber, 4))
-                txtProcessing.Text = CStr(.Item(.CurrentCell.RowNumber, 5))
-                TxtSafLvl.Text = CStr(.Item(.CurrentCell.RowNumber, 6))
-                txtMOQ.Text = CStr(.Item(.CurrentCell.RowNumber, 7))
-                txtShelflife.Text = CStr(.Item(.CurrentCell.RowNumber, 8))
-                lblCreateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 9))
-                lblUpdateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 10))
-                lblUpdateBy.Text = CStr(.Item(.CurrentCell.RowNumber, 11))
-                txtUnitCost.Text = CStr(.Item(.CurrentCell.RowNumber, 12))
+                txtQuantity.Text = CStr(.Item(.CurrentCell.RowNumber, 3))
+                txtDivCode.Text = CStr(.Item(.CurrentCell.RowNumber, 4))
+                txtDivDesc.Text = CStr(.Item(.CurrentCell.RowNumber, 5))
+                txtFcstDate.Text = CStr(.Item(.CurrentCell.RowNumber, 6))
+                lblCreateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 7))
+                lblUpdateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 8))
+                lblUpdateBy.Text = CStr(.Item(.CurrentCell.RowNumber, 9))
                 .Select(.CurrentCell.RowNumber)
             End With
         Catch ex As Exception
@@ -239,31 +225,38 @@ Public Class frmItem
 
     End Sub
     Private Sub EnableCodeAndDesc(enableflag As Boolean)
-        'txtLeadtime.Enabled = False
+        txtQuantity.Enabled = True
+        txtFcstDate.Enabled = True
+        btnItemLookUp.Enabled = True
+        btnDivLookup.Enabled = True
+        txtItemDesc.Enabled = False
+        txtDivDesc.Enabled = False
         If EditMode Then
-            txtItemCode.Enabled = False
-            txtItemDesc.Enabled = False
         Else
-
         End If
     End Sub
-    Private Function ItemExists() As Boolean
+    Private Function ForecastExists() As Boolean
         Dim retval As Boolean = False
         If RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count > 0 Then RemoteDataSet.Tables("ProductFormCT_Show").Clear()
         Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-        Dim Params(1) As SqlParameter
+        Dim Params(2) As SqlParameter
 
-        Dim CODE As New SqlParameter("@ItemCode", SqlDbType.VarChar, 10)
-        CODE.Direction = ParameterDirection.Input
-        CODE.Value = txtItemCode.Text.ToString.Trim
-        Params(0) = CODE
+        Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10)
+        ITEMCODE.Direction = ParameterDirection.Input
+        ITEMCODE.Value = txtItemCode.Text.ToString.Trim
+        Params(0) = ITEMCODE
 
-        Dim NAME As New SqlParameter("@ItemDesc", SqlDbType.VarChar, 50)
-        NAME.Direction = ParameterDirection.Input
-        NAME.Value = txtItemDesc.Text.ToString.Trim
-        Params(1) = NAME
+        Dim DIVCODE As New SqlParameter("@DIVCODE", SqlDbType.VarChar, 3)
+        DIVCODE.Direction = ParameterDirection.Input
+        DIVCODE.Value = txtDivCode.Text.ToString.Trim
+        Params(1) = DIVCODE
 
-        BusinessObject.Sub_Show(ServerPath2, "Item_SearchCodeOrDesc", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
+        Dim FCSTDATE As New SqlParameter("@FCSTDATE", SqlDbType.DateTime, 10)
+        FCSTDATE.Direction = ParameterDirection.Input
+        FCSTDATE.Value = txtFcstDate.Text.ToString.Trim
+        Params(2) = FCSTDATE
+
+        BusinessObject.Sub_Show(ServerPath2, "Forecast_Exists", CommandType.StoredProcedure, RemoteDataSet, "ProductFormCT_Show", Params)
         If RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count > 0 Then
             retval = True
         End If
@@ -279,7 +272,7 @@ Public Class frmItem
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If UserCanReport(gUserID, ModuleName) Then
             Dim myLoadedForm As New frmReportViewer
-            myLoadedForm.Report = "Item Master List Report"
+            myLoadedForm.Report = "Segment Forecasts"
             myLoadedForm.Status = "ALL"
             myLoadedForm.ShowDialog()
         End If
@@ -289,11 +282,24 @@ Public Class frmItem
 
     End Sub
 
-
-    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
-
+    Private Sub btnItemLookUp_Click(sender As Object, e As EventArgs) Handles btnItemLookUp.Click
+        gCode = txtItemCode.Text : gDesc = txtItemDesc.Text
+        Dim myLoadedForm As New frmLookUp
+        myLoadedForm.lookupcaption = "Item Look Up"
+        myLoadedForm.RemoteDataTable = ItemLookUp().Tables(0)
+        myLoadedForm.ShowDialog(Me)
+        txtItemCode.Text = gCode
+        txtItemDesc.Text = gDesc
     End Sub
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtUnitCost.TextChanged
 
+    Private Sub btnDivLookup_Click(sender As Object, e As EventArgs) Handles btnDivLookup.Click
+        gCode = txtDivCode.Text() : gDesc = txtDivDesc.Text
+        Dim myLoadedForm As New frmLookUp
+        myLoadedForm.lookupcaption = "Segment Look Up"
+        myLoadedForm.RemoteDataTable = SegmentLookUp().Tables(0)
+        myLoadedForm.ShowDialog(Me)
+        txtDivCode.Text = gCode
+        txtDivDesc.Text = gDesc
+        txtFcstDate.Focus()
     End Sub
 End Class

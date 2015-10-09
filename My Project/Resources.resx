@@ -121,6 +121,9 @@
   <data name="password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\password.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Actions-contact-new-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-contact-new-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Math-minus-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Math-minus-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,14 +148,11 @@
   <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\excel.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exclamation5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\exclamation5.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\upload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="InventoryDashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\InventoryDashboard.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file_copy (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\file_copy (1).png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="symbol_error2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\symbol_error2.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,6 +172,12 @@
   <data name="Cart-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Cart-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="exclamation5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\exclamation5.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="symbol_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\symbol_error.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="1Password-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\1Password-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -190,20 +196,17 @@
   <data name="excel(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\excel(1).ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendar-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\calendar-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Check-2-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Check-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="symbol_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\symbol_error.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendar-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\calendar-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Actions-contact-new-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-contact-new-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="file_copy (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\file_copy (1).png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NMPCProducts" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\NMPCProducts.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -213,6 +216,12 @@
   </data>
   <data name="Alarm-Tick-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Alarm-Tick-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1Password-icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\1Password-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="excel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\excel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="search-icon new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\search-icon new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -233,7 +242,7 @@ order by a.divisiondesc,b.oldmdicode, c.itemdesc + ' ' + c.itemunit</value>
     <value>..\Images\door-out-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="1Password-icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\1Password-icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fileupload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\fileupload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

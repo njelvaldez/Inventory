@@ -204,7 +204,7 @@ Partial Class frmPOHeader
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(20, 118)
+        Me.Label5.Location = New System.Drawing.Point(18, 118)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 87
@@ -258,9 +258,9 @@ Partial Class frmPOHeader
         Me.GroupBox2.Controls.Add(Me.lblCreateDate)
         Me.GroupBox2.Controls.Add(Me.lblUpdateDate)
         Me.GroupBox2.Controls.Add(Me.txtPONo)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 364)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 345)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(962, 208)
+        Me.GroupBox2.Size = New System.Drawing.Size(962, 227)
         Me.GroupBox2.TabIndex = 130
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "PO Detail"
@@ -372,7 +372,7 @@ Partial Class frmPOHeader
         'txtDeliveryDate
         '
         Me.txtDeliveryDate.Location = New System.Drawing.Point(122, 145)
-        Me.txtDeliveryDate.MaxLength = 25
+        Me.txtDeliveryDate.MaxLength = 10
         Me.txtDeliveryDate.Name = "txtDeliveryDate"
         Me.txtDeliveryDate.Size = New System.Drawing.Size(256, 20)
         Me.txtDeliveryDate.TabIndex = 4
@@ -613,9 +613,9 @@ Partial Class frmPOHeader
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.DataGrid1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(962, 344)
+        Me.GroupBox1.Size = New System.Drawing.Size(962, 336)
         Me.GroupBox1.TabIndex = 129
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "List of POs"

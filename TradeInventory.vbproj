@@ -206,6 +206,12 @@
     <Compile Include="Forms\File\frmChangePassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\File\frmForecasts.Designer.vb">
+      <DependentUpon>frmForecasts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\File\frmForecasts.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\File\frmISupplier.Designer.vb">
       <DependentUpon>frmISupplier.vb</DependentUpon>
     </Compile>
@@ -248,14 +254,28 @@
     <Compile Include="Forms\Transactions\frmPOHeader.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Transactions\frmProcessMDI.Designer.vb">
+      <DependentUpon>frmProcessMDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmProcessMDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\ISpecialistHelper.vb" />
     <Compile Include="Modules\ISupplier.vb" />
+    <Compile Include="Modules\PODetailHelper.vb" />
     <Compile Include="Modules\RoleHelper.vb" />
     <Compile Include="Modules\RoleModules.vb" />
+    <Compile Include="Modules\StkcardHelper.vb" />
     <Compile Include="Modules\SupervisorHelper.vb" />
     <Compile Include="Modules\TASHelper.vb" />
     <Compile Include="Modules\UserAccess.vb" />
     <Compile Include="MyFunctions\Public_Functions.vb" />
+    <Compile Include="Reports\crForecasts.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crForecasts.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\crISSMReport.vb">
       <DependentUpon>crISSMReport.rpt</DependentUpon>
       <SubType>Component</SubType>
@@ -267,6 +287,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>crISSMReportBackup.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\crItems.vb">
+      <DependentUpon>crItems.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Reports\crPromatsExportXls.vb">
       <DependentUpon>crPromatsExportXls.rpt</DependentUpon>
@@ -298,14 +324,14 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\crSupplier.vb">
-      <DependentUpon>crSupplier.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Reports\crSpecialist.vb">
       <DependentUpon>crSpecialist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\crSupplier.vb">
+      <DependentUpon>crSupplier.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -340,6 +366,9 @@
     <EmbeddedResource Include="Forms\File\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\File\frmForecasts.resx">
+      <DependentUpon>frmForecasts.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\File\frmISupplier.resx">
       <DependentUpon>frmISupplier.vb</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +390,13 @@
     <EmbeddedResource Include="Forms\Transactions\frmPOHeader.resx">
       <DependentUpon>frmPOHeader.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmProcessMDI.resx">
+      <DependentUpon>frmProcessMDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crForecasts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crForecasts.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crISSMReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crISSMReport.vb</LastGenOutput>
@@ -368,6 +404,10 @@
     <EmbeddedResource Include="Reports\crISSMReportBackup.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crISSMReportBackup.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crItems.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crItems.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crPromatsExportXls.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -389,13 +429,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crDispatchReportNotInInv.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crSupplier.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crSupplier.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crSpecialist.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crSpecialist.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crSupplier.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crSupplier.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crSamplesAllocations.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -428,6 +468,8 @@
     <None Include="Images\Cart-icon.png" />
     <None Include="Images\password.ico" />
     <None Include="Images\1Password-icon.png" />
+    <None Include="Images\upload.png" />
+    <None Include="Images\fileupload.png" />
     <Content Include="inventory_maintenance.ico" />
     <None Include="bin\Alarm-Tick-icon.png" />
     <Content Include="Barcode.ico" />

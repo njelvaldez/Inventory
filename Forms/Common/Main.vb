@@ -97,13 +97,13 @@ Public Class Main
         Me.MenuItem31 = New System.Windows.Forms.MenuItem()
         Me.mnuExit = New System.Windows.Forms.MenuItem()
         Me.MenuItem1 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem129 = New System.Windows.Forms.MenuItem()
         Me.MenuItem44 = New System.Windows.Forms.MenuItem()
         Me.MenuItem43 = New System.Windows.Forms.MenuItem()
         Me.MenuItem45 = New System.Windows.Forms.MenuItem()
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.MenuItem38 = New System.Windows.Forms.MenuItem()
         Me.MenuItem37 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem129 = New System.Windows.Forms.MenuItem()
         Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.MenuItem29 = New System.Windows.Forms.MenuItem()
         Me.MenuItem11 = New System.Windows.Forms.MenuItem()
@@ -191,27 +191,22 @@ Public Class Main
         'MenuItem1
         '
         Me.MenuItem1.Index = 1
-        Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem129, Me.MenuItem44, Me.MenuItem43, Me.MenuItem45})
+        Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem44, Me.MenuItem43, Me.MenuItem45, Me.MenuItem129})
         Me.MenuItem1.Text = "&Transactions"
-        '
-        'MenuItem129
-        '
-        Me.MenuItem129.Index = 0
-        Me.MenuItem129.Text = "-"
         '
         'MenuItem44
         '
-        Me.MenuItem44.Index = 1
+        Me.MenuItem44.Index = 0
         Me.MenuItem44.Text = "Forecast"
         '
         'MenuItem43
         '
-        Me.MenuItem43.Index = 2
+        Me.MenuItem43.Index = 1
         Me.MenuItem43.Text = "Process MDI Inventory"
         '
         'MenuItem45
         '
-        Me.MenuItem45.Index = 3
+        Me.MenuItem45.Index = 2
         Me.MenuItem45.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem39, Me.MenuItem38, Me.MenuItem37})
         Me.MenuItem45.Text = "IMS Inventory"
         '
@@ -229,6 +224,11 @@ Public Class Main
         '
         Me.MenuItem37.Index = 2
         Me.MenuItem37.Text = "Receiving"
+        '
+        'MenuItem129
+        '
+        Me.MenuItem129.Index = 3
+        Me.MenuItem129.Text = "-"
         '
         'MenuItem28
         '
@@ -551,7 +551,7 @@ Public Class Main
 
     Private Sub MenuItem27_Click(sender As Object, e As EventArgs) Handles MenuItem27.Click
         If AccessIsAlowed(gUserID, "SUPPLIER MASTER FILE") Then
-            Dim myLoadedForm As New frmForecast
+            Dim myLoadedForm As New frmISupplier
             FrmShw(myLoadedForm)
         Else
             MsgBox("User acces is not allowed!")
@@ -597,6 +597,24 @@ Public Class Main
     Private Sub MenuItem46_Click(sender As Object, e As EventArgs) Handles MenuItem46.Click
         If AccessIsAlowed(gUserID, "USER MASTER FILE") Then
             Dim myLoadedForm As New frmItem
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
+    End Sub
+
+    Private Sub MenuItem44_Click(sender As Object, e As EventArgs) Handles MenuItem44.Click
+        If AccessIsAlowed(gUserID, "SEGMENT FORECASTS") Then
+            Dim myLoadedForm As New frmForecasts
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
+    End Sub
+
+    Private Sub MenuItem43_Click(sender As Object, e As EventArgs) Handles MenuItem43.Click
+        If AccessIsAlowed(gUserID, "SEGMENT FORECASTS") Then
+            Dim myLoadedForm As New frmProcessMDI
             FrmShw(myLoadedForm)
         Else
             MsgBox("User acces is not allowed!")

@@ -22,8 +22,9 @@ Partial Class frmPODetail
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPODetail))
-        Me.txtInvtyDesc = New System.Windows.Forms.TextBox()
+        Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.DataGridTextBoxColumn9 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.cmdAdd = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -61,10 +62,10 @@ Partial Class frmPODetail
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtCostCenter = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtUnitPrice = New System.Windows.Forms.TextBox()
+        Me.txtUnitCost = New System.Windows.Forms.TextBox()
         Me.lblUpdateBy = New System.Windows.Forms.Label()
         Me.txtAmount = New System.Windows.Forms.TextBox()
-        Me.txtInvtyCode = New System.Windows.Forms.TextBox()
+        Me.txtItemCode = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -72,21 +73,25 @@ Partial Class frmPODetail
         Me.lblCreateDate = New System.Windows.Forms.Label()
         Me.lblUpdateDate = New System.Windows.Forms.Label()
         Me.txtPONo = New System.Windows.Forms.TextBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtDeliveryDate = New System.Windows.Forms.TextBox()
         CType(Me.dgPODetail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'txtInvtyDesc
+        'txtItemDesc
         '
-        Me.txtInvtyDesc.Enabled = False
-        Me.txtInvtyDesc.Location = New System.Drawing.Point(120, 61)
-        Me.txtInvtyDesc.MaxLength = 100
-        Me.txtInvtyDesc.Multiline = True
-        Me.txtInvtyDesc.Name = "txtInvtyDesc"
-        Me.txtInvtyDesc.Size = New System.Drawing.Size(256, 23)
-        Me.txtInvtyDesc.TabIndex = 90
-        Me.txtInvtyDesc.Tag = "Input"
+        Me.txtItemDesc.Enabled = False
+        Me.txtItemDesc.Location = New System.Drawing.Point(120, 85)
+        Me.txtItemDesc.MaxLength = 100
+        Me.txtItemDesc.Multiline = True
+        Me.txtItemDesc.Name = "txtItemDesc"
+        Me.txtItemDesc.Size = New System.Drawing.Size(256, 23)
+        Me.txtItemDesc.TabIndex = 90
+        Me.txtItemDesc.Tag = "Input"
         '
         'DataGridTextBoxColumn9
         '
@@ -109,11 +114,11 @@ Partial Class frmPODetail
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(16, 125)
+        Me.Label5.Location = New System.Drawing.Point(16, 149)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 87
-        Me.Label5.Text = "Unit Price:"
+        Me.Label5.Text = "Unit Cost:"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'DataGridTextBoxColumn7
@@ -128,7 +133,7 @@ Partial Class frmPODetail
         '
         Me.DataGridTextBoxColumn5.Format = ""
         Me.DataGridTextBoxColumn5.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn5.HeaderText = "Unit Price"
+        Me.DataGridTextBoxColumn5.HeaderText = "Unit Cost"
         Me.DataGridTextBoxColumn5.MappingName = "UNITPRICE"
         Me.DataGridTextBoxColumn5.Width = 75
         '
@@ -144,7 +149,7 @@ Partial Class frmPODetail
         '
         Me.btnItem.Enabled = False
         Me.btnItem.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
-        Me.btnItem.Location = New System.Drawing.Point(385, 58)
+        Me.btnItem.Location = New System.Drawing.Point(385, 82)
         Me.btnItem.Name = "btnItem"
         Me.btnItem.Size = New System.Drawing.Size(52, 26)
         Me.btnItem.TabIndex = 1
@@ -195,8 +200,8 @@ Partial Class frmPODetail
         '
         Me.DataGridTextBoxColumn3.Format = ""
         Me.DataGridTextBoxColumn3.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn3.HeaderText = "Inventory Code"
-        Me.DataGridTextBoxColumn3.MappingName = "INVTYCODE"
+        Me.DataGridTextBoxColumn3.HeaderText = "Item Code"
+        Me.DataGridTextBoxColumn3.MappingName = "ITEMCODE"
         Me.DataGridTextBoxColumn3.NullText = ""
         Me.DataGridTextBoxColumn3.ReadOnly = True
         Me.DataGridTextBoxColumn3.Width = 75
@@ -205,8 +210,8 @@ Partial Class frmPODetail
         '
         Me.DataGridTextBoxColumn10.Format = ""
         Me.DataGridTextBoxColumn10.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn10.HeaderText = "Inventory Desc"
-        Me.DataGridTextBoxColumn10.MappingName = "INVTYDESC"
+        Me.DataGridTextBoxColumn10.HeaderText = "Item Description"
+        Me.DataGridTextBoxColumn10.MappingName = "ITEMDESC"
         Me.DataGridTextBoxColumn10.Width = 150
         '
         'DataGridTextBoxColumn6
@@ -249,12 +254,12 @@ Partial Class frmPODetail
         Me.GroupBox1.Size = New System.Drawing.Size(962, 275)
         Me.GroupBox1.TabIndex = 141
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "No. of Samples/Promats :"
+        Me.GroupBox1.Text = "No. of Items :"
         '
         'txtQty
         '
         Me.txtQty.Enabled = False
-        Me.txtQty.Location = New System.Drawing.Point(120, 93)
+        Me.txtQty.Location = New System.Drawing.Point(120, 117)
         Me.txtQty.MaxLength = 100
         Me.txtQty.Multiline = True
         Me.txtQty.Name = "txtQty"
@@ -264,7 +269,7 @@ Partial Class frmPODetail
         '
         'Label15
         '
-        Me.Label15.Location = New System.Drawing.Point(16, 91)
+        Me.Label15.Location = New System.Drawing.Point(16, 115)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(88, 20)
         Me.Label15.TabIndex = 79
@@ -273,7 +278,7 @@ Partial Class frmPODetail
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(531, 188)
+        Me.Label13.Location = New System.Drawing.Point(531, 182)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(88, 20)
         Me.Label13.TabIndex = 76
@@ -381,21 +386,23 @@ Partial Class frmPODetail
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Controls.Add(Me.txtDeliveryDate)
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Controls.Add(Me.txtSpecs)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.txtCostCenter)
-        Me.GroupBox2.Controls.Add(Me.txtInvtyDesc)
+        Me.GroupBox2.Controls.Add(Me.txtItemDesc)
         Me.GroupBox2.Controls.Add(Me.btnItem)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.txtQty)
         Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.txtUnitPrice)
+        Me.GroupBox2.Controls.Add(Me.txtUnitCost)
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.lblUpdateBy)
         Me.GroupBox2.Controls.Add(Me.txtAmount)
-        Me.GroupBox2.Controls.Add(Me.txtInvtyCode)
+        Me.GroupBox2.Controls.Add(Me.txtItemCode)
         Me.GroupBox2.Controls.Add(Me.txtRowid)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.Label2)
@@ -409,7 +416,7 @@ Partial Class frmPODetail
         Me.GroupBox2.Size = New System.Drawing.Size(962, 279)
         Me.GroupBox2.TabIndex = 142
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Samples/Promats Detail"
+        Me.GroupBox2.Text = "Item Detail"
         '
         'Label8
         '
@@ -432,7 +439,7 @@ Partial Class frmPODetail
         '
         'Label6
         '
-        Me.Label6.Location = New System.Drawing.Point(16, 181)
+        Me.Label6.Location = New System.Drawing.Point(16, 205)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(88, 20)
         Me.Label6.TabIndex = 92
@@ -441,35 +448,35 @@ Partial Class frmPODetail
         '
         'txtCostCenter
         '
-        Me.txtCostCenter.Location = New System.Drawing.Point(120, 182)
+        Me.txtCostCenter.Location = New System.Drawing.Point(120, 206)
         Me.txtCostCenter.MaxLength = 200
         Me.txtCostCenter.Multiline = True
         Me.txtCostCenter.Name = "txtCostCenter"
-        Me.txtCostCenter.Size = New System.Drawing.Size(256, 91)
+        Me.txtCostCenter.Size = New System.Drawing.Size(256, 57)
         Me.txtCostCenter.TabIndex = 91
         Me.txtCostCenter.Tag = "Input"
         '
         'Label7
         '
-        Me.Label7.Location = New System.Drawing.Point(16, 151)
+        Me.Label7.Location = New System.Drawing.Point(16, 175)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(88, 20)
         Me.Label7.TabIndex = 85
         Me.Label7.Text = "Amount :"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'txtUnitPrice
+        'txtUnitCost
         '
-        Me.txtUnitPrice.Location = New System.Drawing.Point(120, 126)
-        Me.txtUnitPrice.MaxLength = 25
-        Me.txtUnitPrice.Name = "txtUnitPrice"
-        Me.txtUnitPrice.Size = New System.Drawing.Size(256, 20)
-        Me.txtUnitPrice.TabIndex = 3
-        Me.txtUnitPrice.Tag = "Input"
+        Me.txtUnitCost.Location = New System.Drawing.Point(120, 150)
+        Me.txtUnitCost.MaxLength = 25
+        Me.txtUnitCost.Name = "txtUnitCost"
+        Me.txtUnitCost.Size = New System.Drawing.Size(256, 20)
+        Me.txtUnitCost.TabIndex = 3
+        Me.txtUnitCost.Tag = "Input"
         '
         'lblUpdateBy
         '
-        Me.lblUpdateBy.Location = New System.Drawing.Point(635, 187)
+        Me.lblUpdateBy.Location = New System.Drawing.Point(635, 181)
         Me.lblUpdateBy.Name = "lblUpdateBy"
         Me.lblUpdateBy.Size = New System.Drawing.Size(256, 20)
         Me.lblUpdateBy.TabIndex = 77
@@ -478,24 +485,24 @@ Partial Class frmPODetail
         'txtAmount
         '
         Me.txtAmount.Enabled = False
-        Me.txtAmount.Location = New System.Drawing.Point(120, 152)
+        Me.txtAmount.Location = New System.Drawing.Point(120, 176)
         Me.txtAmount.MaxLength = 25
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.Size = New System.Drawing.Size(256, 20)
         Me.txtAmount.TabIndex = 4
         Me.txtAmount.Tag = "Input"
         '
-        'txtInvtyCode
+        'txtItemCode
         '
-        Me.txtInvtyCode.Enabled = False
-        Me.txtInvtyCode.Location = New System.Drawing.Point(448, 57)
-        Me.txtInvtyCode.MaxLength = 100
-        Me.txtInvtyCode.Multiline = True
-        Me.txtInvtyCode.Name = "txtInvtyCode"
-        Me.txtInvtyCode.Size = New System.Drawing.Size(23, 23)
-        Me.txtInvtyCode.TabIndex = 1
-        Me.txtInvtyCode.Tag = "Input"
-        Me.txtInvtyCode.Visible = False
+        Me.txtItemCode.Enabled = False
+        Me.txtItemCode.Location = New System.Drawing.Point(448, 81)
+        Me.txtItemCode.MaxLength = 100
+        Me.txtItemCode.Multiline = True
+        Me.txtItemCode.Name = "txtItemCode"
+        Me.txtItemCode.Size = New System.Drawing.Size(23, 23)
+        Me.txtItemCode.TabIndex = 1
+        Me.txtItemCode.Tag = "Input"
+        Me.txtItemCode.Visible = False
         '
         'Label1
         '
@@ -508,7 +515,7 @@ Partial Class frmPODetail
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(16, 60)
+        Me.Label2.Location = New System.Drawing.Point(16, 84)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(88, 20)
         Me.Label2.TabIndex = 45
@@ -517,7 +524,7 @@ Partial Class frmPODetail
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(531, 130)
+        Me.Label3.Location = New System.Drawing.Point(531, 124)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(88, 20)
         Me.Label3.TabIndex = 46
@@ -526,7 +533,7 @@ Partial Class frmPODetail
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(531, 157)
+        Me.Label4.Location = New System.Drawing.Point(531, 151)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 20)
         Me.Label4.TabIndex = 47
@@ -535,7 +542,7 @@ Partial Class frmPODetail
         '
         'lblCreateDate
         '
-        Me.lblCreateDate.Location = New System.Drawing.Point(635, 129)
+        Me.lblCreateDate.Location = New System.Drawing.Point(635, 123)
         Me.lblCreateDate.Name = "lblCreateDate"
         Me.lblCreateDate.Size = New System.Drawing.Size(256, 20)
         Me.lblCreateDate.TabIndex = 50
@@ -543,7 +550,7 @@ Partial Class frmPODetail
         '
         'lblUpdateDate
         '
-        Me.lblUpdateDate.Location = New System.Drawing.Point(635, 161)
+        Me.lblUpdateDate.Location = New System.Drawing.Point(635, 155)
         Me.lblUpdateDate.Name = "lblUpdateDate"
         Me.lblUpdateDate.Size = New System.Drawing.Size(256, 20)
         Me.lblUpdateDate.TabIndex = 51
@@ -558,6 +565,30 @@ Partial Class frmPODetail
         Me.txtPONo.Size = New System.Drawing.Size(256, 20)
         Me.txtPONo.TabIndex = 0
         Me.txtPONo.Tag = ""
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'Label9
+        '
+        Me.Label9.Location = New System.Drawing.Point(16, 58)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(96, 20)
+        Me.Label9.TabIndex = 96
+        Me.Label9.Text = "Delivery Date :"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtDeliveryDate
+        '
+        Me.txtDeliveryDate.Enabled = False
+        Me.txtDeliveryDate.Location = New System.Drawing.Point(120, 58)
+        Me.txtDeliveryDate.MaxLength = 10
+        Me.txtDeliveryDate.Name = "txtDeliveryDate"
+        Me.txtDeliveryDate.ReadOnly = True
+        Me.txtDeliveryDate.Size = New System.Drawing.Size(256, 20)
+        Me.txtDeliveryDate.TabIndex = 95
+        Me.txtDeliveryDate.Tag = ""
         '
         'frmPODetail
         '
@@ -584,11 +615,12 @@ Partial Class frmPODetail
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtInvtyDesc As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
     Friend WithEvents DataGridTextBoxColumn9 As System.Windows.Forms.DataGridTextBoxColumn
     Friend WithEvents cmdAdd As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -620,10 +652,10 @@ Partial Class frmPODetail
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents txtUnitPrice As System.Windows.Forms.TextBox
+    Friend WithEvents txtUnitCost As System.Windows.Forms.TextBox
     Friend WithEvents lblUpdateBy As System.Windows.Forms.Label
     Friend WithEvents txtAmount As System.Windows.Forms.TextBox
-    Friend WithEvents txtInvtyCode As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemCode As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -637,4 +669,7 @@ Partial Class frmPODetail
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtSpecs As System.Windows.Forms.TextBox
     Friend WithEvents DataGridTextBoxColumn12 As System.Windows.Forms.DataGridTextBoxColumn
+    Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtDeliveryDate As System.Windows.Forms.TextBox
 End Class

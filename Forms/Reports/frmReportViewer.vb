@@ -354,6 +354,60 @@ Public Class frmReportViewer
                     myReport.DataDefinition.FormulaFields("printedby").Text = "'Printed by : " + gUserID + "'"
                     myReport.SetDataSource(myDataset.Tables("Table1"))
                     CrystalReportViewer1.ReportSource = myReport
+
+                Case "Item Master List Report"
+                    Dim myDialogBox As New frmDialogBox
+                    Dim myConnection As New SqlConnection
+                    With myConnection
+                        .ConnectionString = ServerPath2
+                        .Open()
+                    End With
+
+                    Dim myCommand As New SqlCommand
+                    With myCommand
+                        .Connection = myConnection
+                        .CommandText = "Item_Report"
+                        .CommandType = CommandType.StoredProcedure
+                    End With
+
+                    Dim myDataAdapter As New SqlDataAdapter
+                    myDataAdapter.SelectCommand = myCommand
+                    Dim myDataset As New DataSet
+                    myDataset.Tables.Add("Table1")
+                    myDataAdapter.Fill(myDataset, "Table1")
+
+                    Dim myReport As New crItems
+                    myReport.DataDefinition.FormulaFields("printedby").Text = "'Printed by : " + gUserID + "'"
+                    myReport.SetDataSource(myDataset.Tables("Table1"))
+                    CrystalReportViewer1.ReportSource = myReport
+
+                Case "Segment Forecasts"
+                    Dim myDialogBox As New frmDialogBox
+                    Dim myConnection As New SqlConnection
+                    With myConnection
+                        .ConnectionString = ServerPath2
+                        .Open()
+                    End With
+
+                    Dim myCommand As New SqlCommand
+                    With myCommand
+                        .Connection = myConnection
+                        .CommandText = "Forecasts_Report"
+                        .CommandType = CommandType.StoredProcedure
+                    End With
+
+                    Dim myDataAdapter As New SqlDataAdapter
+                    myDataAdapter.SelectCommand = myCommand
+                    Dim myDataset As New DataSet
+                    myDataset.Tables.Add("Table1")
+                    myDataAdapter.Fill(myDataset, "Table1")
+
+                    Dim myReport As New crForecasts
+                    myReport.DataDefinition.FormulaFields("printedby").Text = "'Printed by : " + gUserID + "'"
+                    myReport.SetDataSource(myDataset.Tables("Table1"))
+                    CrystalReportViewer1.ReportSource = myReport
+
+
             End Select
         Catch ex As Exception
             MessageBox.Show(ex.GetBaseException.ToString)

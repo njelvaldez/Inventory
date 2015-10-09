@@ -122,6 +122,17 @@ Module DataMapHelper
         End Try
         Return RemoteDataSet
     End Function
+    Public Function Util_MetroDrugItem_SelectMDIItemCode() As DataSet
+        Dim RemoteDataSet As New DataSet
+        Try
+            RemoteDataSet.Tables.Add("Table1")
+            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+            BusinessObject.Sub_Show(ServerPath2, "Util_MetroDrugItem_SelectItemCode", CommandType.StoredProcedure, RemoteDataSet, "Table1")
+        Catch ex As Exception
+
+        End Try
+        Return RemoteDataSet
+    End Function
 
     Public Function Util_Promats_Select() As DataSet
         Dim RemoteDataSet As New DataSet

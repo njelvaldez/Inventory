@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports CrystalDecisions.CrystalReports.Engine
-Public Class frmForecast
+Public Class frmISupplier
     Private RemoteDataSet As New DataSet
     Private EditMode As Boolean = False
     Private ModuleName As String = "SUPPLIER MASTER FILE"
@@ -80,7 +80,7 @@ Public Class frmForecast
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(7) As SqlParameter
+            Dim Params(9) As SqlParameter
             Dim SUPLCODE As New SqlParameter("@SUPLCODE", SqlDbType.VarChar, 5) : SUPLCODE.Direction = ParameterDirection.Input : SUPLCODE.Value = txtSuplCode.Text : Params(0) = SUPLCODE
             Dim SUPLNAME As New SqlParameter("@SUPLNAME", SqlDbType.VarChar, 50) : SUPLNAME.Direction = ParameterDirection.Input : SUPLNAME.Value = txtSuplName.Text : Params(1) = SUPLNAME
             Dim ADDRESS1 As New SqlParameter("@ADDRESS1", SqlDbType.VarChar, 50) : ADDRESS1.Direction = ParameterDirection.Input : ADDRESS1.Value = txtAddress1.Text : Params(2) = ADDRESS1
@@ -89,6 +89,8 @@ Public Class frmForecast
             Dim CONTACTNO As New SqlParameter("@CONTACTNO", SqlDbType.VarChar, 12) : CONTACTNO.Direction = ParameterDirection.Input : CONTACTNO.Value = txtContactNo.Text : Params(5) = CONTACTNO
             Dim PAYMENTTERM As New SqlParameter("@PAYMENTTERM", SqlDbType.VarChar, 10) : PAYMENTTERM.Direction = ParameterDirection.Input : PAYMENTTERM.Value = txtPayTerm.Text : Params(6) = PAYMENTTERM
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(7) = UPDATEBY
+            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Money, 12) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToDecimal(txtLeadTime.Text) : Params(8) = Leadtime
+            Dim Processing As New SqlParameter("@Processing", SqlDbType.Money, 12) : Processing.Direction = ParameterDirection.Input : Processing.Value = Convert.ToDecimal(txtProcessing.Text) : Params(9) = Processing
             If ItemExists() Then
                 MsgBox("Supplier Code : " & txtSuplCode.Text & ", Name : " & txtSuplName.Text & " already exists!")
             Else
@@ -104,7 +106,7 @@ Public Class frmForecast
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(8) As SqlParameter
+            Dim Params(10) As SqlParameter
             Dim ROWID As New SqlParameter("@ROWID", SqlDbType.Int, 10) : ROWID.Direction = ParameterDirection.Input : ROWID.Value = Convert.ToInt16(txtRowid.Text) : Params(0) = ROWID
             Dim SUPLCODE As New SqlParameter("@SUPLCODE", SqlDbType.VarChar, 5) : SUPLCODE.Direction = ParameterDirection.Input : SUPLCODE.Value = txtSuplCode.Text : Params(1) = SUPLCODE
             Dim SUPLNAME As New SqlParameter("@SUPLNAME", SqlDbType.VarChar, 50) : SUPLNAME.Direction = ParameterDirection.Input : SUPLNAME.Value = txtSuplName.Text : Params(2) = SUPLNAME
@@ -114,6 +116,8 @@ Public Class frmForecast
             Dim CONTACTNO As New SqlParameter("@CONTACTNO", SqlDbType.VarChar, 12) : CONTACTNO.Direction = ParameterDirection.Input : CONTACTNO.Value = txtContactNo.Text : Params(6) = CONTACTNO
             Dim PAYMENTTERM As New SqlParameter("@PAYMENTTERM", SqlDbType.VarChar, 10) : PAYMENTTERM.Direction = ParameterDirection.Input : PAYMENTTERM.Value = txtPayTerm.Text : Params(7) = PAYMENTTERM
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(8) = UPDATEBY
+            Dim Leadtime As New SqlParameter("@Leadtime", SqlDbType.Money, 12) : Leadtime.Direction = ParameterDirection.Input : Leadtime.Value = Convert.ToDecimal(txtLeadTime.Text) : Params(9) = Leadtime
+            Dim Processing As New SqlParameter("@Processing", SqlDbType.Money, 12) : Processing.Direction = ParameterDirection.Input : Processing.Value = Convert.ToDecimal(txtProcessing.Text) : Params(10) = Processing
             BusinessObject.Sub_Insert(ServerPath2, "ISupplier_Update", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("ISupplier_Update")
         Catch ex As Exception
@@ -146,26 +150,32 @@ Public Class frmForecast
 
     End Sub
     Private Sub Sub_Select(ByVal dbParams() As String, ByVal UpdateMode As String)
-        'select case if add,edit or delete
-        Dim i As Integer
-        Dim myRowid As Integer
-        Select Case UpdateMode
-            Case "Insert"
-                Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-                myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "ISupplier_GetInsertedRowid", CommandType.StoredProcedure))
-            Case "Update"
-                myRowid = CInt(dbParams(0))
-        End Select
-        For i = 0 To (RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count - 1)
-            With DataGrid1
-                If myRowid = CInt(.Item(i, 0)) Then
-                    .CurrentCell = New DataGridCell(i, 0)
-                    Dim e As System.EventArgs
-                    DataGrid1_Click(Me, e)
-                    Exit For
-                End If
-            End With
-        Next
+        Try
+            'select case if add,edit or delete
+            Dim i As Integer
+            Dim myRowid As Integer
+            Select Case UpdateMode
+                Case "Insert"
+                    Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+                    myRowid = CInt(BusinessObject.Sub_ReturnIntegerResult(ServerPath2, "ISupplier_GetInsertedRowid", CommandType.StoredProcedure))
+                Case "Update"
+                    myRowid = CInt(dbParams(0))
+            End Select
+            For i = 0 To (RemoteDataSet.Tables("ProductFormCT_Show").Rows.Count - 1)
+                With DataGrid1
+                    If myRowid = CInt(.Item(i, 0)) Then
+                        .CurrentCell = New DataGridCell(i, 0)
+                        Dim e As System.EventArgs
+                        DataGrid1_Click(Me, e)
+                        Exit For
+                    End If
+                End With
+            Next
+
+        Catch ex As Exception
+            MsgBox("Error in Supplier : " & ex.Message)
+
+        End Try
     End Sub
     'Private Sub Sub_Delete()
     '    Try
@@ -217,6 +227,8 @@ Public Class frmForecast
                 lblCreateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 8))
                 lblUpdateDate.Text = CStr(.Item(.CurrentCell.RowNumber, 9))
                 lblUpdateBy.Text = CStr(.Item(.CurrentCell.RowNumber, 10))
+                txtLeadTime.Text = CStr(.Item(.CurrentCell.RowNumber, 11))
+                txtProcessing.Text = CStr(.Item(.CurrentCell.RowNumber, 12))
                 .Select(.CurrentCell.RowNumber)
             End With
         Catch ex As Exception
@@ -293,6 +305,10 @@ Public Class frmForecast
     End Sub
 
     Private Sub DataGrid1_Navigate(sender As Object, ne As NavigateEventArgs) Handles DataGrid1.Navigate
+
+    End Sub
+
+    Private Sub txtLeadTime_TextChanged(sender As Object, e As EventArgs) Handles txtLeadTime.TextChanged
 
     End Sub
 End Class
