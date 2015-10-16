@@ -191,7 +191,7 @@ Partial Class frmForecasts
         '
         'Button1
         '
-        Me.Button1.Image = Global.InventoryDashboard2014.My.Resources.Resources.Product_sale_report_icon
+        Me.Button1.Image = Global.TradeInventory.My.Resources.Resources.Product_sale_report_icon
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(767, 590)
         Me.Button1.Name = "Button1"
@@ -202,7 +202,7 @@ Partial Class frmForecasts
         '
         'btnSearch
         '
-        Me.btnSearch.Image = Global.InventoryDashboard2014.My.Resources.Resources.Search_icon
+        Me.btnSearch.Image = Global.TradeInventory.My.Resources.Resources.Search_icon
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSearch.Location = New System.Drawing.Point(396, 590)
         Me.btnSearch.Name = "btnSearch"
@@ -347,7 +347,7 @@ Partial Class frmForecasts
         'btnDivLookup
         '
         Me.btnDivLookup.Enabled = False
-        Me.btnDivLookup.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
+        Me.btnDivLookup.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
         Me.btnDivLookup.Location = New System.Drawing.Point(385, 92)
         Me.btnDivLookup.Name = "btnDivLookup"
         Me.btnDivLookup.Size = New System.Drawing.Size(47, 22)
@@ -378,7 +378,7 @@ Partial Class frmForecasts
         'btnItemLookUp
         '
         Me.btnItemLookUp.Enabled = False
-        Me.btnItemLookUp.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
+        Me.btnItemLookUp.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
         Me.btnItemLookUp.Location = New System.Drawing.Point(385, 31)
         Me.btnItemLookUp.Name = "btnItemLookUp"
         Me.btnItemLookUp.Size = New System.Drawing.Size(47, 22)

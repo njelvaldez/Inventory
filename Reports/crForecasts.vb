@@ -45,7 +45,7 @@ Public Class crForecasts
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crForecasts.rpt"
+            Return "TradeInventory.crForecasts.rpt"
         End Get
         Set
             'Do nothing

@@ -45,7 +45,7 @@ Public Class crISSMReportBackup
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crISSMReportBackup.rpt"
+            Return "TradeInventory.crISSMReportBackup.rpt"
         End Get
         Set
             'Do nothing

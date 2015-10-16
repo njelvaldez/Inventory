@@ -7,10 +7,10 @@
     <ProjectGuid>{C64E74A6-F665-4A1C-A93E-1B65BBB92C43}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>inventory_maintenance.ico</ApplicationIcon>
+    <ApplicationIcon>Inventory_Icon8.ico</ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>InventoryDashboard2014</AssemblyName>
+    <AssemblyName>TradeInventory</AssemblyName>
     <AssemblyOriginatorKeyFile>inventory2014key.pfx</AssemblyOriginatorKeyFile>
     <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -21,8 +21,8 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionExplicit>On</OptionExplicit>
     <OptionStrict>Off</OptionStrict>
-    <RootNamespace>InventoryDashboard2014</RootNamespace>
-    <StartupObject>InventoryDashboard2014.loginform</StartupObject>
+    <RootNamespace>TradeInventory</RootNamespace>
+    <StartupObject>TradeInventory.loginform</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
@@ -33,7 +33,7 @@
     </UpgradeBackupLocation>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <PublishUrl>C:\Deploy\ScoresSetup\</PublishUrl>
+    <PublishUrl>C:\Deploy\TradeInventory\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -43,8 +43,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\172.22.4.27\Inventory2014ClickOnceServer\</InstallUrl>
-    <ApplicationRevision>31</ApplicationRevision>
+    <InstallUrl>\\172.22.4.27\TradeInventory Click Once\</InstallUrl>
+    <ApplicationRevision>35</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -52,7 +52,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>InventoryDashboard2014.xml</DocumentationFile>
+    <DocumentationFile>TradeInventory.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
@@ -72,7 +72,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>InventoryDashboard2014.xml</DocumentationFile>
+    <DocumentationFile>TradeInventory.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
@@ -236,10 +236,52 @@
     <Compile Include="Forms\File\frmUsers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Reports\frmInventoryReport.Designer.vb">
+      <DependentUpon>frmInventoryReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmInventoryReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Reports\frmReportViewer.Designer.vb">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\frmReportViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmAdjustment.Designer.vb">
+      <DependentUpon>frmAdjustment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmAdjustment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDAdjustment.Designer.vb">
+      <DependentUpon>frmDAdjustment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDAdjustment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDIssue.Designer.vb">
+      <DependentUpon>frmDIssue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDIssue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDReceive.Designer.vb">
+      <DependentUpon>frmDReceive.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDReceive.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmHIssue.Designer.vb">
+      <DependentUpon>frmHIssue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmHIssue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmHReceive.Designer.vb">
+      <DependentUpon>frmHReceive.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmHReceive.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Transactions\frmPODetail.Designer.vb">
@@ -260,6 +302,7 @@
     <Compile Include="Forms\Transactions\frmProcessMDI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modules\InventoryReportHelper.vb" />
     <Compile Include="Modules\ISpecialistHelper.vb" />
     <Compile Include="Modules\ISupplier.vb" />
     <Compile Include="Modules\PODetailHelper.vb" />
@@ -348,12 +391,6 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\crSamples.vb">
-      <DependentUpon>crSamples.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Reports\crPromats.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -381,8 +418,29 @@
     <EmbeddedResource Include="Forms\File\frmUsers.resx">
       <DependentUpon>frmUsers.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmInventoryReport.resx">
+      <DependentUpon>frmInventoryReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\frmReportViewer.resx">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmAdjustment.resx">
+      <DependentUpon>frmAdjustment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmDAdjustment.resx">
+      <DependentUpon>frmDAdjustment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmDIssue.resx">
+      <DependentUpon>frmDIssue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmDReceive.resx">
+      <DependentUpon>frmDReceive.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmHIssue.resx">
+      <DependentUpon>frmHIssue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmHReceive.resx">
+      <DependentUpon>frmHReceive.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\frmPODetail.resx">
       <DependentUpon>frmPODetail.vb</DependentUpon>
@@ -445,10 +503,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crPromatsAllocations.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crSamples.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crSamples1.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crPromats.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crPromats.vb</LastGenOutput>
@@ -470,6 +524,7 @@
     <None Include="Images\1Password-icon.png" />
     <None Include="Images\upload.png" />
     <None Include="Images\fileupload.png" />
+    <Content Include="Inventory_Icon8.ico" />
     <Content Include="inventory_maintenance.ico" />
     <None Include="bin\Alarm-Tick-icon.png" />
     <Content Include="Barcode.ico" />

@@ -220,7 +220,7 @@ Partial Class frmRoleModules
         '
         'Button1
         '
-        Me.Button1.Image = Global.InventoryDashboard2014.My.Resources.Resources.Product_sale_report_icon
+        Me.Button1.Image = Global.TradeInventory.My.Resources.Resources.Product_sale_report_icon
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(767, 590)
         Me.Button1.Name = "Button1"
@@ -231,7 +231,7 @@ Partial Class frmRoleModules
         '
         'btnSearch
         '
-        Me.btnSearch.Image = Global.InventoryDashboard2014.My.Resources.Resources.Search_icon
+        Me.btnSearch.Image = Global.TradeInventory.My.Resources.Resources.Search_icon
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSearch.Location = New System.Drawing.Point(396, 590)
         Me.btnSearch.Name = "btnSearch"
@@ -455,7 +455,7 @@ Partial Class frmRoleModules
         'btnRoleLookUp
         '
         Me.btnRoleLookUp.Enabled = False
-        Me.btnRoleLookUp.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
+        Me.btnRoleLookUp.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
         Me.btnRoleLookUp.Location = New System.Drawing.Point(385, 34)
         Me.btnRoleLookUp.Name = "btnRoleLookUp"
         Me.btnRoleLookUp.Size = New System.Drawing.Size(47, 22)
@@ -466,7 +466,7 @@ Partial Class frmRoleModules
         'btnModuleLookup
         '
         Me.btnModuleLookup.Enabled = False
-        Me.btnModuleLookup.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
+        Me.btnModuleLookup.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
         Me.btnModuleLookup.Location = New System.Drawing.Point(385, 64)
         Me.btnModuleLookup.Name = "btnModuleLookup"
         Me.btnModuleLookup.Size = New System.Drawing.Size(47, 22)

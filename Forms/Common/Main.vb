@@ -84,6 +84,8 @@ Public Class Main
     Friend WithEvents MenuItem43 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem45 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem47 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem48 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem49 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem129 As System.Windows.Forms.MenuItem
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -103,6 +105,7 @@ Public Class Main
         Me.MenuItem39 = New System.Windows.Forms.MenuItem()
         Me.MenuItem38 = New System.Windows.Forms.MenuItem()
         Me.MenuItem37 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem49 = New System.Windows.Forms.MenuItem()
         Me.MenuItem129 = New System.Windows.Forms.MenuItem()
         Me.MenuItem28 = New System.Windows.Forms.MenuItem()
         Me.MenuItem29 = New System.Windows.Forms.MenuItem()
@@ -111,6 +114,7 @@ Public Class Main
         Me.MenuItem42 = New System.Windows.Forms.MenuItem()
         Me.MenuItem41 = New System.Windows.Forms.MenuItem()
         Me.MenuItem40 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem48 = New System.Windows.Forms.MenuItem()
         Me.MenuItem5 = New System.Windows.Forms.MenuItem()
         Me.MenuItem2 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
@@ -207,7 +211,7 @@ Public Class Main
         'MenuItem45
         '
         Me.MenuItem45.Index = 2
-        Me.MenuItem45.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem39, Me.MenuItem38, Me.MenuItem37})
+        Me.MenuItem45.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem39, Me.MenuItem38, Me.MenuItem37, Me.MenuItem49})
         Me.MenuItem45.Text = "IMS Inventory"
         '
         'MenuItem39
@@ -218,12 +222,17 @@ Public Class Main
         'MenuItem38
         '
         Me.MenuItem38.Index = 1
-        Me.MenuItem38.Text = "Issuance"
+        Me.MenuItem38.Text = "Issuance (SARS,MDI)"
         '
         'MenuItem37
         '
         Me.MenuItem37.Index = 2
         Me.MenuItem37.Text = "Receiving"
+        '
+        'MenuItem49
+        '
+        Me.MenuItem49.Index = 3
+        Me.MenuItem49.Text = "Transfer (FG,QUALITY,WIP)"
         '
         'MenuItem129
         '
@@ -244,7 +253,7 @@ Public Class Main
         'MenuItem11
         '
         Me.MenuItem11.Index = 3
-        Me.MenuItem11.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem47})
+        Me.MenuItem11.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem47, Me.MenuItem48})
         Me.MenuItem11.Text = "Reports"
         '
         'MenuItem47
@@ -267,6 +276,11 @@ Public Class Main
         '
         Me.MenuItem40.Index = 2
         Me.MenuItem40.Text = "Receiving"
+        '
+        'MenuItem48
+        '
+        Me.MenuItem48.Index = 1
+        Me.MenuItem48.Text = "Inventory Report"
         '
         'MenuItem5
         '
@@ -450,9 +464,9 @@ Public Class Main
         Process.Start(documentpath + "USERSMANUAL.DOCX")
     End Sub
 
-  
 
- 
+
+
 
 
     Private Sub MenuItem12_Click(sender As Object, e As EventArgs) Handles MenuItem12.Click
@@ -615,6 +629,42 @@ Public Class Main
     Private Sub MenuItem43_Click(sender As Object, e As EventArgs) Handles MenuItem43.Click
         If AccessIsAlowed(gUserID, "SEGMENT FORECASTS") Then
             Dim myLoadedForm As New frmProcessMDI
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
+    End Sub
+
+    Private Sub MenuItem48_Click(sender As Object, e As EventArgs) Handles MenuItem48.Click
+        If AccessIsAlowed(gUserID, "INVENTORY REPORT") Then
+            Dim myLoadedForm As New frmInventoryReport
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
+    End Sub
+
+    Private Sub MenuItem39_Click(sender As Object, e As EventArgs) Handles MenuItem39.Click
+        If AccessIsAlowed(gUserID, "INVENTORY ADJUSTMENT") Then
+            Dim myLoadedForm As New frmAdjustment
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
+    End Sub
+
+    Private Sub MenuItem37_Click(sender As Object, e As EventArgs) Handles MenuItem37.Click
+        If AccessIsAlowed(gUserID, "RECEIVE INVENTORY") Then
+            Dim myLoadedForm As New frmHReceive
+            FrmShw(myLoadedForm)
+        Else
+            MsgBox("User acces is not allowed!")
+        End If
+    End Sub
+
+    Private Sub MenuItem38_Click(sender As Object, e As EventArgs) Handles MenuItem38.Click
+        If AccessIsAlowed(gUserID, "ISSUE INVENTORY") Then
+            Dim myLoadedForm As New frmHIssue
             FrmShw(myLoadedForm)
         Else
             MsgBox("User acces is not allowed!")

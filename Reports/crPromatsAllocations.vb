@@ -45,7 +45,7 @@ Public Class crPromatsAllocations
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crPromatsAllocations.rpt"
+            Return "TradeInventory.crPromatsAllocations.rpt"
         End Get
         Set
             'Do nothing
@@ -123,9 +123,9 @@ Public Class crPromatsAllocations
             Return Me.ReportDefinition.Sections(8)
         End Get
     End Property
-
-    <Browsable(False), _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Parameter_MONTHYEAR() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(0)

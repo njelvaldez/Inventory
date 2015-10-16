@@ -45,7 +45,7 @@ Public Class crPurchaseOrder
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crPurchaseOrder.rpt"
+            Return "TradeInventory.crPurchaseOrder.rpt"
         End Get
         Set
             'Do nothing

@@ -45,7 +45,7 @@ Public Class crItems
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crItems.rpt"
+            Return "TradeInventory.crItems.rpt"
         End Get
         Set
             'Do nothing

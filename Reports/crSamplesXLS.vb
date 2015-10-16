@@ -45,7 +45,7 @@ Public Class crSamplesXLS
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crSamplesXLS.rpt"
+            Return "TradeInventory.crSamplesXLS.rpt"
         End Get
         Set
             'Do nothing

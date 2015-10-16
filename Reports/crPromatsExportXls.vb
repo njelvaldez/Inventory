@@ -45,7 +45,7 @@ Public Class crPromatsExportXls
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crPromatsExportXls.rpt"
+            Return "TradeInventory.crPromatsExportXls.rpt"
         End Get
         Set
             'Do nothing

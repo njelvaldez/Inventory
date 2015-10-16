@@ -94,7 +94,7 @@ Partial Class frmChangePassword
         '
         'btnApply
         '
-        Me.btnApply.Image = Global.InventoryDashboard2014.My.Resources.Resources._1Password_icon2
+        Me.btnApply.Image = Global.TradeInventory.My.Resources.Resources._1Password_icon2
         Me.btnApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnApply.Location = New System.Drawing.Point(166, 128)
         Me.btnApply.Name = "btnApply"

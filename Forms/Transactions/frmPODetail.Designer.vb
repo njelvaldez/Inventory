@@ -148,7 +148,7 @@ Partial Class frmPODetail
         'btnItem
         '
         Me.btnItem.Enabled = False
-        Me.btnItem.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
+        Me.btnItem.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
         Me.btnItem.Location = New System.Drawing.Point(385, 82)
         Me.btnItem.Name = "btnItem"
         Me.btnItem.Size = New System.Drawing.Size(52, 26)
@@ -305,7 +305,7 @@ Partial Class frmPODetail
         '
         'Button1
         '
-        Me.Button1.Image = Global.InventoryDashboard2014.My.Resources.Resources.Product_sale_report_icon
+        Me.Button1.Image = Global.TradeInventory.My.Resources.Resources.Product_sale_report_icon
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(767, 590)
         Me.Button1.Name = "Button1"
@@ -316,7 +316,7 @@ Partial Class frmPODetail
         '
         'btnSearch
         '
-        Me.btnSearch.Image = Global.InventoryDashboard2014.My.Resources.Resources.Search_icon
+        Me.btnSearch.Image = Global.TradeInventory.My.Resources.Resources.Search_icon
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSearch.Location = New System.Drawing.Point(396, 590)
         Me.btnSearch.Name = "btnSearch"

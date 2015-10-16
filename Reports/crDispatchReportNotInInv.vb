@@ -45,7 +45,7 @@ Public Class crDispatchReportNotInInv
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crDispatchReportNotInInv.rpt"
+            Return "TradeInventory.crDispatchReportNotInInv.rpt"
         End Get
         Set
             'Do nothing

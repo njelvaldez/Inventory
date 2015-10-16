@@ -38,7 +38,7 @@ Partial Class frmProcessMDI
         '
         'Button1
         '
-        Me.Button1.Image = Global.InventoryDashboard2014.My.Resources.Resources.fileupload
+        Me.Button1.Image = Global.TradeInventory.My.Resources.Resources.fileupload
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.Location = New System.Drawing.Point(750, 602)
         Me.Button1.Name = "Button1"
@@ -80,7 +80,7 @@ Partial Class frmProcessMDI
         '
         'btnopentemplate
         '
-        Me.btnopentemplate.Image = Global.InventoryDashboard2014.My.Resources.Resources.search_icon_new
+        Me.btnopentemplate.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
         Me.btnopentemplate.Location = New System.Drawing.Point(594, 23)
         Me.btnopentemplate.Name = "btnopentemplate"
         Me.btnopentemplate.Size = New System.Drawing.Size(43, 22)

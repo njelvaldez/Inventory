@@ -85,7 +85,7 @@ Public Class frmPODetail
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(7) As SqlParameter
+            Dim Params(8) As SqlParameter
             Dim PONO As New SqlParameter("@PONO", SqlDbType.VarChar, 10) : PONO.Direction = ParameterDirection.Input : PONO.Value = txtPONo.Text : Params(0) = PONO
             Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10) : ITEMCODE.Direction = ParameterDirection.Input : ITEMCODE.Value = txtITEMCODE.Text : Params(1) = ITEMCODE
             Dim QTY As New SqlParameter("@QTY", SqlDbType.Decimal, 10) : QTY.Direction = ParameterDirection.Input : QTY.Value = txtQty.Text : Params(2) = QTY
@@ -94,6 +94,7 @@ Public Class frmPODetail
             Dim COSTCENTER As New SqlParameter("@COSTCENTER", SqlDbType.VarChar, 250) : COSTCENTER.Direction = ParameterDirection.Input : COSTCENTER.Value = txtCostCenter.Text : Params(5) = COSTCENTER
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(6) = UPDATEBY
             Dim SPECIFICATIONS As New SqlParameter("@SPECIFICATIONS", SqlDbType.VarChar, 250) : SPECIFICATIONS.Direction = ParameterDirection.Input : SPECIFICATIONS.Value = txtSpecs.Text : Params(7) = SPECIFICATIONS
+            Dim DELIVERYDATE As New SqlParameter("@DELIVERYDATE", SqlDbType.DateTime, 10) : DELIVERYDATE.Direction = ParameterDirection.Input : DELIVERYDATE.Value = Convert.ToDateTime(txtDeliveryDate.Text) : Params(8) = DELIVERYDATE
             If ItemExists() Then
                 MsgBox("PO Number : " & txtPONo.Text & " and Inventory Description : " & txtITEMDESC.Text & " already exists!")
             Else
@@ -109,7 +110,7 @@ Public Class frmPODetail
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(8) As SqlParameter
+            Dim Params(9) As SqlParameter
             Dim PONO As New SqlParameter("@PONO", SqlDbType.VarChar, 10) : PONO.Direction = ParameterDirection.Input : PONO.Value = txtPONo.Text : Params(0) = PONO
             Dim ITEMCODE As New SqlParameter("@ITEMCODE", SqlDbType.VarChar, 10) : ITEMCODE.Direction = ParameterDirection.Input : ITEMCODE.Value = txtITEMCODE.Text : Params(1) = ITEMCODE
             Dim QTY As New SqlParameter("@QTY", SqlDbType.Decimal, 10) : QTY.Direction = ParameterDirection.Input : QTY.Value = txtQty.Text : Params(2) = QTY
@@ -119,6 +120,7 @@ Public Class frmPODetail
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(6) = UPDATEBY
             Dim ROWID As New SqlParameter("@ROWID", SqlDbType.Int, 10) : ROWID.Direction = ParameterDirection.Input : ROWID.Value = Convert.ToInt16(txtRowid.Text) : Params(7) = ROWID
             Dim SPECIFICATIONS As New SqlParameter("@SPECIFICATIONS", SqlDbType.VarChar, 250) : SPECIFICATIONS.Direction = ParameterDirection.Input : SPECIFICATIONS.Value = txtSpecs.Text : Params(8) = SPECIFICATIONS
+            Dim DELIVERYDATE As New SqlParameter("@DELIVERYDATE", SqlDbType.DateTime, 10) : DELIVERYDATE.Direction = ParameterDirection.Input : DELIVERYDATE.Value = Convert.ToDateTime(txtDeliveryDate.Text) : Params(9) = DELIVERYDATE
             BusinessObject.Sub_Insert(ServerPath2, "IPODetail_Update", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("IPODetail_Update")
         Catch ex As Exception

@@ -45,7 +45,7 @@ Public Class crRoleModules
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "InventoryDashboard2014.crRoleModules.rpt"
+            Return "TradeInventory.crRoleModules.rpt"
         End Get
         Set
             'Do nothing

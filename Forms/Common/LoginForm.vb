@@ -108,7 +108,7 @@ Public Class loginform
         Me.MinimizeBox = False
         Me.Name = "loginform"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "NMPC Inventory 2014 Login"
+        Me.Text = "NMPC Trade Inventory Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
