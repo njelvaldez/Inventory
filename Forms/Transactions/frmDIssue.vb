@@ -76,6 +76,12 @@ Public Class frmDIssue
            txtQty.Text.ToString <> "" And txtItemCode.Text.ToString <> "" Then
             retval = True
         End If
+        If txtQty.Text.ToString <> "" And txtavailableqty.Text.ToString <> "" Then
+            If Convert.ToDecimal(txtQty.Text) > Convert.ToDecimal(txtavailableqty.Text) Then
+                retval = False
+                MsgBox("Available Quantity is insufficient!")
+            End If
+        End If
         Return retval
     End Function
     Private Sub Sub_Insert()
@@ -238,10 +244,7 @@ Public Class frmDIssue
         RemoteDataSet.Tables.Add("ProductFormCT_Show")
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim myLoadedForm As New frmReportViewer
-        myLoadedForm.Report = "Issued Inventory Report"
-        myLoadedForm.Status = "ALL"
-        myLoadedForm.PONO = txtIssNo.Text
+        Dim myLoadedForm As New frmIssuanceReport
         myLoadedForm.ShowDialog()
     End Sub
 
@@ -261,7 +264,7 @@ Public Class frmDIssue
         myLoadedForm.ShowDialog(Me)
         txtItemCode.Text = gCode
         txtItemDesc.Text = gDesc
-        txtQty.Focus()
+        txtLotNo.Focus()
     End Sub
 
     Private Sub btnLocationLookup_Click(sender As Object, e As EventArgs) Handles btnLocationLookup.Click
@@ -302,6 +305,9 @@ Public Class frmDIssue
                 'Lotno already exists, populate Expirationdate
                 dtexpdate.Value = lotexpdate
                 dtexpdate.Enabled = False
+            End If
+            If txtLocCode.Text.ToString <> "" And txtItemCode.Text.ToString <> "" Then
+                txtavailableqty.Text = IMSStkcardEndQty(txtItemCode.Text, txtLotNo.Text, txtLocCode.Text)
             End If
         End If
     End Sub

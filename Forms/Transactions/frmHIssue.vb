@@ -12,6 +12,7 @@ Public Class frmHIssue
             EnableCodeAndDesc(False)
             modControlBehavior.SetBackgroundControlsGroup(Me)
             'set default noted and approved
+            txtIssDate.Text = DateTime.Now.ToShortDateString
             btnIssueTypeLookup_Click(sender, e)
         End If
     End Sub
@@ -77,10 +78,11 @@ Public Class frmHIssue
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(2) As SqlParameter
+            Dim Params(3) As SqlParameter
             Dim ISSNO As New SqlParameter("@ISSNO", SqlDbType.VarChar, 10) : ISSNO.Direction = ParameterDirection.Input : ISSNO.Value = txtISSNO.Text : Params(0) = ISSNO
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(1) = UPDATEBY
             Dim ISSCODE As New SqlParameter("@ISSCODE", SqlDbType.VarChar, 5) : ISSCODE.Direction = ParameterDirection.Input : ISSCODE.Value = txtIssCode.Text : Params(2) = ISSCODE
+            Dim ISSDATE As New SqlParameter("@ISSDATE", SqlDbType.DateTime, 10) : ISSDATE.Direction = ParameterDirection.Input : ISSDATE.Value = Convert.ToDateTime(txtIssDate.Text) : Params(3) = ISSDATE
             BusinessObject.Sub_Insert(ServerPath2, "HIssue_Insert", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("HIssue_Insert")
         Catch ex As Exception
@@ -92,11 +94,12 @@ Public Class frmHIssue
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(3) As SqlParameter
+            Dim Params(4) As SqlParameter
             Dim HIID As New SqlParameter("@HIID", SqlDbType.Int, 10) : HIID.Direction = ParameterDirection.Input : HIID.Value = Convert.ToInt16(txtRowid.Text) : Params(0) = HIID
             Dim ISSNO As New SqlParameter("@ISSNO", SqlDbType.VarChar, 10) : ISSNO.Direction = ParameterDirection.Input : ISSNO.Value = txtISSNO.Text : Params(1) = ISSNO
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(2) = UPDATEBY
             Dim ISSCODE As New SqlParameter("@ISSCODE", SqlDbType.VarChar, 5) : ISSCODE.Direction = ParameterDirection.Input : ISSCODE.Value = txtIssCode.Text : Params(3) = ISSCODE
+            Dim ISSDATE As New SqlParameter("@ISSDATE", SqlDbType.DateTime, 10) : ISSDATE.Direction = ParameterDirection.Input : ISSDATE.Value = Convert.ToDateTime(txtIssDate.Text) : Params(4) = ISSDATE
 
             BusinessObject.Sub_Insert(ServerPath2, "HIssue_Update", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("HIssue_Update")

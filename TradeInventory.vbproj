@@ -44,7 +44,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\172.22.4.27\TradeInventory Click Once\</InstallUrl>
-    <ApplicationRevision>35</ApplicationRevision>
+    <ApplicationRevision>38</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -236,16 +236,58 @@
     <Compile Include="Forms\File\frmUsers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Reports\frmAdjustmentReport.Designer.vb">
+      <DependentUpon>frmAdjustmentReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmAdjustmentReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Reports\frmInventoryReport.Designer.vb">
       <DependentUpon>frmInventoryReport.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\frmInventoryReport.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Reports\frmInventoryReportSales.Designer.vb">
+      <DependentUpon>frmInventoryReportSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmInventoryReportSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmInventoryReportSalesandFcst.Designer.vb">
+      <DependentUpon>frmInventoryReportSalesandFcst.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmInventoryReportSalesandFcst.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmIssuanceReport.Designer.vb">
+      <DependentUpon>frmIssuanceReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmIssuanceReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReceiveReport.Designer.vb">
+      <DependentUpon>frmReceiveReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReceiveReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Reports\frmReportViewer.Designer.vb">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\frmReportViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmStockOverview.Designer.vb">
+      <DependentUpon>frmStockOverview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmStockOverview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTransferReport.Designer.vb">
+      <DependentUpon>frmTransferReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTransferReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Transactions\frmAdjustment.Designer.vb">
@@ -270,6 +312,12 @@
       <DependentUpon>frmDReceive.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transactions\frmDReceive.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDTransfer.Designer.vb">
+      <DependentUpon>frmDTransfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmDTransfer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Transactions\frmHIssue.Designer.vb">
@@ -300,6 +348,12 @@
       <DependentUpon>frmProcessMDI.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transactions\frmProcessMDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmTransfer.Designer.vb">
+      <DependentUpon>frmTransfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\frmTransfer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modules\InventoryReportHelper.vb" />
@@ -418,11 +472,32 @@
     <EmbeddedResource Include="Forms\File\frmUsers.resx">
       <DependentUpon>frmUsers.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmAdjustmentReport.resx">
+      <DependentUpon>frmAdjustmentReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\frmInventoryReport.resx">
       <DependentUpon>frmInventoryReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmInventoryReportSales.resx">
+      <DependentUpon>frmInventoryReportSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmInventoryReportSalesandFcst.resx">
+      <DependentUpon>frmInventoryReportSalesandFcst.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmIssuanceReport.resx">
+      <DependentUpon>frmIssuanceReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmReceiveReport.resx">
+      <DependentUpon>frmReceiveReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\frmReportViewer.resx">
       <DependentUpon>frmReportViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmStockOverview.resx">
+      <DependentUpon>frmStockOverview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmTransferReport.resx">
+      <DependentUpon>frmTransferReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\frmAdjustment.resx">
       <DependentUpon>frmAdjustment.vb</DependentUpon>
@@ -435,6 +510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\frmDReceive.resx">
       <DependentUpon>frmDReceive.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmDTransfer.resx">
+      <DependentUpon>frmDTransfer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\frmHIssue.resx">
       <DependentUpon>frmHIssue.vb</DependentUpon>
@@ -450,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\frmProcessMDI.resx">
       <DependentUpon>frmProcessMDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\frmTransfer.resx">
+      <DependentUpon>frmTransfer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crForecasts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

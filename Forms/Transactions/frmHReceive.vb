@@ -11,6 +11,7 @@ Public Class frmHReceive
             EditMode = False
             EnableCodeAndDesc(False)
             modControlBehavior.SetBackgroundControlsGroup(Me)
+            txtRecDate.Text = DateTime.Now.ToShortDateString
             'set default noted and approved
             txtRecNO.Focus()
         End If
@@ -77,9 +78,10 @@ Public Class frmHReceive
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(1) As SqlParameter
+            Dim Params(2) As SqlParameter
             Dim RECNO As New SqlParameter("@RECNO", SqlDbType.VarChar, 10) : RECNO.Direction = ParameterDirection.Input : RECNO.Value = txtRecNO.Text : Params(0) = RECNO
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(1) = UPDATEBY
+            Dim RECDATE As New SqlParameter("@RECDATE", SqlDbType.DateTime, 10) : RECDATE.Direction = ParameterDirection.Input : RECDATE.Value = Convert.ToDateTime(txtRecDate.Text) : Params(2) = RECDATE
             BusinessObject.Sub_Insert(ServerPath2, "HReceive_Insert", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("IPOHeader_Insert")
         Catch ex As Exception
@@ -91,10 +93,11 @@ Public Class frmHReceive
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(2) As SqlParameter
+            Dim Params(3) As SqlParameter
             Dim HRID As New SqlParameter("@HRID", SqlDbType.Int, 10) : HRID.Direction = ParameterDirection.Input : HRID.Value = Convert.ToInt16(txtRowid.Text) : Params(0) = HRID
             Dim RECNO As New SqlParameter("@RECNO", SqlDbType.VarChar, 10) : RECNO.Direction = ParameterDirection.Input : RECNO.Value = txtRecNO.Text : Params(1) = RECNO
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(2) = UPDATEBY
+            Dim RECDATE As New SqlParameter("@RECDATE", SqlDbType.DateTime, 10) : RECDATE.Direction = ParameterDirection.Input : RECDATE.Value = Convert.ToDateTime(txtRecDate.Text) : Params(3) = RECDATE
 
             BusinessObject.Sub_Insert(ServerPath2, "HReceive_Update", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("HReceive_Update")

@@ -14,6 +14,9 @@ Public Class frmInventoryReport
         Dim afterayear As String
         afterayear = DateTime.Now.Date.Month.ToString() + "/1/" + (DateTime.Now.Date.Year + 1).ToString()
         dtexpfrom.Text = afterayear
+        'Set Inventory From Date 
+        dtinvfrom.Value = DateAdd(DateInterval.Month, 1, StkcardLatestMonthYear())
+        dtinvto.Value = DateAdd(DateInterval.Month, 5, dtinvfrom.Value)
     End Sub
 
     Private Sub SetPath()
@@ -43,6 +46,7 @@ Public Class frmInventoryReport
         GenerateInventory()
         btnExportExcel_Click(sender, e)
         Me.Cursor = System.Windows.Forms.Cursors.Default
+        Process.Start(txtOutput.Text.ToString())
     End Sub
 
     Private Sub txtExpFrom_TextChanged_1(sender As Object, e As EventArgs)
@@ -87,13 +91,13 @@ Public Class frmInventoryReport
             StkcardReportInsertRecords(dsStkcardPrevbal, fromdate, todate)
 
             '4. Get and update Forecast,MoAve
-            GetAndUpdateForecast(fromdate, todate, itemdesc)
+            GetAndUpdateForecast(fromdate, todate, itemdesc, Convert.ToInt16(txtPercentFactor.Text))
 
             '5. Get and update Intransit
             GetAndUpdateIntransit(fromdate, todate, itemdesc)
 
             '6. Compute Balances : PrevBal, BegBal , EndBal
-            StkcardReportComputeBalances(fromdate, todate, itemdesc)
+            StkcardReportComputeBalances(fromdate, todate, itemdesc, Convert.ToInt16(txtPercentFactor.Text))
 
             'MsgBox("Generation of Inventory Report is complete!")
             'InventoryReportShow()
@@ -195,13 +199,15 @@ Public Class frmInventoryReport
             ws.PivotTables("PivotTable1").SourceData = "Source!R1C1:R" + (reccount + 1).ToString.Trim + "C16"
             If reccount > 1 Then
                 ws.PivotTables("PivotTable1").RefreshTable()
+                'wb.RefreshAll()
+                RefreshPivots(wb)
             End If
             xl.DisplayAlerts = False
             wb.SaveAs(salesinvupdout)
             wb.Close()
             xl.Quit()
             xl = Nothing
-            MessageBox.Show("Generation of Trade Inventory Analysis Report is complete!")
+            'MessageBox.Show("Generation of Trade Inventory Analysis Report is complete!")
         Catch ex As Exception
             MessageBox.Show(ex.Message, "frmInventoryReport module")
         Finally
@@ -244,7 +250,7 @@ Public Class frmInventoryReport
         ExportInventoryReport(salesinvupdfile)
         Me.Cursor = Cursors.Default
         'MsgBox("Process is complete." + " Sales Trend File : " + txtOutput.Text.ToString + " is generated!")
-        KillExcellApp()
+        'KillExcellApp()
     End Sub
 
     Private Sub btnopenreport_Click(sender As Object, e As EventArgs) Handles btnopenreport.Click
@@ -279,5 +285,19 @@ Public Class frmInventoryReport
         Dim monthyear As String
         monthyear = dtinvto.Value.Month.ToString & "/1/" & dtinvto.Value.Year.ToString
         dtinvto.Value = Convert.ToDateTime(monthyear)
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub RefreshPivots(wb As Excel.Workbook)
+        Dim wSheet As Excel.Worksheet
+        For Each wSheet In wb.Worksheets
+            For Each Pivot As Excel.PivotTable In wSheet.PivotTables
+                Pivot.RefreshTable()
+                Pivot.Update()
+            Next
+        Next
     End Sub
 End Class

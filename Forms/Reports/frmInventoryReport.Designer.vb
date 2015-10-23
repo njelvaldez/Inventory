@@ -78,6 +78,8 @@ Partial Class frmInventoryReport
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.btnExportExcel = New System.Windows.Forms.Button()
+        Me.txtPercentFactor = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -604,11 +606,33 @@ Partial Class frmInventoryReport
         Me.btnExportExcel.Text = "   &Export"
         Me.btnExportExcel.Visible = False
         '
+        'txtPercentFactor
+        '
+        Me.txtPercentFactor.Location = New System.Drawing.Point(267, 603)
+        Me.txtPercentFactor.MaxLength = 100
+        Me.txtPercentFactor.Multiline = True
+        Me.txtPercentFactor.Name = "txtPercentFactor"
+        Me.txtPercentFactor.Size = New System.Drawing.Size(76, 23)
+        Me.txtPercentFactor.TabIndex = 171
+        Me.txtPercentFactor.Tag = ""
+        Me.txtPercentFactor.Text = "0"
+        '
+        'Label7
+        '
+        Me.Label7.Location = New System.Drawing.Point(20, 603)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(241, 20)
+        Me.Label7.TabIndex = 172
+        Me.Label7.Text = "SH Forecast Percent Growth Rate :"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmInventoryReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(984, 648)
+        Me.Controls.Add(Me.txtPercentFactor)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.btnExportExcel)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
@@ -619,7 +643,7 @@ Partial Class frmInventoryReport
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmInventoryReport"
-        Me.Text = "Inventory Report"
+        Me.Text = "Inventory Report - SH Forecasts"
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
@@ -627,6 +651,7 @@ Partial Class frmInventoryReport
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents cmdExit As System.Windows.Forms.Button
@@ -685,4 +710,6 @@ Partial Class frmInventoryReport
     Friend WithEvents DataGridTextBoxColumn27 As System.Windows.Forms.DataGridTextBoxColumn
     Friend WithEvents DataGridTextBoxColumn28 As System.Windows.Forms.DataGridTextBoxColumn
     Friend WithEvents DataGridTextBoxColumn29 As System.Windows.Forms.DataGridTextBoxColumn
+    Friend WithEvents txtPercentFactor As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
 End Class

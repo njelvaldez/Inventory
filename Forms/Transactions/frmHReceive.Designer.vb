@@ -51,6 +51,8 @@ Partial Class frmHReceive
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtRecDate = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -297,6 +299,8 @@ Partial Class frmHReceive
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.txtRecDate)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.lblUpdateBy)
         Me.GroupBox2.Controls.Add(Me.txtRowid)
@@ -311,7 +315,7 @@ Partial Class frmHReceive
         Me.GroupBox2.Size = New System.Drawing.Size(962, 227)
         Me.GroupBox2.TabIndex = 154
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Receive Detail"
+        Me.GroupBox2.Text = "Selected Received"
         '
         'Label13
         '
@@ -330,6 +334,25 @@ Partial Class frmHReceive
         Me.Label14.TabIndex = 151
         Me.Label14.Text = "Search Supplier :"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(16, 57)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(96, 20)
+        Me.Label2.TabIndex = 79
+        Me.Label2.Text = "Receive Date :"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtRecDate
+        '
+        Me.txtRecDate.Enabled = False
+        Me.txtRecDate.Location = New System.Drawing.Point(122, 57)
+        Me.txtRecDate.MaxLength = 10
+        Me.txtRecDate.Name = "txtRecDate"
+        Me.txtRecDate.Size = New System.Drawing.Size(256, 20)
+        Me.txtRecDate.TabIndex = 78
+        Me.txtRecDate.Tag = "Input"
         '
         'frmHReceive
         '
@@ -386,4 +409,6 @@ Partial Class frmHReceive
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtRecDate As System.Windows.Forms.TextBox
 End Class

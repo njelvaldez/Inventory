@@ -12,6 +12,7 @@ Public Class frmAdjustment
             EnableCodeAndDesc(False)
             modControlBehavior.SetBackgroundControlsGroup(Me)
             'set default noted and approved
+            txtAdjDate.Text = DateTime.Now.ToShortDateString
             txtAdjustNo.Focus()
         End If
     End Sub
@@ -77,9 +78,10 @@ Public Class frmAdjustment
     Private Sub Sub_Insert()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(1) As SqlParameter
+            Dim Params(2) As SqlParameter
             Dim ADJNO As New SqlParameter("@ADJNO", SqlDbType.VarChar, 10) : ADJNO.Direction = ParameterDirection.Input : ADJNO.Value = txtAdjustNo.Text : Params(0) = ADJNO
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(1) = UPDATEBY
+            Dim ADJDATE As New SqlParameter("@ADJDATE", SqlDbType.DateTime, 10) : ADJDATE.Direction = ParameterDirection.Input : ADJDATE.Value = Convert.ToDateTime(txtAdjDate.Text) : Params(2) = ADJDATE
             BusinessObject.Sub_Insert(ServerPath2, "HAdjust_Insert", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("IPOHeader_Insert")
         Catch ex As Exception
@@ -91,11 +93,11 @@ Public Class frmAdjustment
     Private Sub Sub_Update()
         Try
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(2) As SqlParameter
+            Dim Params(3) As SqlParameter
             Dim HAID As New SqlParameter("@HAID", SqlDbType.Int, 10) : HAID.Direction = ParameterDirection.Input : HAID.Value = Convert.ToInt16(txtRowid.Text) : Params(0) = HAID
             Dim ADJNO As New SqlParameter("@ADJNO", SqlDbType.VarChar, 10) : ADJNO.Direction = ParameterDirection.Input : ADJNO.Value = txtAdjustNo.Text : Params(1) = ADJNO
             Dim UPDATEBY As New SqlParameter("@UPDATEBY", SqlDbType.VarChar, 25) : UPDATEBY.Direction = ParameterDirection.Input : UPDATEBY.Value = gUserID : Params(2) = UPDATEBY
-
+            Dim ADJDATE As New SqlParameter("@ADJDATE", SqlDbType.DateTime, 10) : ADJDATE.Direction = ParameterDirection.Input : ADJDATE.Value = Convert.ToDateTime(txtAdjDate.Text) : Params(3) = ADJDATE
             BusinessObject.Sub_Insert(ServerPath2, "HAdjust_Update", CommandType.StoredProcedure, Params)
             LogHelper.InsertLog("HAdjust_Update")
         Catch ex As Exception
@@ -172,6 +174,7 @@ Public Class frmAdjustment
         'LoadLookUp()
         Sub_Show()
         DataGrid1.AlternatingBackColor = Color.LightGreen
+
     End Sub
     'Private Sub LoadLookUp()
     '    Try

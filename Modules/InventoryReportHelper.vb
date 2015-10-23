@@ -50,38 +50,7 @@ Module InventoryReportHelper
         Return retval
     End Function
 
-    Public Function GetAndUpdateForecast(fromdateval As DateTime, todateval As DateTime, itemdescval As String) As Boolean
-        Dim retval As Boolean = True
-        Dim itemcode As String = ""
-        Dim forecast As Decimal = 0.0
-        Dim monthctr As Integer = 0
-        Dim fcstdate As DateTime
-        Dim moave As Decimal
-        Dim RemoteDataSet As New DataSet
-        Try
-            RemoteDataSet.Tables.Add("Table1")
-            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
-            Dim Params(2) As SqlParameter
-            Dim fromdate As New SqlParameter("@fromdate", SqlDbType.DateTime, 10) : fromdate.Direction = ParameterDirection.Input : fromdate.Value = fromdateval : Params(0) = fromdate
-            Dim todate As New SqlParameter("@todate", SqlDbType.DateTime, 10) : todate.Direction = ParameterDirection.Input : todate.Value = todateval : Params(1) = todate
-            Dim itemdesc As New SqlParameter("@itemdesc", SqlDbType.VarChar, 50) : itemdesc.Direction = ParameterDirection.Input : itemdesc.Value = itemdescval : Params(2) = itemdesc
-            BusinessObject.Sub_Show(ServerPath2, "ForecastSelect", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
-            For Each drow As DataRow In RemoteDataSet.Tables(0).Rows
-                Try
-                    itemcode = drow("itemcode")
-                    forecast = drow("qty")
-                    fcstdate = drow("fcstdate")
-                    'moave = MonthlyAverage(RemoteDataSet, itemcode)
-                    StkcardReportForecastUpdate(itemcode, fcstdate, forecast, moave)
-                Catch ex As Exception
-                    MsgBox("Error in InventoryReportHelper.StkcardReportInsertRecord: " & ex.Message)
-                End Try
-            Next
-            retval = False
-        Catch ex As Exception
-        End Try
-        Return retval
-    End Function
+ 
     Public Function StkcardReportForecastUpdate(itemcodeval As String, fcstdateval As DateTime, forecastval As Decimal, moaveval As Decimal) As Boolean
         Dim retval As Boolean = True
         Dim RemoteDataSet As New DataSet
@@ -192,7 +161,7 @@ Module InventoryReportHelper
         Return retval
     End Function
 
-    Public Function StkcardReportComputeBalances(fromdateval As DateTime, todateval As DateTime, itemdescval As String) As Boolean
+    Public Function StkcardReportComputeBalances(fromdateval As DateTime, todateval As DateTime, itemdescval As String, _percentfactor As Integer) As Boolean
         Dim retval As Boolean = True
         Dim previtemcode As String = ""
         Dim itemcode As String = ""
@@ -204,6 +173,7 @@ Module InventoryReportHelper
         Dim monthyear As DateTime
         Dim moave As Decimal = 0.0
         Dim RemoteDataSet As New DataSet
+        Dim percentfactor As Decimal = _percentfactor / 100.0
         Try
             RemoteDataSet.Tables.Add("Table1")
             Dim BusinessObject As New BusinessLayer.clsFileMaintenance
@@ -223,6 +193,7 @@ Module InventoryReportHelper
                     endbal = begbal + intransit
                     monthyear = drow("monthyear")
                     moave = MonthlyAverage(RemoteDataSet, itemcode)
+                    'no need to compute here, moave = moave + (moave * percentfactor)
                     StkcardReportUpdateBalances(itemcode, prevbal, begbal, endbal, monthyear, moave)
                     StkcardReportUpdateReorderQty(itemcode, monthyear)
                     StkcardReportUpdateNegativeQty()
@@ -296,6 +267,106 @@ Module InventoryReportHelper
         Catch ex As Exception
             MsgBox("Error in InventoryReportHelper.StkcardReportUpdateStockStatus : " & ex.Message)
             retval = False
+        End Try
+        Return retval
+    End Function
+    Public Function GetAndUpdateForecast(fromdateval As DateTime, todateval As DateTime, itemdescval As String, _percentfactor As Integer) As Boolean
+        Dim retval As Boolean = True
+        Dim itemcode As String = ""
+        Dim forecast As Decimal = 0.0
+        Dim monthctr As Integer = 0
+        Dim fcstdate As DateTime
+        Dim moave As Decimal
+        Dim RemoteDataSet As New DataSet
+        Dim percentfactor As Decimal = _percentfactor / 100.0
+        Try
+            RemoteDataSet.Tables.Add("Table1")
+            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+            Dim Params(2) As SqlParameter
+            Dim fromdate As New SqlParameter("@fromdate", SqlDbType.DateTime, 10) : fromdate.Direction = ParameterDirection.Input : fromdate.Value = fromdateval : Params(0) = fromdate
+            Dim todate As New SqlParameter("@todate", SqlDbType.DateTime, 10) : todate.Direction = ParameterDirection.Input : todate.Value = todateval : Params(1) = todate
+            Dim itemdesc As New SqlParameter("@itemdesc", SqlDbType.VarChar, 50) : itemdesc.Direction = ParameterDirection.Input : itemdesc.Value = itemdescval : Params(2) = itemdesc
+            BusinessObject.Sub_Show(ServerPath2, "ForecastSelect", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
+            For Each drow As DataRow In RemoteDataSet.Tables(0).Rows
+                Try
+                    itemcode = drow("itemcode")
+                    forecast = drow("qty") + drow("qty") * percentfactor
+                    fcstdate = drow("fcstdate")
+                    'computed already with balances moave = MonthlyAverage(RemoteDataSet, itemcode)
+                    StkcardReportForecastUpdate(itemcode, fcstdate, forecast, moave)
+                Catch ex As Exception
+                    MsgBox("Error in InventoryReportHelper.StkcardReportInsertRecord: " & ex.Message)
+                End Try
+            Next
+            retval = False
+        Catch ex As Exception
+        End Try
+        Return retval
+    End Function
+    Public Function GetAndUpdateSales(fromdateval As DateTime, todateval As DateTime, itemdescval As String, _percentfactor As Integer) As Boolean
+        Dim retval As Boolean = True
+        Dim itemcode As String = ""
+        Dim forecast As Decimal = 0.0
+        Dim monthctr As Integer = 0
+        Dim fcstdate As DateTime
+        Dim moave As Decimal
+        Dim RemoteDataSet As New DataSet
+        Dim percentfactor As Decimal = _percentfactor / 100.0
+        Try
+            RemoteDataSet.Tables.Add("Table1")
+            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+            Dim Params(2) As SqlParameter
+            Dim fromdate As New SqlParameter("@fromdate", SqlDbType.DateTime, 10) : fromdate.Direction = ParameterDirection.Input : fromdate.Value = fromdateval : Params(0) = fromdate
+            Dim todate As New SqlParameter("@todate", SqlDbType.DateTime, 10) : todate.Direction = ParameterDirection.Input : todate.Value = todateval : Params(1) = todate
+            Dim itemdesc As New SqlParameter("@itemdesc", SqlDbType.VarChar, 50) : itemdesc.Direction = ParameterDirection.Input : itemdesc.Value = itemdescval : Params(2) = itemdesc
+            BusinessObject.Sub_Show(ServerPath2, "DirectSalesSelect", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
+            For Each drow As DataRow In RemoteDataSet.Tables(0).Rows
+                Try
+                    itemcode = drow("itemcode")
+                    forecast = drow("qty") + drow("qty") * percentfactor
+                    fcstdate = drow("fcstdate")
+                    'average already computed with balances moave = MonthlyAverage(RemoteDataSet, itemcode)
+                    StkcardReportForecastUpdate(itemcode, fcstdate, forecast, moave)
+                Catch ex As Exception
+                    MsgBox("Error in InventoryReportHelper.StkcardReportInsertRecord: " & ex.Message)
+                End Try
+            Next
+            retval = False
+        Catch ex As Exception
+        End Try
+        Return retval
+    End Function
+
+    Public Function GetAndUpdateSalesandFcst(fromdateval As DateTime, todateval As DateTime, itemdescval As String, _percentfactor As Integer) As Boolean
+        Dim retval As Boolean = True
+        Dim itemcode As String = ""
+        Dim forecast As Decimal = 0.0
+        Dim monthctr As Integer = 0
+        Dim fcstdate As DateTime
+        Dim moave As Decimal
+        Dim RemoteDataSet As New DataSet
+        Dim percentfactor As Decimal = _percentfactor / 100.0
+        Try
+            RemoteDataSet.Tables.Add("Table1")
+            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+            Dim Params(2) As SqlParameter
+            Dim fromdate As New SqlParameter("@fromdate", SqlDbType.DateTime, 10) : fromdate.Direction = ParameterDirection.Input : fromdate.Value = fromdateval : Params(0) = fromdate
+            Dim todate As New SqlParameter("@todate", SqlDbType.DateTime, 10) : todate.Direction = ParameterDirection.Input : todate.Value = todateval : Params(1) = todate
+            Dim itemdesc As New SqlParameter("@itemdesc", SqlDbType.VarChar, 50) : itemdesc.Direction = ParameterDirection.Input : itemdesc.Value = itemdescval : Params(2) = itemdesc
+            BusinessObject.Sub_Show(ServerPath2, "ForecastSalesSelect", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
+            For Each drow As DataRow In RemoteDataSet.Tables(0).Rows
+                Try
+                    itemcode = drow("itemcode")
+                    forecast = drow("qty") + drow("qty") * percentfactor
+                    fcstdate = drow("fcstdate")
+                    'average already computed with balances moave = MonthlyAverage(RemoteDataSet, itemcode)
+                    StkcardReportForecastUpdate(itemcode, fcstdate, forecast, moave)
+                Catch ex As Exception
+                    MsgBox("Error in InventoryReportHelper.StkcardReportInsertRecord: " & ex.Message)
+                End Try
+            Next
+            retval = False
+        Catch ex As Exception
         End Try
         Return retval
     End Function

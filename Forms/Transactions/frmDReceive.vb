@@ -238,10 +238,7 @@ Public Class frmDReceive
         RemoteDataSet.Tables.Add("ProductFormCT_Show")
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim myLoadedForm As New frmReportViewer
-        myLoadedForm.Report = "Received Inventory Report"
-        myLoadedForm.Status = "ALL"
-        myLoadedForm.PONO = txtRecNo.Text
+        Dim myLoadedForm As New frmReceiveReport
         myLoadedForm.ShowDialog()
     End Sub
 

@@ -74,6 +74,8 @@ Partial Class frmDIssue
         Me.DataGridTextBoxColumn10 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn4 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn5 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.txtavailableqty = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -165,6 +167,8 @@ Partial Class frmDIssue
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.txtavailableqty)
+        Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.dtexpdate)
         Me.GroupBox2.Controls.Add(Me.txtHiid)
         Me.GroupBox2.Controls.Add(Me.txtLotNo)
@@ -201,15 +205,15 @@ Partial Class frmDIssue
         Me.dtexpdate.CustomFormat = "MM/dd/yyyy"
         Me.dtexpdate.Enabled = False
         Me.dtexpdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtexpdate.Location = New System.Drawing.Point(119, 182)
+        Me.dtexpdate.Location = New System.Drawing.Point(136, 153)
         Me.dtexpdate.Name = "dtexpdate"
         Me.dtexpdate.Size = New System.Drawing.Size(257, 20)
-        Me.dtexpdate.TabIndex = 4
+        Me.dtexpdate.TabIndex = 3
         Me.dtexpdate.Value = New Date(2015, 10, 15, 0, 0, 0, 0)
         '
         'txtHiid
         '
-        Me.txtHiid.Location = New System.Drawing.Point(448, 32)
+        Me.txtHiid.Location = New System.Drawing.Point(464, 32)
         Me.txtHiid.Name = "txtHiid"
         Me.txtHiid.Size = New System.Drawing.Size(49, 20)
         Me.txtHiid.TabIndex = 101
@@ -219,17 +223,17 @@ Partial Class frmDIssue
         'txtLotNo
         '
         Me.txtLotNo.Enabled = False
-        Me.txtLotNo.Location = New System.Drawing.Point(119, 152)
+        Me.txtLotNo.Location = New System.Drawing.Point(136, 122)
         Me.txtLotNo.MaxLength = 10
         Me.txtLotNo.Multiline = True
         Me.txtLotNo.Name = "txtLotNo"
         Me.txtLotNo.Size = New System.Drawing.Size(256, 23)
-        Me.txtLotNo.TabIndex = 3
+        Me.txtLotNo.TabIndex = 2
         Me.txtLotNo.Tag = "Input"
         '
         'Label8
         '
-        Me.Label8.Location = New System.Drawing.Point(17, 184)
+        Me.Label8.Location = New System.Drawing.Point(16, 156)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(88, 20)
         Me.Label8.TabIndex = 100
@@ -238,7 +242,7 @@ Partial Class frmDIssue
         '
         'Label7
         '
-        Me.Label7.Location = New System.Drawing.Point(17, 155)
+        Me.Label7.Location = New System.Drawing.Point(16, 125)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(88, 20)
         Me.Label7.TabIndex = 98
@@ -248,17 +252,17 @@ Partial Class frmDIssue
         'txtQty
         '
         Me.txtQty.Enabled = False
-        Me.txtQty.Location = New System.Drawing.Point(120, 123)
+        Me.txtQty.Location = New System.Drawing.Point(136, 181)
         Me.txtQty.MaxLength = 10
         Me.txtQty.Multiline = True
         Me.txtQty.Name = "txtQty"
         Me.txtQty.Size = New System.Drawing.Size(256, 23)
-        Me.txtQty.TabIndex = 2
+        Me.txtQty.TabIndex = 4
         Me.txtQty.Tag = "Input"
         '
         'Label6
         '
-        Me.Label6.Location = New System.Drawing.Point(17, 121)
+        Me.Label6.Location = New System.Drawing.Point(16, 187)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(88, 20)
         Me.Label6.TabIndex = 96
@@ -268,7 +272,7 @@ Partial Class frmDIssue
         'txtLocDesc
         '
         Me.txtLocDesc.Enabled = False
-        Me.txtLocDesc.Location = New System.Drawing.Point(120, 60)
+        Me.txtLocDesc.Location = New System.Drawing.Point(136, 60)
         Me.txtLocDesc.MaxLength = 100
         Me.txtLocDesc.Multiline = True
         Me.txtLocDesc.Name = "txtLocDesc"
@@ -280,7 +284,7 @@ Partial Class frmDIssue
         '
         Me.btnLocationLookup.Enabled = False
         Me.btnLocationLookup.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
-        Me.btnLocationLookup.Location = New System.Drawing.Point(385, 57)
+        Me.btnLocationLookup.Location = New System.Drawing.Point(401, 57)
         Me.btnLocationLookup.Name = "btnLocationLookup"
         Me.btnLocationLookup.Size = New System.Drawing.Size(52, 26)
         Me.btnLocationLookup.TabIndex = 0
@@ -290,7 +294,7 @@ Partial Class frmDIssue
         'txtLocCode
         '
         Me.txtLocCode.Enabled = False
-        Me.txtLocCode.Location = New System.Drawing.Point(448, 56)
+        Me.txtLocCode.Location = New System.Drawing.Point(464, 56)
         Me.txtLocCode.MaxLength = 100
         Me.txtLocCode.Multiline = True
         Me.txtLocCode.Name = "txtLocCode"
@@ -301,7 +305,7 @@ Partial Class frmDIssue
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(16, 59)
+        Me.Label5.Location = New System.Drawing.Point(16, 63)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 93
@@ -311,7 +315,7 @@ Partial Class frmDIssue
         'txtItemDesc
         '
         Me.txtItemDesc.Enabled = False
-        Me.txtItemDesc.Location = New System.Drawing.Point(119, 94)
+        Me.txtItemDesc.Location = New System.Drawing.Point(136, 91)
         Me.txtItemDesc.MaxLength = 100
         Me.txtItemDesc.Multiline = True
         Me.txtItemDesc.Name = "txtItemDesc"
@@ -323,7 +327,7 @@ Partial Class frmDIssue
         '
         Me.btnItem.Enabled = False
         Me.btnItem.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
-        Me.btnItem.Location = New System.Drawing.Point(384, 91)
+        Me.btnItem.Location = New System.Drawing.Point(400, 91)
         Me.btnItem.Name = "btnItem"
         Me.btnItem.Size = New System.Drawing.Size(52, 26)
         Me.btnItem.TabIndex = 1
@@ -332,7 +336,7 @@ Partial Class frmDIssue
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(531, 91)
+        Me.Label13.Location = New System.Drawing.Point(547, 91)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(88, 20)
         Me.Label13.TabIndex = 76
@@ -341,7 +345,7 @@ Partial Class frmDIssue
         '
         'lblUpdateBy
         '
-        Me.lblUpdateBy.Location = New System.Drawing.Point(635, 90)
+        Me.lblUpdateBy.Location = New System.Drawing.Point(651, 90)
         Me.lblUpdateBy.Name = "lblUpdateBy"
         Me.lblUpdateBy.Size = New System.Drawing.Size(256, 20)
         Me.lblUpdateBy.TabIndex = 77
@@ -350,7 +354,7 @@ Partial Class frmDIssue
         'txtItemCode
         '
         Me.txtItemCode.Enabled = False
-        Me.txtItemCode.Location = New System.Drawing.Point(447, 90)
+        Me.txtItemCode.Location = New System.Drawing.Point(463, 90)
         Me.txtItemCode.MaxLength = 100
         Me.txtItemCode.Multiline = True
         Me.txtItemCode.Name = "txtItemCode"
@@ -361,7 +365,7 @@ Partial Class frmDIssue
         '
         'txtRowid
         '
-        Me.txtRowid.Location = New System.Drawing.Point(385, 32)
+        Me.txtRowid.Location = New System.Drawing.Point(401, 32)
         Me.txtRowid.Name = "txtRowid"
         Me.txtRowid.Size = New System.Drawing.Size(49, 20)
         Me.txtRowid.TabIndex = 59
@@ -379,7 +383,7 @@ Partial Class frmDIssue
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(16, 93)
+        Me.Label2.Location = New System.Drawing.Point(16, 94)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(106, 20)
         Me.Label2.TabIndex = 45
@@ -388,7 +392,7 @@ Partial Class frmDIssue
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(531, 33)
+        Me.Label3.Location = New System.Drawing.Point(547, 33)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(88, 20)
         Me.Label3.TabIndex = 46
@@ -397,7 +401,7 @@ Partial Class frmDIssue
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(531, 60)
+        Me.Label4.Location = New System.Drawing.Point(547, 60)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 20)
         Me.Label4.TabIndex = 47
@@ -406,7 +410,7 @@ Partial Class frmDIssue
         '
         'lblCreateDate
         '
-        Me.lblCreateDate.Location = New System.Drawing.Point(635, 32)
+        Me.lblCreateDate.Location = New System.Drawing.Point(651, 32)
         Me.lblCreateDate.Name = "lblCreateDate"
         Me.lblCreateDate.Size = New System.Drawing.Size(256, 20)
         Me.lblCreateDate.TabIndex = 50
@@ -414,7 +418,7 @@ Partial Class frmDIssue
         '
         'lblUpdateDate
         '
-        Me.lblUpdateDate.Location = New System.Drawing.Point(635, 64)
+        Me.lblUpdateDate.Location = New System.Drawing.Point(651, 64)
         Me.lblUpdateDate.Name = "lblUpdateDate"
         Me.lblUpdateDate.Size = New System.Drawing.Size(256, 20)
         Me.lblUpdateDate.TabIndex = 51
@@ -423,7 +427,7 @@ Partial Class frmDIssue
         'txtIssNo
         '
         Me.txtIssNo.Enabled = False
-        Me.txtIssNo.Location = New System.Drawing.Point(120, 32)
+        Me.txtIssNo.Location = New System.Drawing.Point(136, 32)
         Me.txtIssNo.MaxLength = 10
         Me.txtIssNo.Name = "txtIssNo"
         Me.txtIssNo.Size = New System.Drawing.Size(256, 20)
@@ -577,6 +581,27 @@ Partial Class frmDIssue
         Me.DataGridTextBoxColumn5.MappingName = "EXPDATE"
         Me.DataGridTextBoxColumn5.Width = 75
         '
+        'txtavailableqty
+        '
+        Me.txtavailableqty.Enabled = False
+        Me.txtavailableqty.Location = New System.Drawing.Point(136, 212)
+        Me.txtavailableqty.MaxLength = 10
+        Me.txtavailableqty.Multiline = True
+        Me.txtavailableqty.Name = "txtavailableqty"
+        Me.txtavailableqty.ReadOnly = True
+        Me.txtavailableqty.Size = New System.Drawing.Size(256, 23)
+        Me.txtavailableqty.TabIndex = 102
+        Me.txtavailableqty.Tag = ""
+        '
+        'Label9
+        '
+        Me.Label9.Location = New System.Drawing.Point(16, 218)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(111, 20)
+        Me.Label9.TabIndex = 103
+        Me.Label9.Text = "Available Quantity :"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmDIssue
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -657,4 +682,6 @@ Partial Class frmDIssue
     Friend WithEvents DataGridTextBoxColumn8 As System.Windows.Forms.DataGridTextBoxColumn
     Friend WithEvents DataGridTextBoxColumn9 As System.Windows.Forms.DataGridTextBoxColumn
     Friend WithEvents DataGridTextBoxColumn11 As System.Windows.Forms.DataGridTextBoxColumn
+    Friend WithEvents txtavailableqty As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
 End Class

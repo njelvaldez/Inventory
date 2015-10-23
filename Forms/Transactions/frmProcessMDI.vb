@@ -102,7 +102,7 @@ Public Class frmProcessMDI
             wbmdi.Close()
             xlmdi.Quit()
             xlmdi = Nothing
-            KillExcellApp()
+            'KillExcellApp()
             MessageBox.Show("MDIprocess is complete!")
         Catch ex As Exception
             MsgBox(ex.Message + ex.Message + ex.InnerException.Message)

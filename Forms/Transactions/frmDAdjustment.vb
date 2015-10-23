@@ -240,10 +240,7 @@ Public Class frmDAdjustment
         RemoteDataSet.Tables.Add("ProductFormCT_Show")
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim myLoadedForm As New frmReportViewer
-        myLoadedForm.Report = "Inventory Adjustment Report"
-        myLoadedForm.Status = "ALL"
-        myLoadedForm.PONO = txtAdjNo.Text
+        Dim myLoadedForm As New frmAdjustmentReport
         myLoadedForm.ShowDialog()
     End Sub
 

@@ -51,6 +51,8 @@ Partial Class frmAdjustment
         Me.lblUpdateDate = New System.Windows.Forms.Label()
         Me.txtAdjustNo = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtAdjDate = New System.Windows.Forms.TextBox()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -244,6 +246,8 @@ Partial Class frmAdjustment
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.txtAdjDate)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.lblUpdateBy)
         Me.GroupBox2.Controls.Add(Me.txtRowid)
@@ -258,7 +262,7 @@ Partial Class frmAdjustment
         Me.GroupBox2.Size = New System.Drawing.Size(962, 227)
         Me.GroupBox2.TabIndex = 142
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Adjustment Detail"
+        Me.GroupBox2.Text = "Selected Adjustment"
         '
         'txtRowid
         '
@@ -331,6 +335,25 @@ Partial Class frmAdjustment
         Me.Label14.Text = "Search Supplier :"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(18, 57)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(96, 20)
+        Me.Label2.TabIndex = 79
+        Me.Label2.Text = "Adjustment Date :"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtAdjDate
+        '
+        Me.txtAdjDate.Enabled = False
+        Me.txtAdjDate.Location = New System.Drawing.Point(122, 57)
+        Me.txtAdjDate.MaxLength = 10
+        Me.txtAdjDate.Name = "txtAdjDate"
+        Me.txtAdjDate.Size = New System.Drawing.Size(256, 20)
+        Me.txtAdjDate.TabIndex = 78
+        Me.txtAdjDate.Tag = "Input"
+        '
         'frmAdjustment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -388,4 +411,6 @@ Partial Class frmAdjustment
     Friend WithEvents lblUpdateDate As System.Windows.Forms.Label
     Friend WithEvents txtAdjustNo As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtAdjDate As System.Windows.Forms.TextBox
 End Class

@@ -32,8 +32,12 @@ Partial Class frmHIssue
         Me.cmdDelete = New System.Windows.Forms.Button()
         Me.cmdSave = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtIssDesc = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.btnIssueTypeLookup = New System.Windows.Forms.Button()
+        Me.txtIssCode = New System.Windows.Forms.TextBox()
         Me.lblUpdateBy = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtRowid = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -49,13 +53,11 @@ Partial Class frmHIssue
         Me.DataGridTextBoxColumn1 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTableStyle1 = New System.Windows.Forms.DataGridTableStyle()
         Me.DataGrid1 = New System.Windows.Forms.DataGrid()
+        Me.DataGridTextBoxColumn5 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.cmdAdd = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtIssDesc = New System.Windows.Forms.TextBox()
-        Me.btnIssueTypeLookup = New System.Windows.Forms.Button()
-        Me.txtIssCode = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.DataGridTextBoxColumn5 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtIssDate = New System.Windows.Forms.TextBox()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -144,6 +146,8 @@ Partial Class frmHIssue
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.txtIssDate)
         Me.GroupBox2.Controls.Add(Me.txtIssDesc)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.btnIssueTypeLookup)
@@ -162,7 +166,18 @@ Partial Class frmHIssue
         Me.GroupBox2.Size = New System.Drawing.Size(962, 227)
         Me.GroupBox2.TabIndex = 166
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Issuance Detail"
+        Me.GroupBox2.Text = "Selected Issuance"
+        '
+        'txtIssDesc
+        '
+        Me.txtIssDesc.Enabled = False
+        Me.txtIssDesc.Location = New System.Drawing.Point(120, 26)
+        Me.txtIssDesc.MaxLength = 100
+        Me.txtIssDesc.Multiline = True
+        Me.txtIssDesc.Name = "txtIssDesc"
+        Me.txtIssDesc.Size = New System.Drawing.Size(256, 23)
+        Me.txtIssDesc.TabIndex = 0
+        Me.txtIssDesc.Tag = "Input"
         '
         'Label13
         '
@@ -173,6 +188,29 @@ Partial Class frmHIssue
         Me.Label13.Text = "Updated By :"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'btnIssueTypeLookup
+        '
+        Me.btnIssueTypeLookup.Enabled = False
+        Me.btnIssueTypeLookup.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
+        Me.btnIssueTypeLookup.Location = New System.Drawing.Point(385, 23)
+        Me.btnIssueTypeLookup.Name = "btnIssueTypeLookup"
+        Me.btnIssueTypeLookup.Size = New System.Drawing.Size(52, 26)
+        Me.btnIssueTypeLookup.TabIndex = 0
+        Me.btnIssueTypeLookup.Tag = "Input"
+        Me.btnIssueTypeLookup.UseVisualStyleBackColor = True
+        '
+        'txtIssCode
+        '
+        Me.txtIssCode.Enabled = False
+        Me.txtIssCode.Location = New System.Drawing.Point(448, 22)
+        Me.txtIssCode.MaxLength = 100
+        Me.txtIssCode.Multiline = True
+        Me.txtIssCode.Name = "txtIssCode"
+        Me.txtIssCode.Size = New System.Drawing.Size(23, 23)
+        Me.txtIssCode.TabIndex = 171
+        Me.txtIssCode.Tag = "Input"
+        Me.txtIssCode.Visible = False
+        '
         'lblUpdateBy
         '
         Me.lblUpdateBy.Location = New System.Drawing.Point(587, 83)
@@ -180,6 +218,15 @@ Partial Class frmHIssue
         Me.lblUpdateBy.Size = New System.Drawing.Size(256, 20)
         Me.lblUpdateBy.TabIndex = 77
         Me.lblUpdateBy.Tag = "Read"
+        '
+        'Label5
+        '
+        Me.Label5.Location = New System.Drawing.Point(16, 25)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(107, 20)
+        Me.Label5.TabIndex = 172
+        Me.Label5.Text = "Issuance Type :"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'txtRowid
         '
@@ -319,6 +366,14 @@ Partial Class frmHIssue
         Me.DataGrid1.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
         Me.DataGrid1.Tag = "View"
         '
+        'DataGridTextBoxColumn5
+        '
+        Me.DataGridTextBoxColumn5.Format = ""
+        Me.DataGridTextBoxColumn5.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn5.HeaderText = "Issuance Code"
+        Me.DataGridTextBoxColumn5.MappingName = "ISSCODE"
+        Me.DataGridTextBoxColumn5.Width = 75
+        '
         'cmdAdd
         '
         Me.cmdAdd.Image = CType(resources.GetObject("cmdAdd.Image"), System.Drawing.Image)
@@ -340,56 +395,24 @@ Partial Class frmHIssue
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Summary of Issuance"
         '
-        'txtIssDesc
+        'Label2
         '
-        Me.txtIssDesc.Enabled = False
-        Me.txtIssDesc.Location = New System.Drawing.Point(120, 26)
-        Me.txtIssDesc.MaxLength = 100
-        Me.txtIssDesc.Multiline = True
-        Me.txtIssDesc.Name = "txtIssDesc"
-        Me.txtIssDesc.Size = New System.Drawing.Size(256, 23)
-        Me.txtIssDesc.TabIndex = 0
-        Me.txtIssDesc.Tag = "Input"
+        Me.Label2.Location = New System.Drawing.Point(16, 86)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(96, 20)
+        Me.Label2.TabIndex = 174
+        Me.Label2.Text = "Issue Date :"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'btnIssueTypeLookup
+        'txtIssDate
         '
-        Me.btnIssueTypeLookup.Enabled = False
-        Me.btnIssueTypeLookup.Image = Global.TradeInventory.My.Resources.Resources.search_icon_new
-        Me.btnIssueTypeLookup.Location = New System.Drawing.Point(385, 23)
-        Me.btnIssueTypeLookup.Name = "btnIssueTypeLookup"
-        Me.btnIssueTypeLookup.Size = New System.Drawing.Size(52, 26)
-        Me.btnIssueTypeLookup.TabIndex = 0
-        Me.btnIssueTypeLookup.Tag = "Input"
-        Me.btnIssueTypeLookup.UseVisualStyleBackColor = True
-        '
-        'txtIssCode
-        '
-        Me.txtIssCode.Enabled = False
-        Me.txtIssCode.Location = New System.Drawing.Point(448, 22)
-        Me.txtIssCode.MaxLength = 100
-        Me.txtIssCode.Multiline = True
-        Me.txtIssCode.Name = "txtIssCode"
-        Me.txtIssCode.Size = New System.Drawing.Size(23, 23)
-        Me.txtIssCode.TabIndex = 171
-        Me.txtIssCode.Tag = "Input"
-        Me.txtIssCode.Visible = False
-        '
-        'Label5
-        '
-        Me.Label5.Location = New System.Drawing.Point(16, 25)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(107, 20)
-        Me.Label5.TabIndex = 172
-        Me.Label5.Text = "Issuance Type :"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'DataGridTextBoxColumn5
-        '
-        Me.DataGridTextBoxColumn5.Format = ""
-        Me.DataGridTextBoxColumn5.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn5.HeaderText = "Issuance Code"
-        Me.DataGridTextBoxColumn5.MappingName = "ISSCODE"
-        Me.DataGridTextBoxColumn5.Width = 75
+        Me.txtIssDate.Enabled = False
+        Me.txtIssDate.Location = New System.Drawing.Point(120, 85)
+        Me.txtIssDate.MaxLength = 10
+        Me.txtIssDate.Name = "txtIssDate"
+        Me.txtIssDate.Size = New System.Drawing.Size(256, 20)
+        Me.txtIssDate.TabIndex = 173
+        Me.txtIssDate.Tag = "Input"
         '
         'frmHIssue
         '
@@ -451,4 +474,6 @@ Partial Class frmHIssue
     Friend WithEvents txtIssCode As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents DataGridTextBoxColumn5 As System.Windows.Forms.DataGridTextBoxColumn
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtIssDate As System.Windows.Forms.TextBox
 End Class
