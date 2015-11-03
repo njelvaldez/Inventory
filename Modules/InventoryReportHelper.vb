@@ -100,6 +100,37 @@ Module InventoryReportHelper
         End Try
         Return retval
     End Function
+
+    Public Function GetAndUpdateIMStoMDI(fromdateval As DateTime, todateval As DateTime, itemdescval As String) As Boolean
+        Dim retval As Boolean = True
+        Dim itemcode As String = ""
+        Dim intransit As Decimal = 0.0
+        Dim monthctr As Integer = 0
+        Dim deliverydate As DateTime
+        Dim RemoteDataSet As New DataSet
+        Try
+            RemoteDataSet.Tables.Add("Table1")
+            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+            Dim Params(2) As SqlParameter
+            Dim fromdate As New SqlParameter("@fromdate", SqlDbType.DateTime, 10) : fromdate.Direction = ParameterDirection.Input : fromdate.Value = fromdateval : Params(0) = fromdate
+            Dim todate As New SqlParameter("@todate", SqlDbType.DateTime, 10) : todate.Direction = ParameterDirection.Input : todate.Value = todateval : Params(1) = todate
+            Dim itemdesc As New SqlParameter("@itemdesc", SqlDbType.VarChar, 50) : itemdesc.Direction = ParameterDirection.Input : itemdesc.Value = itemdescval : Params(2) = itemdesc
+            BusinessObject.Sub_Show(ServerPath2, "IssueIMStoMDISelect", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
+            For Each drow As DataRow In RemoteDataSet.Tables(0).Rows
+                Try
+                    itemcode = drow("itemcode")
+                    intransit = drow("qty")
+                    deliverydate = drow("issdate")
+                    StkcardReportIMStoMDIUpdate(itemcode, deliverydate, intransit)
+                Catch ex As Exception
+                    MsgBox("Error in InventoryReportHelper.GetAndUpdateIntransit: " & ex.Message)
+                End Try
+            Next
+            retval = False
+        Catch ex As Exception
+        End Try
+        Return retval
+    End Function
     Public Function StkcardReportIntransitUpdate(itemcodeval As String, deliverydateval As DateTime, intransitval As Decimal) As Boolean
         Dim retval As Boolean = True
         Dim RemoteDataSet As New DataSet
@@ -111,6 +142,23 @@ Module InventoryReportHelper
             Dim monthyear As New SqlParameter("@monthyear", SqlDbType.DateTime, 10) : monthyear.Direction = ParameterDirection.Input : monthyear.Value = deliverydateval : Params(1) = monthyear
             Dim intransit As New SqlParameter("@intransit", SqlDbType.Money, 12) : intransit.Direction = ParameterDirection.Input : intransit.Value = intransitval : Params(2) = intransit
             BusinessObject.Sub_Show(ServerPath2, "StkcardReportIntransitUpdate", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
+        Catch ex As Exception
+            MsgBox("Error in InventoryReportHelper.StkcardReportIntransitUpdate : " & ex.Message)
+            retval = False
+        End Try
+        Return retval
+    End Function
+    Public Function StkcardReportIMStoMDIUpdate(itemcodeval As String, deliverydateval As DateTime, intransitval As Decimal) As Boolean
+        Dim retval As Boolean = True
+        Dim RemoteDataSet As New DataSet
+        Try
+            RemoteDataSet.Tables.Add("Table1")
+            Dim BusinessObject As New BusinessLayer.clsFileMaintenance
+            Dim Params(2) As SqlParameter
+            Dim itemcode As New SqlParameter("@itemcode", SqlDbType.VarChar, 10) : itemcode.Direction = ParameterDirection.Input : itemcode.Value = itemcodeval : Params(0) = itemcode
+            Dim monthyear As New SqlParameter("@monthyear", SqlDbType.DateTime, 10) : monthyear.Direction = ParameterDirection.Input : monthyear.Value = deliverydateval : Params(1) = monthyear
+            Dim intransit As New SqlParameter("@intransit", SqlDbType.Money, 12) : intransit.Direction = ParameterDirection.Input : intransit.Value = intransitval : Params(2) = intransit
+            BusinessObject.Sub_Show(ServerPath2, "StkcardReportIMStoMDIUpdate", CommandType.StoredProcedure, RemoteDataSet, "Table1", Params)
         Catch ex As Exception
             MsgBox("Error in InventoryReportHelper.StkcardReportIntransitUpdate : " & ex.Message)
             retval = False

@@ -89,6 +89,7 @@ Partial Class frmInventoryReport
         '
         'cmdExit
         '
+        Me.cmdExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdExit.Location = New System.Drawing.Point(859, 596)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(86, 34)
@@ -98,6 +99,7 @@ Partial Class frmInventoryReport
         '
         'BtnGenerate
         '
+        Me.BtnGenerate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnGenerate.Image = Global.TradeInventory.My.Resources.Resources.Product_sale_report_icon
         Me.BtnGenerate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.BtnGenerate.Location = New System.Drawing.Point(767, 596)
@@ -368,6 +370,7 @@ Partial Class frmInventoryReport
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.DataGrid1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(10, 114)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(962, 470)
@@ -387,6 +390,7 @@ Partial Class frmInventoryReport
         Me.GroupBox5.Controls.Add(Me.Label1)
         Me.GroupBox5.Controls.Add(Me.txtItemDesc)
         Me.GroupBox5.Controls.Add(Me.Label2)
+        Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(12, 2)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(573, 106)
@@ -446,6 +450,7 @@ Partial Class frmInventoryReport
         '
         'Label6
         '
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(8, 73)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(88, 20)
@@ -466,6 +471,7 @@ Partial Class frmInventoryReport
         '
         'Label1
         '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(8, 44)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(115, 20)
@@ -485,6 +491,7 @@ Partial Class frmInventoryReport
         '
         'Label2
         '
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(8, 16)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(88, 20)
@@ -498,6 +505,7 @@ Partial Class frmInventoryReport
         Me.GroupBox4.Controls.Add(Me.dtexpfrom)
         Me.GroupBox4.Controls.Add(Me.Label4)
         Me.GroupBox4.Controls.Add(Me.Label5)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(783, 2)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(189, 106)
@@ -549,6 +557,7 @@ Partial Class frmInventoryReport
         Me.GroupBox3.Controls.Add(Me.dtinvfrom)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.Label10)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(591, 2)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(186, 106)
@@ -569,6 +578,7 @@ Partial Class frmInventoryReport
         'dtinvfrom
         '
         Me.dtinvfrom.CustomFormat = "MM/dd/yyyy"
+        Me.dtinvfrom.Enabled = False
         Me.dtinvfrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtinvfrom.Location = New System.Drawing.Point(60, 32)
         Me.dtinvfrom.Name = "dtinvfrom"
@@ -596,6 +606,7 @@ Partial Class frmInventoryReport
         '
         'btnExportExcel
         '
+        Me.btnExportExcel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportExcel.Image = Global.TradeInventory.My.Resources.Resources.excel
         Me.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnExportExcel.Location = New System.Drawing.Point(675, 596)
@@ -619,6 +630,7 @@ Partial Class frmInventoryReport
         '
         'Label7
         '
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(20, 603)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(241, 20)
@@ -640,10 +652,11 @@ Partial Class frmInventoryReport
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.cmdExit)
         Me.Controls.Add(Me.BtnGenerate)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmInventoryReport"
-        Me.Text = "Inventory Report - SH Forecasts"
+        Me.Text = "Stock Status - SH Forecasts"
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)

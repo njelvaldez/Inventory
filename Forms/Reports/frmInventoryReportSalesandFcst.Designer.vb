@@ -204,6 +204,7 @@ Partial Class frmInventoryReportSalesandFcst
         'dtinvfrom
         '
         Me.dtinvfrom.CustomFormat = "MM/dd/yyyy"
+        Me.dtinvfrom.Enabled = False
         Me.dtinvfrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtinvfrom.Location = New System.Drawing.Point(60, 32)
         Me.dtinvfrom.Name = "dtinvfrom"
@@ -643,7 +644,7 @@ Partial Class frmInventoryReportSalesandFcst
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmInventoryReportSalesandFcst"
-        Me.Text = "Inventory Report Sales and Forecast"
+        Me.Text = "Stock Status - Sales and Forecast"
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)

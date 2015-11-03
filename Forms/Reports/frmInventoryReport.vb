@@ -96,6 +96,9 @@ Public Class frmInventoryReport
             '5. Get and update Intransit
             GetAndUpdateIntransit(fromdate, todate, itemdesc)
 
+            '5.1 Get and update IMStoMDI
+            GetAndUpdateIMStoMDI(fromdate, todate, itemdesc)
+
             '6. Compute Balances : PrevBal, BegBal , EndBal
             StkcardReportComputeBalances(fromdate, todate, itemdesc, Convert.ToInt16(txtPercentFactor.Text))
 

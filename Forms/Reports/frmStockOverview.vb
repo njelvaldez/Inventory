@@ -166,4 +166,8 @@ Public Class frmStockOverview
         'KillExcellApp()
         Process.Start(txtOutput.Text.ToString())
     End Sub
+
+    Private Sub btnopentemplate2_Click(sender As Object, e As EventArgs) Handles btnopentemplate2.Click
+        Process.Start(txtTemplate.Text.ToString())
+    End Sub
 End Class

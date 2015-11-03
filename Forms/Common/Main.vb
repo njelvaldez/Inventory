@@ -294,22 +294,22 @@ Public Class Main
         '
         Me.MenuItem51.Index = 2
         Me.MenuItem51.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem48, Me.MenuItem52, Me.MenuItem53})
-        Me.MenuItem51.Text = "Inventory Reports Analysis"
+        Me.MenuItem51.Text = "Stock Status"
         '
         'MenuItem48
         '
         Me.MenuItem48.Index = 0
-        Me.MenuItem48.Text = "Inventory Report - SH Forecast"
+        Me.MenuItem48.Text = "SH Forecast"
         '
         'MenuItem52
         '
         Me.MenuItem52.Index = 1
-        Me.MenuItem52.Text = "Inventory Report - Sales History"
+        Me.MenuItem52.Text = "Sales History"
         '
         'MenuItem53
         '
         Me.MenuItem53.Index = 2
-        Me.MenuItem53.Text = "Inventory Report - Sales & Forecast"
+        Me.MenuItem53.Text = "Sales and Forecast"
         '
         'MenuItem5
         '
